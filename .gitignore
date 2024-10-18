@@ -1,4 +1,5 @@
 .idea/
 node_modules/
-fincode-openapi.yml*
 src/
+/fincode-openapi.yml
+/fincode-openapi.yml.org
