@@ -6,15 +6,23 @@ if [ ! -f "fincode-openapi.yml" ]; then
   patch -u fincode-openapi.yml bin/fincode-openapi.0.patch
 fi
 
+npm install
+
+rm -rf ./gen && mkdir -p ./gen
+
+cp -r node_modules/@quartetcom/openapi-generator-php-templates/templates ./gen/templates \
+  && patch -p1 -d ./gen/templates < ./bin/openapi-php-template.0.patch
+
 docker run --rm \
   -u 1000:1000 \
   -v ./:/local \
   openapitools/openapi-generator-cli:v7.9.0 \
   generate \
     -i /local/fincode-openapi.yml \
-    --generate-alias-as-model \
-    --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true \
     -g php \
-    -o /local/src \
-    -t /local/node_modules/@quartetcom/openapi-generator-php-templates/templates \
-    --invoker-package "OpenAPI\Fincode"
+    -o /local/gen \
+    -t /local/gen/templates \
+    --invoker-package "OpenAPI\Fincode" \
+    --additional-properties=variableNamingConvention=camelCase
+
+composer run patch;

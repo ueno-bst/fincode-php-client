@@ -1,8 +1,10 @@
-.idea/
-node_modules/
-src/
+/.idea/
+/node_modules/
+/vendor/
+
+/src/
 /fincode-openapi.yml
 /fincode-openapi.yml.org
+/.php-cs-fixer.cache
 
-/vendor/
 /gen/

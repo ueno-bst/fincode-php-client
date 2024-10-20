@@ -1,0 +1,29 @@
+diff -urN src/model_enum.mustache dist/model_enum.mustache
+--- src/model_enum.mustache	2024-10-19 00:39:06.723066418 +0900
++++ dist/model_enum.mustache	2024-10-19 00:48:53.479289846 +0900
+@@ -1,21 +1,21 @@
+-enum {{classname}}: string
++enum {{classname}}: {{^isString}}int{{/isString}}{{#isString}}string{{/isString}}
+ {
+     /**
+      * Possible values of this enum
+      */
+ {{#allowableValues}}
+ {{#enumVars}}
+-    case {{^isString}}NUMBER_{{/isString}}{{{name}}} = {{{value}}};
++    case {{{name}}} = {{{value}}};
+ 
+ {{/enumVars}}
+ {{/allowableValues}}
+     /**
+      * Gets allowable values of the enum
+      *
+-     * @return list<string>
++     * @return {{^isString}}int{{/isString}}{{#isString}}string{{/isString}}[]
+      */
+     public static function getAllowableEnumValues(): array
+     {
+-        return array_map(fn (self $enum): string => $enum->value, self::cases());
++        return array_map(fn (self $enum): {{^isString}}int{{/isString}}{{#isString}}string{{/isString}} => $enum->value, self::cases());
+     }
+ }
