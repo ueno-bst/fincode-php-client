@@ -26,7 +26,11 @@ class ApiClassConverter extends \PhpParser\NodeVisitorAbstract
         ) {
             foreach ($node->getMethods() as $method) {
                 if ($method->getDocComment() !== null) {
-                    $this->enterDoc($method->getDocComment());
+                    $doc = $this->enterDoc($method->getDocComment());
+
+                    if ($doc instanceof Doc) {
+                        $method->setDocComment($doc);
+                    }
                 }
 
                 if (
@@ -79,7 +83,7 @@ class ApiClassConverter extends \PhpParser\NodeVisitorAbstract
         }
     }
 
-    public function enterDoc(Doc $doc): void
+    public function enterDoc(Doc $doc): Doc
     {
         $src = $dist = $doc->getText();
 
@@ -97,8 +101,10 @@ class ApiClassConverter extends \PhpParser\NodeVisitorAbstract
         }
 
         if ($src !== $dist) {
-            $doc->getText();
+            return new Doc($dist);
         }
+
+        return $doc;
     }
 
 }
