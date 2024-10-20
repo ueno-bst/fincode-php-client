@@ -2895,7 +2895,7 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPayment: PayPay.
+     * receiveWebhookOfPayPayPayment: \OpenAPI\Fincode\Model\PayPay.
      *
      * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
@@ -2914,7 +2914,7 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentWithHttpInfo: PayPay.
+     * receiveWebhookOfPayPayPaymentWithHttpInfo: \OpenAPI\Fincode\Model\PayPay.
      *
      * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
@@ -2983,7 +2983,7 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentAsync: PayPay.
+     * receiveWebhookOfPayPayPaymentAsync: \OpenAPI\Fincode\Model\PayPay.
      *
      * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
@@ -2998,7 +2998,7 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentAsyncWithHttpInfo: PayPay.
+     * receiveWebhookOfPayPayPaymentAsyncWithHttpInfo: \OpenAPI\Fincode\Model\PayPay.
      *
      * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation

@@ -79,7 +79,7 @@ class DefaultApi
      * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
-     * @return PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -101,7 +101,7 @@ class DefaultApi
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
      * @return array{
-     *     PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2163,11 +2163,11 @@ class DefaultApi
     /**
      * createPaymentBulk: 一括決済 登録.
      *
-     * @param PaymentBulkPayType $payType         payType (required)
-     * @param string             $processPlanDate processPlanDate (required)
-     * @param string             $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
-     * @param string             $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
-     * @param string             $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
+     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         payType (required)
+     * @param string                                    $processPlanDate processPlanDate (required)
+     * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
+     * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
+     * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\PaymentBulkCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -2185,11 +2185,11 @@ class DefaultApi
     /**
      * createPaymentBulkWithHttpInfo: 一括決済 登録.
      *
-     * @param PaymentBulkPayType $payType         (required)
-     * @param string             $processPlanDate (required)
-     * @param string             $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
-     * @param string             $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
-     * @param string             $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
+     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param string                                    $processPlanDate (required)
+     * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
+     * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
+     * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\PaymentBulkCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -2273,11 +2273,11 @@ class DefaultApi
     /**
      * createPaymentBulkAsync: 一括決済 登録.
      *
-     * @param PaymentBulkPayType $payType         (required)
-     * @param string             $processPlanDate (required)
-     * @param string             $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
-     * @param string             $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
-     * @param string             $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
+     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param string                                    $processPlanDate (required)
+     * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
+     * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
+     * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -2291,11 +2291,11 @@ class DefaultApi
     /**
      * createPaymentBulkAsyncWithHttpInfo: 一括決済 登録.
      *
-     * @param PaymentBulkPayType $payType         (required)
-     * @param string             $processPlanDate (required)
-     * @param string             $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
-     * @param string             $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
-     * @param string             $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
+     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param string                                    $processPlanDate (required)
+     * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
+     * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
+     * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -2326,11 +2326,11 @@ class DefaultApi
     /**
      * Create request for operation 'createPaymentBulk'.
      *
-     * @param PaymentBulkPayType $payType         (required)
-     * @param string             $processPlanDate (required)
-     * @param string             $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
-     * @param string             $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
-     * @param string             $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
+     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param string                                    $processPlanDate (required)
+     * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
+     * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
+     * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -4906,7 +4906,7 @@ class DefaultApi
      * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
-     * @return PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -4928,7 +4928,7 @@ class DefaultApi
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
      * @return array{
-     *     PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5146,7 +5146,7 @@ class DefaultApi
      * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
-     * @return PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -5168,7 +5168,7 @@ class DefaultApi
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5618,10 +5618,10 @@ class DefaultApi
     /**
      * reserveProvider: テナントショップ 決済手段追加申請.
      *
-     * @param string            $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
-     * @param string            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
-     * @param string            $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
+     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\POSTProviderReserveResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -5639,10 +5639,10 @@ class DefaultApi
     /**
      * reserveProviderWithHttpInfo: テナントショップ 決済手段追加申請.
      *
-     * @param string            $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
-     * @param string            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
-     * @param string            $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
+     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\POSTProviderReserveResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -5726,10 +5726,10 @@ class DefaultApi
     /**
      * reserveProviderAsync: テナントショップ 決済手段追加申請.
      *
-     * @param string            $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
-     * @param string            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
-     * @param string            $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
+     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -5743,10 +5743,10 @@ class DefaultApi
     /**
      * reserveProviderAsyncWithHttpInfo: テナントショップ 決済手段追加申請.
      *
-     * @param string            $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
-     * @param string            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
-     * @param string            $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
+     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -5777,10 +5777,10 @@ class DefaultApi
     /**
      * Create request for operation 'reserveProvider'.
      *
-     * @param string            $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
-     * @param string            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
-     * @param string            $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
+     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB&#x60;: Apple Pay（JCB/American Express/Diners Club） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -6083,10 +6083,10 @@ class DefaultApi
     /**
      * retrieveAccountDetailList: 売上入金詳細 一覧取得.
      *
-     * @param string                $id           売上入金ID (required)
-     * @param string                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
-     * @param string                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
+     * @param string                                       $id           売上入金ID (required)
+     * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
+     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -6104,10 +6104,10 @@ class DefaultApi
     /**
      * retrieveAccountDetailListWithHttpInfo: 売上入金詳細 一覧取得.
      *
-     * @param string                $id           売上入金ID (required)
-     * @param string                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
-     * @param string                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
+     * @param string                                       $id           売上入金ID (required)
+     * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
+     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -6191,10 +6191,10 @@ class DefaultApi
     /**
      * retrieveAccountDetailListAsync: 売上入金詳細 一覧取得.
      *
-     * @param string                $id           売上入金ID (required)
-     * @param string                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
-     * @param string                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
+     * @param string                                       $id           売上入金ID (required)
+     * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
+     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -6208,10 +6208,10 @@ class DefaultApi
     /**
      * retrieveAccountDetailListAsyncWithHttpInfo: 売上入金詳細 一覧取得.
      *
-     * @param string                $id           売上入金ID (required)
-     * @param string                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
-     * @param string                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
+     * @param string                                       $id           売上入金ID (required)
+     * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
+     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -6242,10 +6242,10 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveAccountDetailList'.
      *
-     * @param string                $id           売上入金ID (required)
-     * @param string                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
-     * @param string                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
+     * @param string                                       $id           売上入金ID (required)
+     * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
+     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7480,11 +7480,11 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethod: 決済手段 取得.
      *
-     * @param string                                     $customerId   顧客ID (required)
-     * @param string                                     $id           決済手段ID (required)
-     * @param CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
-     * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
-     * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
+     * @param string                                                            $customerId   顧客ID (required)
+     * @param string                                                            $id           決済手段ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
+     * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -7502,11 +7502,11 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodWithHttpInfo: 決済手段 取得.
      *
-     * @param string                                     $customerId   顧客ID (required)
-     * @param string                                     $id           決済手段ID (required)
-     * @param CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
-     * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
-     * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
+     * @param string                                                            $customerId   顧客ID (required)
+     * @param string                                                            $id           決済手段ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
+     * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -7590,11 +7590,11 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodAsync: 決済手段 取得.
      *
-     * @param string                                     $customerId   顧客ID (required)
-     * @param string                                     $id           決済手段ID (required)
-     * @param CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
-     * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
-     * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
+     * @param string                                                            $customerId   顧客ID (required)
+     * @param string                                                            $id           決済手段ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
+     * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7608,11 +7608,11 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodAsyncWithHttpInfo: 決済手段 取得.
      *
-     * @param string                                     $customerId   顧客ID (required)
-     * @param string                                     $id           決済手段ID (required)
-     * @param CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
-     * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
-     * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
+     * @param string                                                            $customerId   顧客ID (required)
+     * @param string                                                            $id           決済手段ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
+     * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7643,11 +7643,11 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveCustomerPaymentMethod'.
      *
-     * @param string                                     $customerId   顧客ID (required)
-     * @param string                                     $id           決済手段ID (required)
-     * @param CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
-     * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
-     * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
+     * @param string                                                            $customerId   顧客ID (required)
+     * @param string                                                            $id           決済手段ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
+     * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7743,10 +7743,10 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodList: 決済手段 一覧取得.
      *
-     * @param string                                         $customerId   顧客ID (required)
-     * @param CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
-     * @param string                                         $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
-     * @param string                                         $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
+     * @param string                                                                $customerId   顧客ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
+     * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -7764,10 +7764,10 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodListWithHttpInfo: 決済手段 一覧取得.
      *
-     * @param string                                         $customerId   顧客ID (required)
-     * @param CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
-     * @param string                                         $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
-     * @param string                                         $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
+     * @param string                                                                $customerId   顧客ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
+     * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -7851,10 +7851,10 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodListAsync: 決済手段 一覧取得.
      *
-     * @param string                                         $customerId   顧客ID (required)
-     * @param CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
-     * @param string                                         $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
-     * @param string                                         $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
+     * @param string                                                                $customerId   顧客ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
+     * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7868,10 +7868,10 @@ class DefaultApi
     /**
      * retrieveCustomerPaymentMethodListAsyncWithHttpInfo: 決済手段 一覧取得.
      *
-     * @param string                                         $customerId   顧客ID (required)
-     * @param CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
-     * @param string                                         $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
-     * @param string                                         $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
+     * @param string                                                                $customerId   顧客ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
+     * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7902,10 +7902,10 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveCustomerPaymentMethodList'.
      *
-     * @param string                                         $customerId   顧客ID (required)
-     * @param CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
-     * @param string                                         $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
-     * @param string                                         $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
+     * @param string                                                                $customerId   顧客ID (required)
+     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
+     * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -7993,10 +7993,10 @@ class DefaultApi
     /**
      * retrievePayment: 決済 取得.
      *
-     * @param string                       $id           オーダーID（決済情報のID） (required)
-     * @param PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
-     * @param string                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
-     * @param string                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
+     * @param string                                              $id           オーダーID（決済情報のID） (required)
+     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
+     * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @return \OpenAPI\Fincode\Model\RetrievePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
@@ -8014,10 +8014,10 @@ class DefaultApi
     /**
      * retrievePaymentWithHttpInfo: 決済 取得.
      *
-     * @param string                       $id           オーダーID（決済情報のID） (required)
-     * @param PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
-     * @param string                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
-     * @param string                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
+     * @param string                                              $id           オーダーID（決済情報のID） (required)
+     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
+     * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @return array{
      *     \OpenAPI\Fincode\Model\RetrievePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
@@ -8101,10 +8101,10 @@ class DefaultApi
     /**
      * retrievePaymentAsync: 決済 取得.
      *
-     * @param string                       $id           オーダーID（決済情報のID） (required)
-     * @param PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
-     * @param string                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
-     * @param string                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
+     * @param string                                              $id           オーダーID（決済情報のID） (required)
+     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
+     * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -8118,10 +8118,10 @@ class DefaultApi
     /**
      * retrievePaymentAsyncWithHttpInfo: 決済 取得.
      *
-     * @param string                       $id           オーダーID（決済情報のID） (required)
-     * @param PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
-     * @param string                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
-     * @param string                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
+     * @param string                                              $id           オーダーID（決済情報のID） (required)
+     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
+     * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -8152,10 +8152,10 @@ class DefaultApi
     /**
      * Create request for operation 'retrievePayment'.
      *
-     * @param string                       $id           オーダーID（決済情報のID） (required)
-     * @param PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
-     * @param string                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
-     * @param string                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
+     * @param string                                              $id           オーダーID（決済情報のID） (required)
+     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
+     * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
@@ -10920,7 +10920,7 @@ class DefaultApi
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
-     * @return SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -10941,7 +10941,7 @@ class DefaultApi
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
      * @return array{
-     *     SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11153,7 +11153,7 @@ class DefaultApi
     /**
      * retrieveTenantContract: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -11173,7 +11173,7 @@ class DefaultApi
     /**
      * retrieveTenantContractWithHttpInfo: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -11259,7 +11259,7 @@ class DefaultApi
     /**
      * retrieveTenantContractAsync: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -11275,7 +11275,7 @@ class DefaultApi
     /**
      * retrieveTenantContractAsyncWithHttpInfo: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -11308,7 +11308,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantContract'.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -11381,7 +11381,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -11403,7 +11403,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoWithHttpInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -11491,7 +11491,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoAsync: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -11509,7 +11509,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoAsyncWithHttpInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -11544,7 +11544,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantExaminationInfo'.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -11619,7 +11619,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -11639,7 +11639,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2WithHttpInfo: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -11725,7 +11725,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2Async: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -11741,7 +11741,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2AsyncWithHttpInfo: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -11774,7 +11774,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantExaminationInfoV2'.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -13647,7 +13647,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
@@ -13670,7 +13670,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoWithHttpInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
@@ -13759,7 +13759,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoAsync: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
@@ -13778,7 +13778,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoAsyncWithHttpInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
@@ -13814,7 +13814,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantExaminationInfo'.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
@@ -13897,7 +13897,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
@@ -13918,7 +13918,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2WithHttpInfo: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
@@ -14005,7 +14005,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2Async: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
@@ -14022,7 +14022,7 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2AsyncWithHttpInfo: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
@@ -14056,7 +14056,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantExaminationInfoV2'.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
@@ -14364,7 +14364,7 @@ class DefaultApi
     /**
      * uploadExaminationFile: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         type (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
@@ -14386,7 +14386,7 @@ class DefaultApi
     /**
      * uploadExaminationFileWithHttpInfo: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
@@ -14474,7 +14474,7 @@ class DefaultApi
     /**
      * uploadExaminationFileAsync: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
@@ -14492,7 +14492,7 @@ class DefaultApi
     /**
      * uploadExaminationFileAsyncWithHttpInfo: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
@@ -14527,7 +14527,7 @@ class DefaultApi
     /**
      * Create request for operation 'uploadExaminationFile'.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
      * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
