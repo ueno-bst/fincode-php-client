@@ -3,6 +3,7 @@
 namespace OpenAPI\Fixer;
 
 use FilesystemIterator;
+use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Enum_;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Namespace_;
@@ -55,11 +56,11 @@ class FileNode implements \Stringable
                             $namespace = $node->name;
 
                             foreach ($node->stmts as $stmt) {
-                                if ($stmt instanceof Class_ || $stmt instanceof Enum_) {
+                                if ($stmt instanceof ClassLike) {
                                     $files[] = new FileNode($real_path, $namespace, $stmt->name->name);
                                 }
                             }
-                        } else if ($node instanceof Class_|| $node instanceof Enum_) {
+                        } else if ($node instanceof ClassLike) {
                             $files[] = new FileNode($real_path, '', $node->name->name);
                         }
                     }
