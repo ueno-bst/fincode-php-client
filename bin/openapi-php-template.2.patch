@@ -1,0 +1,11 @@
+--- fincode-openapi.yml.src	2024-11-06 10:39:02.225011000 +0900
++++ fincode-openapi.yml	2024-11-06 10:39:29.230670577 +0900
+@@ -9063,7 +9063,7 @@
+             テナントショップID。\
+             指定したテナントショップを請求元とした請求書情報を一覧で取得します。
+         - in: query
+-          name: クエリ
++          name: query
+           description: |
+             検索条件クエリパラメータ
+           required: false

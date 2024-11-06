@@ -1,0 +1,34 @@
+--- fincode-openapi.src.yml	2024-11-05 19:54:24.618360400 +0900
++++ fincode-openapi.yml	2024-11-06 09:54:02.848008310 +0900
+@@ -18690,6 +18690,7 @@
+         - CHECK
+         - AUTH
+         - CAPTURE
++        - CANCEL
+       example: CAPTURE
+       description: |
+         取引種別\
+@@ -18977,6 +18978,7 @@
+       enum:
+         - AUTH
+         - CAPTURE
++        - CANCEL
+       example: CAPTURE
+       description: |
+         取引種別\
+@@ -19401,6 +19403,7 @@
+       enum:
+         - AUTH
+         - CAPTURE
++        - CANCEL
+       example: CAPTURE
+       description: |
+         取引種別\
+@@ -22426,6 +22429,7 @@
+       enum:
+         - AUTH
+         - CAPTURE
++        - CANCEL
+       example: CAPTURE
+       default: AUTH
+       description: |
