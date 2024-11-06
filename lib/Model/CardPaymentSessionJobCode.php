@@ -29,6 +29,7 @@ enum CardPaymentSessionJobCode: string
     case AUTH = 'AUTH';
     case CAPTURE = 'CAPTURE';
     case CANCEL = 'CANCEL';
+    case SALES = 'SALES';
 
     /**
      * Gets allowable values of the enum.
