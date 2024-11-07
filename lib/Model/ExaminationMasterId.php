@@ -33,6 +33,7 @@ enum ExaminationMasterId: string
     case KONBINI = 'konbini';
     case PAYPAY = 'paypay';
     case DIRECTDEBIT = 'directdebit';
+    case VIRTUALACCOUNT = 'virtualaccount';
 
     /**
      * Gets allowable values of the enum.

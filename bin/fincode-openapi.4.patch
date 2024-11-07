@@ -1,0 +1,10 @@
+--- fincode-openapi.yml.src	2024-11-06 18:01:59.234167200 +0900
++++ fincode-openapi.yml.dist	2024-11-07 18:53:35.440095375 +0900
+@@ -30301,6 +30301,7 @@
+         - konbini
+         - paypay
+         - directdebit
++        - virtualaccount
+       example: vm
+       description: |
+         審査種別マスタID。\
