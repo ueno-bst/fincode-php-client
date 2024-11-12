@@ -1,0 +1,12 @@
+--- fincode-openapi.yml.src	2024-11-12 09:51:01.546556400 +0900
++++ fincode-openapi.yml	2024-11-12 09:52:12.093573951 +0900
+@@ -1988,6 +1988,9 @@
+ 
+             main
+     delete:
++      security:
++        - Secret-Bearer-Auth: []
++        - Secret-Basic-Auth: []
+       tags:
+         - カード
+       operationId: deleteCustomerCard
