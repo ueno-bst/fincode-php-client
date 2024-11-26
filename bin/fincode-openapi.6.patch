@@ -1,0 +1,29 @@
+--- fincode-openapi.yml.src	2024-11-26 17:17:14.698430700 +0900
++++ fincode-openapi.yml.dist	2024-11-26 17:17:53.880459347 +0900
+@@ -17064,7 +17064,7 @@
+     tds2_provision_attempts_day:
+       type: string
+       example: '999'
+-      minLength: 3
++      minLength: 1
+       maxLength: 3
+       nullable: true
+       description: |
+@@ -22746,7 +22746,7 @@
+         tds2_provision_attempts_day:
+           type: string
+           example: '999'
+-          minLength: 3
++          minLength: 1
+           maxLength: 3
+           nullable: true
+           description: |
+@@ -23523,7 +23523,7 @@
+         tds2_provision_attempts_day:
+           type: string
+           example: '999'
+-          minLength: 3
++          minLength: 1
+           maxLength: 3
+           nullable: true
+           description: |

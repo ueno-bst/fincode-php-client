@@ -341,8 +341,8 @@ class CardRegistrationSessionCreatingRequest implements ModelInterface, \ArrayAc
         if (!is_null($this->container['tds2ProvisionAttemptsDay']) && mb_strlen($this->container['tds2ProvisionAttemptsDay']) > 3) {
             $invalidProperties[] = "invalid value for 'tds2ProvisionAttemptsDay', the character length must be smaller than or equal to 3.";
         }
-        if (!is_null($this->container['tds2ProvisionAttemptsDay']) && mb_strlen($this->container['tds2ProvisionAttemptsDay']) < 3) {
-            $invalidProperties[] = "invalid value for 'tds2ProvisionAttemptsDay', the character length must be bigger than or equal to 3.";
+        if (!is_null($this->container['tds2ProvisionAttemptsDay']) && mb_strlen($this->container['tds2ProvisionAttemptsDay']) < 1) {
+            $invalidProperties[] = "invalid value for 'tds2ProvisionAttemptsDay', the character length must be bigger than or equal to 1.";
         }
         if (!is_null($this->container['tds2ShipAddressUsage']) && mb_strlen($this->container['tds2ShipAddressUsage']) > 8) {
             $invalidProperties[] = "invalid value for 'tds2ShipAddressUsage', the character length must be smaller than or equal to 8.";
@@ -1217,8 +1217,8 @@ class CardRegistrationSessionCreatingRequest implements ModelInterface, \ArrayAc
         if (!is_null($tds2ProvisionAttemptsDay) && mb_strlen($tds2ProvisionAttemptsDay) > 3) {
             throw new \InvalidArgumentException('invalid length for $tds2ProvisionAttemptsDay when calling CardRegistrationSessionCreatingRequest., must be smaller than or equal to 3.');
         }
-        if (!is_null($tds2ProvisionAttemptsDay) && mb_strlen($tds2ProvisionAttemptsDay) < 3) {
-            throw new \InvalidArgumentException('invalid length for $tds2ProvisionAttemptsDay when calling CardRegistrationSessionCreatingRequest., must be bigger than or equal to 3.');
+        if (!is_null($tds2ProvisionAttemptsDay) && mb_strlen($tds2ProvisionAttemptsDay) < 1) {
+            throw new \InvalidArgumentException('invalid length for $tds2ProvisionAttemptsDay when calling CardRegistrationSessionCreatingRequest., must be bigger than or equal to 1.');
         }
         $this->container['tds2ProvisionAttemptsDay'] = $tds2ProvisionAttemptsDay;
 

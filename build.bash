@@ -9,6 +9,7 @@ if [ ! -f "fincode-openapi.yml" ]; then
   patch -u fincode-openapi.yml bin/fincode-openapi.3.patch
   patch -u fincode-openapi.yml bin/fincode-openapi.4.patch
   patch -u fincode-openapi.yml bin/fincode-openapi.5.patch
+  patch -u fincode-openapi.yml bin/fincode-openapi.6.patch
 fi
 
 npm install
