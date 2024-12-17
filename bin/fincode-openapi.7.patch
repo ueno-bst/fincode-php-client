@@ -1,0 +1,18 @@
+--- fincode-openapi.yml.src	2024-12-17 17:20:13.969177600 +0900
++++ fincode-openapi.yml.dist	2024-12-17 17:20:39.979247406 +0900
+@@ -31857,6 +31857,7 @@
+         - paypay
+         - directdebit
+         - virtualaccount
++        - aupay
+       example: vm
+       description: |
+         審査種別マスタID。\
+@@ -31870,6 +31871,7 @@
+         - `paypay`: PayPay
+         - `directdebit`: 口座振替
+         - `virtualaccount`: 銀行振込（バーチャル口座）
++        - `aupay`: AUPay
+     PlatformRateConfig:
+       type: object
+       properties:

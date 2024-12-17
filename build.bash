@@ -3,13 +3,14 @@
 if [ ! -f "fincode-openapi.yml" ]; then
   wget -O fincode-openapi.yml https://docs.fincode.jp/assets/api/fincode-openapi.yml?date=${FINCODE_OPENAPI_DATE:-20241017}
   cp fincode-openapi.yml fincode-openapi.yml.org
-  patch -u fincode-openapi.yml bin/fincode-openapi.0.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.1.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.2.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.3.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.4.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.5.patch
-  patch -u fincode-openapi.yml bin/fincode-openapi.6.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.0.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.1.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.2.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.3.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.4.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.5.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.6.patch
+  patch -uf fincode-openapi.yml bin/fincode-openapi.7.patch
 fi
 
 npm install
