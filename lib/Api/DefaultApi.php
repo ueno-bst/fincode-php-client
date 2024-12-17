@@ -12288,6 +12288,14 @@ class DefaultApi
                 $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
+        }
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
+            $headers['Authorization'] = 'Basic '.base64_encode($this->config->getUsername().':'.$this->config->getPassword());
+        }
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -13865,6 +13873,14 @@ class DefaultApi
                 $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
+        }
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
+            $headers['Authorization'] = 'Basic '.base64_encode($this->config->getUsername().':'.$this->config->getPassword());
+        }
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -14076,6 +14092,14 @@ class DefaultApi
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
             }
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer '.$this->config->getAccessToken();
+        }
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
+            $headers['Authorization'] = 'Basic '.base64_encode($this->config->getUsername().':'.$this->config->getPassword());
         }
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

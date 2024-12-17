@@ -1,0 +1,32 @@
+--- fincode-openapi.yml.src	2024-12-17 17:35:03.098657000 +0900
++++ fincode-openapi.yml.dist	2024-12-17 17:54:55.134539730 +0900
+@@ -12044,6 +12044,9 @@
+             main
+   /v1/platforms:
+     get:
++      security:
++        - Secret-Bearer-Auth: []
++        - Secret-Basic-Auth: []
+       tags:
+         - プラットフォームショップ
+       operationId: retrievePlatformShopList
+@@ -12570,6 +12573,9 @@
+             main
+   /v1/tenants:
+     get:
++      security:
++        - Secret-Bearer-Auth: []
++        - Secret-Basic-Auth: []
+       tags:
+         - テナントショップ
+       operationId: retrieveTenantShopList
+@@ -12737,6 +12743,9 @@
+             main
+   /v1/tenants/{id}:
+     get:
++      security:
++        - Secret-Bearer-Auth: []
++        - Secret-Basic-Auth: []
+       tags:
+         - テナントショップ
+       operationId: retrieveTenantShop
