@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 3Dセキュア2.0認証処理 結果  - &#x60;Y&#x60;: 認証に成功 - &#x60;A&#x60;: 認証の試行が認められた&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;認証 / 確認は行われなかったが、認証 / 確認を試行したことの証拠は提供されている&lt;/span&gt; - &#x60;C&#x60;: 追加のチャレンジ認証が必要&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;購入者による&#x60;challenge_url&#x60;上での追加認証が必要&lt;/span&gt; - &#x60;N&#x60;: 取引拒否もしくは未認証・口座未確認 - &#x60;R&#x60;: 認証・口座確認拒否&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;カード発行会社が認証を拒否し、承認を試行しないよう要求している&lt;/span&gt; - &#x60;U&#x60;: 認証・口座確認の実行失敗または技術的な問題.

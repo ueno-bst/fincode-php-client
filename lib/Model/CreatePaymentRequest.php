@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CreatePaymentRequest implements ModelInterface, \ArrayAccess, \JsonSeriali
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'jobCode' => '\OpenAPI\Fincode\Model\PayPayPaymentJobCode', 'amount' => 'string', 'tax' => 'string', 'tdsType' => '\OpenAPI\Fincode\Model\TdsType', 'tds2Type' => '\OpenAPI\Fincode\Model\Tds2Type', 'tdTenantName' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'itemCode' => 'string', 'orderDescription' => 'string', 'remarks' => 'string', 'billingAmount' => 'string', 'billingTax' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'jobCode' => '\Fincode\OpenAPI\Model\PayPayPaymentJobCode', 'amount' => 'string', 'tax' => 'string', 'tdsType' => '\Fincode\OpenAPI\Model\TdsType', 'tds2Type' => '\Fincode\OpenAPI\Model\Tds2Type', 'tdTenantName' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'itemCode' => 'string', 'orderDescription' => 'string', 'remarks' => 'string', 'billingAmount' => 'string', 'billingTax' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

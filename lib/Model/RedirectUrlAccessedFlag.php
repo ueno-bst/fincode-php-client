@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * リダイレクトURLアクセス済みフラグ \\ （&#x60;pay_type &#x3D; Directdebit&#x60;の場合のみ利用可能）\\ 購入者が&#x60;redirect_url&#x60;にアクセスしたことがあるかどうかを示すフラグです。  - &#x60;0&#x60;: 未アクセス - &#x60;1&#x60;: 1回以上アクセス済み

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * この振替用口座を登録した際の申込方法  - &#x60;PAPER&#x60;: 依頼書登録 - &#x60;ONLINE&#x60;: Web登録.

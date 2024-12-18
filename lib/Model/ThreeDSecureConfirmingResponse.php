@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ThreeDSecureConfirmingResponse implements ModelInterface, \ArrayAccess, \J
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['tds2TransResult' => '\OpenAPI\Fincode\Model\ThreeDSecure2TransactionResult', 'tds2TransResultReason' => '\OpenAPI\Fincode\Model\ThreeDSecure2TransactionResultReason'];
+    protected static array $openAPITypes = ['tds2TransResult' => '\Fincode\OpenAPI\Model\ThreeDSecure2TransactionResult', 'tds2TransResultReason' => '\Fincode\OpenAPI\Model\ThreeDSecure2TransactionResultReason'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

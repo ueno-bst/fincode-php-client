@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * デフォルトフラグ。\\ この決済手段が決済実行やサブスクリプション登録などで決済手段IDを指定しない場合に自動的に使用する決済手段かどうかを示すフラグです。\\ 顧客に対して、決済種別ごとに必ず1つのデフォルト決済手段が存在します。（決済手段が1つも登録されていない場合を除く）  - &#x60;0&#x60;: デフォルト決済手段ではない - &#x60;1&#x60;: デフォルト決済手段.

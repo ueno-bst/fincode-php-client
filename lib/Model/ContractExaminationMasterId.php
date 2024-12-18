@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 審査種別マスタID\\ この審査情報がどの決済手段の審査かを示す値です。  - &#x60;1&#x60;：  カード決済（VISA / Mastercard, UCカード社） - &#x60;2&#x60;：  カード決済（JCB / American Express / Diners Club / Discover） - &#x60;3&#x60;：  カード決済（VISA / Mastercard, トヨタファイナンス社） - &#x60;51&#x60;： Apple Pay（VISA / Mastercard, UCカード社） - &#x60;52&#x60;： Apple Pay（JCB / American Express / Diners Club / Discover） - &#x60;101&#x60;： コンビニ決済 - &#x60;201&#x60;： PayPay - &#x60;301&#x60;： 口座振替 - &#x60;401&#x60;： 銀行振込（バーチャル口座）.

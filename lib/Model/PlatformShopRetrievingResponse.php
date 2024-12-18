@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PlatformShopRetrievingResponse implements ModelInterface, \ArrayAccess, \J
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'shopName' => 'string', 'shopNameKana' => 'string', 'shopType' => '\OpenAPI\Fincode\Model\ShopType', 'platformId' => 'string', 'platformName' => 'string', 'sharedCustomerFlag' => 'string', 'customerGroupId' => 'string', 'platformRateList' => '\OpenAPI\Fincode\Model\PlatformRateConfig[]', 'sendMailAddress' => 'string', 'shopMailAddress' => 'string', 'logKeepDays' => 'int', 'apiVersion' => 'string', 'apiKeyDisplayFlag' => 'string', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'shopName' => 'string', 'shopNameKana' => 'string', 'shopType' => '\Fincode\OpenAPI\Model\ShopType', 'platformId' => 'string', 'platformName' => 'string', 'sharedCustomerFlag' => 'string', 'customerGroupId' => 'string', 'platformRateList' => '\Fincode\OpenAPI\Model\PlatformRateConfig[]', 'sendMailAddress' => 'string', 'shopMailAddress' => 'string', 'logKeepDays' => 'int', 'apiVersion' => 'string', 'apiKeyDisplayFlag' => 'string', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -639,7 +639,7 @@ class PlatformShopRetrievingResponse implements ModelInterface, \ArrayAccess, \J
     /**
      * Gets platformRateList.
      *
-     * @return \OpenAPI\Fincode\Model\PlatformRateConfig[]|null
+     * @return \Fincode\OpenAPI\Model\PlatformRateConfig[]|null
      */
     public function getPlatformRateList(): mixed
     {
@@ -649,7 +649,7 @@ class PlatformShopRetrievingResponse implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets platformRateList.
      *
-     * @param \OpenAPI\Fincode\Model\PlatformRateConfig[] $platformRateList 決済手段ごとに存在するプラットフォーム手数料設定のリスト
+     * @param \Fincode\OpenAPI\Model\PlatformRateConfig[] $platformRateList 決済手段ごとに存在するプラットフォーム手数料設定のリスト
      */
     public function setPlatformRateList(mixed $platformRateList): static
     {

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class SubscriptionResult implements ModelInterface, \ArrayAccess, \JsonSerializa
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'status' => '\OpenAPI\Fincode\Model\SubscriptionResultStatus', 'processDate' => 'string', 'planId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'customerId' => 'string', 'paymentMethodId' => 'string', 'cardId' => 'string', 'cardNo' => 'mixed', 'shopId' => 'string', 'accessId' => 'string', 'sendUrl' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'intervalPattern' => '\OpenAPI\Fincode\Model\PropertiesIntervalPattern', 'intervalCount' => '\OpenAPI\Fincode\Model\PropertiesIntervalCount', 'remarks' => 'string', 'errorCode' => 'string', 'created' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'status' => '\Fincode\OpenAPI\Model\SubscriptionResultStatus', 'processDate' => 'string', 'planId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'customerId' => 'string', 'paymentMethodId' => 'string', 'cardId' => 'string', 'cardNo' => 'mixed', 'shopId' => 'string', 'accessId' => 'string', 'sendUrl' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'intervalPattern' => '\Fincode\OpenAPI\Model\PropertiesIntervalPattern', 'intervalCount' => '\Fincode\OpenAPI\Model\PropertiesIntervalCount', 'remarks' => 'string', 'errorCode' => 'string', 'created' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

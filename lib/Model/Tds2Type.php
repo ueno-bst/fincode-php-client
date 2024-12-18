@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 3Dセキュア2.0非対応時の挙動設定\\ 購入者がこの決済に利用したカードが3Dセキュア2.0に非対応である場合の後続処理を設定します。  - &#x60;2&#x60;: エラーをレスポンスし、処理を終了する。（デフォルト） - &#x60;3&#x60;: 3Dセキュア認証なしで処理を継続する。

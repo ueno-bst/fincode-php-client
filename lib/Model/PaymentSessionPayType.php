@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 決済方法\\ このリダイレクト型決済で利用できる決済方法です。\\ \\ - &#x60;Card&#x60;：カード決済\\ - &#x60;Konbini&#x60;：コンビニ決済\\ - &#x60;Paypay&#x60;：PayPay - &#x60;Virtualaccount&#x60;：バーチャル口座決済.

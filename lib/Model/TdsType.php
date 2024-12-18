@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 3Dセキュア認証を利用するか。  - &#x60;0&#x60;: 3Dセキュア認証を利用しない（デフォルト） - &#x60;2&#x60;: 3Dセキュア2.0認証を利用する.

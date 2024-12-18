@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class DepositCycleInfoV2 implements ModelInterface, \ArrayAccess, \JsonSerializa
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['depositCycleMasterId' => '\OpenAPI\Fincode\Model\DepositCycleMasterId'];
+    protected static array $openAPITypes = ['depositCycleMasterId' => '\Fincode\OpenAPI\Model\DepositCycleMasterId'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

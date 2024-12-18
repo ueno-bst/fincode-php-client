@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class InvoiceDetailUpdatingRequest implements ModelInterface, \ArrayAccess, \Jso
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['isUncollectible' => 'bool', 'billMailSendFlag' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestCustomerOverwrite', 'issuerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestIssuerOverwrite', 'issueDate' => 'string', 'lines' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[]', 'payTypes' => 'string[]', 'card' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestCard', 'virtualAccount' => '\OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequestVirtualAccount', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
+    protected static array $openAPITypes = ['isUncollectible' => 'bool', 'billMailSendFlag' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestCustomerOverwrite', 'issuerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestIssuerOverwrite', 'issueDate' => 'string', 'lines' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[]', 'payTypes' => 'string[]', 'card' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestCard', 'virtualAccount' => '\Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequestVirtualAccount', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -559,7 +559,7 @@ class InvoiceDetailUpdatingRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Gets lines.
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[]|null
+     * @return \Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[]|null
      */
     public function getLines(): mixed
     {
@@ -569,7 +569,7 @@ class InvoiceDetailUpdatingRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets lines.
      *
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[] $lines 取引内容
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[] $lines 取引内容
      */
     public function setLines(mixed $lines): static
     {

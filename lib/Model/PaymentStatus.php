@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 決済ステータス  - &#x60;UNPROCESSED&#x60;: 未処理 - &#x60;CHECKED&#x60;: 有効性チェック済み - &#x60;AUTHORIZED&#x60;: 仮売上 - &#x60;AWAITING_CUSTOMER_PAYMENT&#x60;: 購入者の支払い待ち - &#x60;AWAITING_PAYMENT_APPROVAL&#x60;: 決済承認待ち - &#x60;CAPTURED&#x60;: 売上確定 - &#x60;CANCELED&#x60;: キャンセル - &#x60;EXPIRED&#x60;: 決済の期限切れ - &#x60;AUTHENTICATED&#x60;: 未処理（3Dセキュア認証待ち） - &#x60;FAILED&#x60;: 決済失敗.

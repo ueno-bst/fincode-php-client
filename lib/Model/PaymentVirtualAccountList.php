@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentVirtualAccountList implements ModelInterface, \ArrayAccess, \JsonSe
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\PaymentVirtualAccountListListInner[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\PaymentVirtualAccountListListInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class PaymentVirtualAccountList implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentVirtualAccountListListInner[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentVirtualAccountListListInner[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class PaymentVirtualAccountList implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentVirtualAccountListListInner[] $list list
+     * @param \Fincode\OpenAPI\Model\PaymentVirtualAccountListListInner[] $list list
      */
     public function setList(mixed $list): static
     {

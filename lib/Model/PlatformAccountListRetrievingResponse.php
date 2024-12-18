@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PlatformAccountListRetrievingResponse implements ModelInterface, \ArrayAcc
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\OpenAPI\Fincode\Model\PlatformAccountListItem[]'];
+    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\Fincode\OpenAPI\Model\PlatformAccountListItem[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -409,7 +409,7 @@ class PlatformAccountListRetrievingResponse implements ModelInterface, \ArrayAcc
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PlatformAccountListItem[]|null
+     * @return \Fincode\OpenAPI\Model\PlatformAccountListItem[]|null
      */
     public function getList(): mixed
     {
@@ -419,7 +419,7 @@ class PlatformAccountListRetrievingResponse implements ModelInterface, \ArrayAcc
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PlatformAccountListItem[] $list プラットフォーム利用料による売上入金情報のリスト
+     * @param \Fincode\OpenAPI\Model\PlatformAccountListItem[] $list プラットフォーム利用料による売上入金情報のリスト
      */
     public function setList(mixed $list): static
     {

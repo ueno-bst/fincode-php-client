@@ -16,10 +16,10 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode;
+namespace Fincode\OpenAPI;
 
+use Fincode\OpenAPI\Model\ModelInterface;
 use GuzzleHttp\Psr7\Utils;
-use OpenAPI\Fincode\Model\ModelInterface;
 
 class ObjectSerializer
 {
@@ -460,7 +460,7 @@ class ObjectSerializer
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\OpenAPI\Fincode\Model\\'.$data->{$discriminator};
+                $subclass = '\Fincode\OpenAPI\Model\\'.$data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }

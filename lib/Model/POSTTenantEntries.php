@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class POSTTenantEntries implements ModelInterface, \ArrayAccess, \JsonSerializab
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['userData' => '\OpenAPI\Fincode\Model\User', 'accessToken' => 'string', 'authorities' => '\OpenAPI\Fincode\Model\POSTTenantEntriesAuthoritiesInner[]'];
+    protected static array $openAPITypes = ['userData' => '\Fincode\OpenAPI\Model\User', 'accessToken' => 'string', 'authorities' => '\Fincode\OpenAPI\Model\POSTTenantEntriesAuthoritiesInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -303,7 +303,7 @@ class POSTTenantEntries implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Gets authorities.
      *
-     * @return \OpenAPI\Fincode\Model\POSTTenantEntriesAuthoritiesInner[]|null
+     * @return \Fincode\OpenAPI\Model\POSTTenantEntriesAuthoritiesInner[]|null
      */
     public function getAuthorities(): mixed
     {
@@ -313,7 +313,7 @@ class POSTTenantEntries implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets authorities.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesAuthoritiesInner[] $authorities ユーザーの権限情報\\ \\ このユーザーが実行可能なエンドポイントとHTTPメソッドの情報
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesAuthoritiesInner[] $authorities ユーザーの権限情報\\ \\ このユーザーが実行可能なエンドポイントとHTTPメソッドの情報
      */
     public function setAuthorities(mixed $authorities): static
     {

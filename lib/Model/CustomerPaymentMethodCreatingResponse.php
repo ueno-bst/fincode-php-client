@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CustomerPaymentMethodCreatingResponse implements ModelInterface, \ArrayAcc
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PaymentMethodPayType', 'customerId' => 'string', 'status' => '\OpenAPI\Fincode\Model\PaymentMethodStatus', 'redirectUrl' => 'string', 'redirectUrlAccessedFlag' => 'string', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'defaultFlag' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'deleteFlag' => '\OpenAPI\Fincode\Model\DeleteFlag', 'processDate' => 'string', 'created' => 'string', 'updated' => 'string', 'card' => '\OpenAPI\Fincode\Model\PaymentMethodCard', 'directdebit' => '\OpenAPI\Fincode\Model\PaymentMethodDirectdebit'];
+    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PaymentMethodPayType', 'customerId' => 'string', 'status' => '\Fincode\OpenAPI\Model\PaymentMethodStatus', 'redirectUrl' => 'string', 'redirectUrlAccessedFlag' => 'string', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'defaultFlag' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'deleteFlag' => '\Fincode\OpenAPI\Model\DeleteFlag', 'processDate' => 'string', 'created' => 'string', 'updated' => 'string', 'card' => '\Fincode\OpenAPI\Model\PaymentMethodCard', 'directdebit' => '\Fincode\OpenAPI\Model\PaymentMethodDirectdebit'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * デフォルトフラグ。\\ このカードが決済実行やサブスクリプション登録などでカードIDを指定しない場合に自動的に使用するカードかどうかを示すフラグです。\\ 顧客に対して必ず1つのデフォルトカードが存在します。（カードが1つも登録されていない場合を除く）  - &#x60;0&#x60;: デフォルトカードではない - &#x60;1&#x60;: デフォルトカード.

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class FincodeAPIErrorResponse implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['errors' => '\OpenAPI\Fincode\Model\FincodeAPIError[]'];
+    protected static array $openAPITypes = ['errors' => '\Fincode\OpenAPI\Model\FincodeAPIError[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class FincodeAPIErrorResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Gets errors.
      *
-     * @return \OpenAPI\Fincode\Model\FincodeAPIError[]|null
+     * @return \Fincode\OpenAPI\Model\FincodeAPIError[]|null
      */
     public function getErrors(): mixed
     {
@@ -249,7 +249,7 @@ class FincodeAPIErrorResponse implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets errors.
      *
-     * @param \OpenAPI\Fincode\Model\FincodeAPIError[] $errors errors
+     * @param \Fincode\OpenAPI\Model\FincodeAPIError[] $errors errors
      */
     public function setErrors(mixed $errors): static
     {

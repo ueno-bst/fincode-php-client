@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class AccountDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['detailId' => 'int', 'shopId' => 'string', 'scheduledDepositDate' => 'string', 'tradeType' => '\OpenAPI\Fincode\Model\AccountDetailTradeType', 'paymentMethod' => '\OpenAPI\Fincode\Model\AccountPaymentMethod', 'amountCorrectionType' => 'string', 'accountId' => 'int', 'orderId' => 'string', 'accessId' => 'string', 'depositAmount' => 'int', 'amount' => 'int', 'tax' => 'int', 'feeTotal' => 'int', 'feeTotalTaxin' => 'int', 'feeProfitTax' => 'int', 'feeProfit' => 'int', 'feeCost' => 'int', 'feeRateTotal' => 'float', 'fixedFee' => 'int', 'applyType' => 'int', 'webRegistrationFee' => 'int', 'webRegistrationFeeTaxin' => 'int', 'webRegistrationFeeTax' => 'int', 'platformFee' => 'int', 'platformFeeTaxin' => 'int', 'platformFeeRate' => 'float', 'fixedFeeForPlatformFee' => 'int', 'applyTypeForPlatformFee' => 'int', 'platformWebRegistrationFee' => 'int', 'platformWebRegistrationFeeTaxin' => 'int', 'platformWebRegistrationFeeTax' => 'int', 'processedDate' => 'string', 'aggregateTermStart' => 'string', 'aggregateTermEnd' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['detailId' => 'int', 'shopId' => 'string', 'scheduledDepositDate' => 'string', 'tradeType' => '\Fincode\OpenAPI\Model\AccountDetailTradeType', 'paymentMethod' => '\Fincode\OpenAPI\Model\AccountPaymentMethod', 'amountCorrectionType' => 'string', 'accountId' => 'int', 'orderId' => 'string', 'accessId' => 'string', 'depositAmount' => 'int', 'amount' => 'int', 'tax' => 'int', 'feeTotal' => 'int', 'feeTotalTaxin' => 'int', 'feeProfitTax' => 'int', 'feeProfit' => 'int', 'feeCost' => 'int', 'feeRateTotal' => 'float', 'fixedFee' => 'int', 'applyType' => 'int', 'webRegistrationFee' => 'int', 'webRegistrationFeeTaxin' => 'int', 'webRegistrationFeeTax' => 'int', 'platformFee' => 'int', 'platformFeeTaxin' => 'int', 'platformFeeRate' => 'float', 'fixedFeeForPlatformFee' => 'int', 'applyTypeForPlatformFee' => 'int', 'platformWebRegistrationFee' => 'int', 'platformWebRegistrationFeeTaxin' => 'int', 'platformWebRegistrationFeeTax' => 'int', 'processedDate' => 'string', 'aggregateTermStart' => 'string', 'aggregateTermEnd' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventRecurringBatchDirectDebit implements ModelInterface, \ArrayAcc
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'succeeded' => 'string', 'failed' => 'string', 'total' => 'string', 'processDate' => 'string', 'chargeDate' => 'string', 'payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'succeeded' => 'string', 'failed' => 'string', 'total' => 'string', 'processDate' => 'string', 'chargeDate' => 'string', 'payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

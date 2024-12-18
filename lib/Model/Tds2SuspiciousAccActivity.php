@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText color--blue-400\&quot;&gt;[3Dセキュア認証パラメータ]&lt;/span&gt;\\ 顧客ユーザーアカウント 不審行為有無\\ 顧客ユーザーアカウントで、不審な行動（過去の不正行為を含む）を加盟店様が発見したかどうかを設定  - &#x60;01&#x60;: 不審な行動なし - &#x60;02&#x60;: 不審な行動あり.

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentPayPayList implements ModelInterface, \ArrayAccess, \JsonSerializab
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\PaymentPayPayListListInner[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\PaymentPayPayListListInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class PaymentPayPayList implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentPayPayListListInner[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentPayPayListListInner[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class PaymentPayPayList implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentPayPayListListInner[] $list list
+     * @param \Fincode\OpenAPI\Model\PaymentPayPayListListInner[] $list list
      */
     public function setList(mixed $list): static
     {

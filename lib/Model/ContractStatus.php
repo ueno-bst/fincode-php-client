@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 契約ステータス\\ \\ fincodeとそのショップの運営事業者の契約のステータスを表します。  - &#x60;101&#x60;: 未契約&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;まだfincodeの本番環境申請の提出が完了していない状態です。&lt;/span&gt; - &#x60;102&#x60;: 利用審査中&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;fincodeの本番環境申請の提出が完了し、利用審査中の状態です。&lt;/span&gt; - &#x60;103&#x60;: 利用審査中（VISA/Mastercard利用可）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;即時利用によりVISA/Mastercardブランドの決済受付が可能な状態です。審査は継続して行われます。&lt;/span&gt; - &#x60;105&#x60;: 解約済 - &#x60;106&#x60;: 契約不成立&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;審査の結果、fincodeの利用が不可となった状態です。&lt;/span&gt; - &#x60;107&#x60;: 稼働中&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;fincodeの本番環境申請が完了し、クレジットカード決済の受付が可能な状態です。&lt;/span&gt;.

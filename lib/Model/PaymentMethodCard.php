@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段がカードを表す（&#x60;pay_type &#x3D; Card&#x60;）とき、カード情報の詳細がこの&#x60;card&#x60;オブジェクトに格納されます。&lt;/span&gt;.
@@ -37,7 +37,7 @@ class PaymentMethodCard implements ModelInterface, \ArrayAccess, \JsonSerializab
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'type' => '\OpenAPI\Fincode\Model\CardType', 'brand' => '\OpenAPI\Fincode\Model\CardBrand', 'cardNoHash' => 'string', 'tdsType' => '\OpenAPI\Fincode\Model\TdsType', 'tds2Type' => '\OpenAPI\Fincode\Model\Tds2Type', 'tds2Status' => '\OpenAPI\Fincode\Model\ThreeDSecure2Status', 'merchantName' => 'string', 'accessId' => 'string', 'acs' => 'string'];
+    protected static array $openAPITypes = ['cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'type' => '\Fincode\OpenAPI\Model\CardType', 'brand' => '\Fincode\OpenAPI\Model\CardBrand', 'cardNoHash' => 'string', 'tdsType' => '\Fincode\OpenAPI\Model\TdsType', 'tds2Type' => '\Fincode\OpenAPI\Model\Tds2Type', 'tds2Status' => '\Fincode\OpenAPI\Model\ThreeDSecure2Status', 'merchantName' => 'string', 'accessId' => 'string', 'acs' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ShopInfoV2 implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopName' => 'string', 'shopNameKana' => 'string', 'shopNameEn' => 'string', 'supportMail' => 'string', 'supportTel' => 'string', 'unitPrice' => 'float', 'dealsLongApplyContent' => 'bool', 'dealsInsecureContent' => 'bool', 'lostTrial' => 'bool', 'useOfFincode' => '\OpenAPI\Fincode\Model\ShopInfoV2UseOfFincode', 'sitePublished' => 'bool', 'siteInfo' => '\OpenAPI\Fincode\Model\ShopInfoV2SiteInfo', 'prepaidPoint' => 'bool', 'prepaidPointInfo' => '\OpenAPI\Fincode\Model\ShopInfoV2PrepaidPointInfo', 'provides' => '\OpenAPI\Fincode\Model\ShopInfoV2Provides', 'contentDescription' => 'string', 'productContentInfo' => '\OpenAPI\Fincode\Model\ContentInfoV2', 'serviceContentInfo' => '\OpenAPI\Fincode\Model\ContentInfoV2', 'digitalContentInfo' => '\OpenAPI\Fincode\Model\ContentInfoV2', 'additionalInfo' => '\OpenAPI\Fincode\Model\ShopInfoV2AdditionalInfo'];
+    protected static array $openAPITypes = ['shopName' => 'string', 'shopNameKana' => 'string', 'shopNameEn' => 'string', 'supportMail' => 'string', 'supportTel' => 'string', 'unitPrice' => 'float', 'dealsLongApplyContent' => 'bool', 'dealsInsecureContent' => 'bool', 'lostTrial' => 'bool', 'useOfFincode' => '\Fincode\OpenAPI\Model\ShopInfoV2UseOfFincode', 'sitePublished' => 'bool', 'siteInfo' => '\Fincode\OpenAPI\Model\ShopInfoV2SiteInfo', 'prepaidPoint' => 'bool', 'prepaidPointInfo' => '\Fincode\OpenAPI\Model\ShopInfoV2PrepaidPointInfo', 'provides' => '\Fincode\OpenAPI\Model\ShopInfoV2Provides', 'contentDescription' => 'string', 'productContentInfo' => '\Fincode\OpenAPI\Model\ContentInfoV2', 'serviceContentInfo' => '\Fincode\OpenAPI\Model\ContentInfoV2', 'digitalContentInfo' => '\Fincode\OpenAPI\Model\ContentInfoV2', 'additionalInfo' => '\Fincode\OpenAPI\Model\ShopInfoV2AdditionalInfo'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

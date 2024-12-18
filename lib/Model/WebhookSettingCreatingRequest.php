@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookSettingCreatingRequest implements ModelInterface, \ArrayAccess, \Js
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'url' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent', 'signature' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'url' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent', 'signature' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

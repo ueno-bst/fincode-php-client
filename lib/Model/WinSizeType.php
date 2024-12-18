@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 画面サイズ種別\\ バーコード表示を行うデバイスのピクセルの種類を指定します。  - &#x60;1&#x60;: 物理ピクセル（Androidのときはこちらを指定） - &#x60;2&#x60;: CSSピクセル（iPhoneのときはこちらを指定）.

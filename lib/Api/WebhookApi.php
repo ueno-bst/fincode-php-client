@@ -16,8 +16,12 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Api;
+namespace Fincode\OpenAPI\Api;
 
+use Fincode\OpenAPI\ApiException;
+use Fincode\OpenAPI\Configuration;
+use Fincode\OpenAPI\HeaderSelector;
+use Fincode\OpenAPI\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -27,10 +31,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Fincode\ApiException;
-use OpenAPI\Fincode\Configuration;
-use OpenAPI\Fincode\HeaderSelector;
-use OpenAPI\Fincode\ObjectSerializer;
 
 class WebhookApi
 {
@@ -75,10 +75,10 @@ class WebhookApi
      * createWebhookSetting: Webhook設定 登録.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest webhookSettingCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest webhookSettingCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createWebhookSetting'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSettingCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\WebhookSettingCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -95,11 +95,11 @@ class WebhookApi
      * createWebhookSettingWithHttpInfo: Webhook設定 登録.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createWebhookSetting'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookSettingCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\WebhookSettingCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -126,31 +126,31 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -165,11 +165,11 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -181,7 +181,7 @@ class WebhookApi
      * createWebhookSettingAsync: Webhook設定 登録.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -197,14 +197,14 @@ class WebhookApi
      * createWebhookSettingAsyncWithHttpInfo: Webhook設定 登録.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createWebhookSettingAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $webhookSettingCreatingRequest = null, string $contentType = self::contentTypes['createWebhookSetting'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookSettingCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookSettingCreatingResponse';
         $request = $this->createWebhookSettingRequest($tenantShopId, $webhookSettingCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -230,7 +230,7 @@ class WebhookApi
      * Create request for operation 'createWebhookSetting'.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上で発生したイベントを購読するWebhook設定を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingCreatingRequest $webhookSettingCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -301,7 +301,7 @@ class WebhookApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteWebhookSetting'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSettingDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\WebhookSettingDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -322,7 +322,7 @@ class WebhookApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteWebhookSetting'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookSettingDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\WebhookSettingDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -349,31 +349,31 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -388,11 +388,11 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -427,7 +427,7 @@ class WebhookApi
      */
     public function deleteWebhookSettingAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['deleteWebhookSetting'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookSettingDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookSettingDeletingResponse';
         $request = $this->deleteWebhookSettingRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -521,10 +521,10 @@ class WebhookApi
     /**
      * receiveWebhookOfApplePayPayment: Apple Pay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay webhookEventPaymentApplePay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay webhookEventPaymentApplePay (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfApplePayPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -540,11 +540,11 @@ class WebhookApi
     /**
      * receiveWebhookOfApplePayPaymentWithHttpInfo: Apple Pay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfApplePayPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -571,19 +571,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -598,7 +598,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -609,7 +609,7 @@ class WebhookApi
     /**
      * receiveWebhookOfApplePayPaymentAsync: Apple Pay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfApplePayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -624,14 +624,14 @@ class WebhookApi
     /**
      * receiveWebhookOfApplePayPaymentAsyncWithHttpInfo: Apple Pay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfApplePayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfApplePayPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentApplePay = null, string $contentType = self::contentTypes['receiveWebhookOfApplePayPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfApplePayPaymentRequest($webhookEventPaymentApplePay, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -656,7 +656,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfApplePayPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentApplePay $webhookEventPaymentApplePay (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfApplePayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -719,10 +719,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCard: カード.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCard $webhookEventCard webhookEventCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCard $webhookEventCard webhookEventCard (optional)
      * @param string                                  $contentType      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCard'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -738,11 +738,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCardWithHttpInfo: カード.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCard $webhookEventCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCard $webhookEventCard (optional)
      * @param string                                  $contentType      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCard'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -769,19 +769,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -796,7 +796,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -807,7 +807,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCardAsync: カード.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCard $webhookEventCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCard $webhookEventCard (optional)
      * @param string                                  $contentType      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -822,14 +822,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCardAsyncWithHttpInfo: カード.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCard $webhookEventCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCard $webhookEventCard (optional)
      * @param string                                  $contentType      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCardAsyncWithHttpInfo(mixed $webhookEventCard = null, string $contentType = self::contentTypes['receiveWebhookOfCard'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCardRequest($webhookEventCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -854,7 +854,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCard'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCard $webhookEventCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCard $webhookEventCard (optional)
      * @param string                                  $contentType      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -917,10 +917,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPayment: カード決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentCard $webhookEventPaymentCard webhookEventPaymentCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentCard $webhookEventPaymentCard webhookEventPaymentCard (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -936,11 +936,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentWithHttpInfo: カード決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -967,19 +967,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -994,7 +994,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1005,7 +1005,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentAsync: カード決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1020,14 +1020,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentAsyncWithHttpInfo: カード決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCardPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentCard = null, string $contentType = self::contentTypes['receiveWebhookOfCardPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCardPaymentRequest($webhookEventPaymentCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1052,7 +1052,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCardPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentCard $webhookEventPaymentCard (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1115,10 +1115,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentBulkBatch: 一括決済課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard webhookEventPaymentBulkBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard webhookEventPaymentBulkBatchCard (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1134,11 +1134,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentBulkBatchWithHttpInfo: 一括決済課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1165,19 +1165,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1192,7 +1192,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1203,7 +1203,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentBulkBatchAsync: 一括決済課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1218,14 +1218,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCardPaymentBulkBatchAsyncWithHttpInfo: 一括決済課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCardPaymentBulkBatchAsyncWithHttpInfo(mixed $webhookEventPaymentBulkBatchCard = null, string $contentType = self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCardPaymentBulkBatchRequest($webhookEventPaymentBulkBatchCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1250,7 +1250,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCardPaymentBulkBatch'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkBatchCard $webhookEventPaymentBulkBatchCard (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardPaymentBulkBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1313,10 +1313,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCardRecurringBatch: サブスクリプション課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard webhookEventRecurringBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard webhookEventRecurringBatchCard (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardRecurringBatch'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1332,11 +1332,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCardRecurringBatchWithHttpInfo: サブスクリプション課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardRecurringBatch'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1363,19 +1363,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1390,7 +1390,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1401,7 +1401,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCardRecurringBatchAsync: サブスクリプション課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1416,14 +1416,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCardRecurringBatchAsyncWithHttpInfo: サブスクリプション課金（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCardRecurringBatchAsyncWithHttpInfo(mixed $webhookEventRecurringBatchCard = null, string $contentType = self::contentTypes['receiveWebhookOfCardRecurringBatch'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCardRecurringBatchRequest($webhookEventRecurringBatchCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1448,7 +1448,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCardRecurringBatch'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchCard $webhookEventRecurringBatchCard (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1511,10 +1511,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCardSubscription: サブスクリプション（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard webhookEventSubscriptionCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard webhookEventSubscriptionCard (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1530,11 +1530,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCardSubscriptionWithHttpInfo: サブスクリプション（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1561,19 +1561,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1588,7 +1588,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1599,7 +1599,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCardSubscriptionAsync: サブスクリプション（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1614,14 +1614,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCardSubscriptionAsyncWithHttpInfo: サブスクリプション（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCardSubscriptionAsyncWithHttpInfo(mixed $webhookEventSubscriptionCard = null, string $contentType = self::contentTypes['receiveWebhookOfCardSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCardSubscriptionRequest($webhookEventSubscriptionCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1646,7 +1646,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCardSubscription'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionCard $webhookEventSubscriptionCard (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCardSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1709,10 +1709,10 @@ class WebhookApi
     /**
      * receiveWebhookOfContract: 決済手段 契約状況
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContract $webhookEventContract webhookEventContract (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventContract $webhookEventContract webhookEventContract (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfContract'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1728,11 +1728,11 @@ class WebhookApi
     /**
      * receiveWebhookOfContractWithHttpInfo: 決済手段 契約状況
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContract $webhookEventContract (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventContract $webhookEventContract (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfContract'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1759,19 +1759,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1786,7 +1786,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1797,7 +1797,7 @@ class WebhookApi
     /**
      * receiveWebhookOfContractAsync: 決済手段 契約状況
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContract $webhookEventContract (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventContract $webhookEventContract (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfContract'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1812,14 +1812,14 @@ class WebhookApi
     /**
      * receiveWebhookOfContractAsyncWithHttpInfo: 決済手段 契約状況
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContract $webhookEventContract (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventContract $webhookEventContract (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfContract'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfContractAsyncWithHttpInfo(mixed $webhookEventContract = null, string $contentType = self::contentTypes['receiveWebhookOfContract'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfContractRequest($webhookEventContract, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1844,7 +1844,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfContract'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContract $webhookEventContract (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventContract $webhookEventContract (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfContract'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1907,10 +1907,10 @@ class WebhookApi
     /**
      * receiveWebhookOfCustomerPaymentMethod: 決済手段.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod webhookEventCustomerPaymentMethod (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod webhookEventCustomerPaymentMethod (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCustomerPaymentMethod'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1926,11 +1926,11 @@ class WebhookApi
     /**
      * receiveWebhookOfCustomerPaymentMethodWithHttpInfo: 決済手段.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1957,19 +1957,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1984,7 +1984,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1995,7 +1995,7 @@ class WebhookApi
     /**
      * receiveWebhookOfCustomerPaymentMethodAsync: 決済手段.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2010,14 +2010,14 @@ class WebhookApi
     /**
      * receiveWebhookOfCustomerPaymentMethodAsyncWithHttpInfo: 決済手段.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfCustomerPaymentMethodAsyncWithHttpInfo(mixed $webhookEventCustomerPaymentMethod = null, string $contentType = self::contentTypes['receiveWebhookOfCustomerPaymentMethod'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfCustomerPaymentMethodRequest($webhookEventCustomerPaymentMethod, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2042,7 +2042,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfCustomerPaymentMethod'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventCustomerPaymentMethod $webhookEventCustomerPaymentMethod (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2105,10 +2105,10 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitPayment: 口座振替
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit webhookEventPaymentDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit webhookEventPaymentDirectDebit (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2124,11 +2124,11 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitPaymentWithHttpInfo: 口座振替
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2155,19 +2155,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2182,7 +2182,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2193,7 +2193,7 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitPaymentAsync: 口座振替
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2208,14 +2208,14 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitPaymentAsyncWithHttpInfo: 口座振替
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfDirectDebitPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentDirectDebit = null, string $contentType = self::contentTypes['receiveWebhookOfDirectDebitPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfDirectDebitPaymentRequest($webhookEventPaymentDirectDebit, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2240,7 +2240,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfDirectDebitPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentDirectDebit $webhookEventPaymentDirectDebit (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2303,10 +2303,10 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitRecurringBatch: サブスクリプション課金（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit webhookEventRecurringBatchDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit webhookEventRecurringBatchDirectDebit (optional)
      * @param string                                                       $contentType                           The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2322,11 +2322,11 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitRecurringBatchWithHttpInfo: サブスクリプション課金（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
      * @param string                                                       $contentType                           The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2353,19 +2353,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2380,7 +2380,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2391,7 +2391,7 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitRecurringBatchAsync: サブスクリプション課金（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
      * @param string                                                       $contentType                           The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2406,14 +2406,14 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitRecurringBatchAsyncWithHttpInfo: サブスクリプション課金（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
      * @param string                                                       $contentType                           The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfDirectDebitRecurringBatchAsyncWithHttpInfo(mixed $webhookEventRecurringBatchDirectDebit = null, string $contentType = self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfDirectDebitRecurringBatchRequest($webhookEventRecurringBatchDirectDebit, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2438,7 +2438,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfDirectDebitRecurringBatch'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventRecurringBatchDirectDebit $webhookEventRecurringBatchDirectDebit (optional)
      * @param string                                                       $contentType                           The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitRecurringBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2501,10 +2501,10 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitSubscription: サブスクリプション（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit webhookEventSubscriptionDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit webhookEventSubscriptionDirectDebit (optional)
      * @param string                                                     $contentType                         The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2520,11 +2520,11 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitSubscriptionWithHttpInfo: サブスクリプション（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
      * @param string                                                     $contentType                         The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2551,19 +2551,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2578,7 +2578,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2589,7 +2589,7 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitSubscriptionAsync: サブスクリプション（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
      * @param string                                                     $contentType                         The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2604,14 +2604,14 @@ class WebhookApi
     /**
      * receiveWebhookOfDirectDebitSubscriptionAsyncWithHttpInfo: サブスクリプション（口座振替）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
      * @param string                                                     $contentType                         The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfDirectDebitSubscriptionAsyncWithHttpInfo(mixed $webhookEventSubscriptionDirectDebit = null, string $contentType = self::contentTypes['receiveWebhookOfDirectDebitSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfDirectDebitSubscriptionRequest($webhookEventSubscriptionDirectDebit, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2636,7 +2636,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfDirectDebitSubscription'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventSubscriptionDirectDebit $webhookEventSubscriptionDirectDebit (optional)
      * @param string                                                     $contentType                         The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfDirectDebitSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2699,10 +2699,10 @@ class WebhookApi
     /**
      * receiveWebhookOfKonbiniPayment: コンビニ決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini webhookEventPaymentKonbini (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini webhookEventPaymentKonbini (optional)
      * @param string                                            $contentType                The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfKonbiniPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2718,11 +2718,11 @@ class WebhookApi
     /**
      * receiveWebhookOfKonbiniPaymentWithHttpInfo: コンビニ決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
      * @param string                                            $contentType                The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfKonbiniPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2749,19 +2749,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2776,7 +2776,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2787,7 +2787,7 @@ class WebhookApi
     /**
      * receiveWebhookOfKonbiniPaymentAsync: コンビニ決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
      * @param string                                            $contentType                The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfKonbiniPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2802,14 +2802,14 @@ class WebhookApi
     /**
      * receiveWebhookOfKonbiniPaymentAsyncWithHttpInfo: コンビニ決済.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
      * @param string                                            $contentType                The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfKonbiniPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfKonbiniPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentKonbini = null, string $contentType = self::contentTypes['receiveWebhookOfKonbiniPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfKonbiniPaymentRequest($webhookEventPaymentKonbini, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2834,7 +2834,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfKonbiniPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentKonbini $webhookEventPaymentKonbini (optional)
      * @param string                                            $contentType                The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfKonbiniPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2895,12 +2895,12 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPayment: \OpenAPI\Fincode\Model\PayPay.
+     * receiveWebhookOfPayPayPayment: \Fincode\OpenAPI\Model\PayPay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay webhookEventPaymentPayPay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2914,13 +2914,13 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentWithHttpInfo: \OpenAPI\Fincode\Model\PayPay.
+     * receiveWebhookOfPayPayPaymentWithHttpInfo: \Fincode\OpenAPI\Model\PayPay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2947,19 +2947,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2974,7 +2974,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2983,9 +2983,9 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentAsync: \OpenAPI\Fincode\Model\PayPay.
+     * receiveWebhookOfPayPayPaymentAsync: \Fincode\OpenAPI\Model\PayPay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2998,16 +2998,16 @@ class WebhookApi
     }
 
     /**
-     * receiveWebhookOfPayPayPaymentAsyncWithHttpInfo: \OpenAPI\Fincode\Model\PayPay.
+     * receiveWebhookOfPayPayPaymentAsyncWithHttpInfo: \Fincode\OpenAPI\Model\PayPay.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfPayPayPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentPayPay = null, string $contentType = self::contentTypes['receiveWebhookOfPayPayPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfPayPayPaymentRequest($webhookEventPaymentPayPay, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3032,7 +3032,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfPayPayPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentPayPay $webhookEventPaymentPayPay (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfPayPayPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3095,10 +3095,10 @@ class WebhookApi
     /**
      * receiveWebhookOfRegisteringCardPaymentBulk: 一括決済（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard webhookEventPaymentBulkRegistCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard webhookEventPaymentBulkRegistCard (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3114,11 +3114,11 @@ class WebhookApi
     /**
      * receiveWebhookOfRegisteringCardPaymentBulkWithHttpInfo: 一括決済（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3145,19 +3145,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3172,7 +3172,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3183,7 +3183,7 @@ class WebhookApi
     /**
      * receiveWebhookOfRegisteringCardPaymentBulkAsync: 一括決済（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3198,14 +3198,14 @@ class WebhookApi
     /**
      * receiveWebhookOfRegisteringCardPaymentBulkAsyncWithHttpInfo: 一括決済（カード決済）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfRegisteringCardPaymentBulkAsyncWithHttpInfo(mixed $webhookEventPaymentBulkRegistCard = null, string $contentType = self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfRegisteringCardPaymentBulkRequest($webhookEventPaymentBulkRegistCard, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3230,7 +3230,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfRegisteringCardPaymentBulk'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentBulkRegistCard $webhookEventPaymentBulkRegistCard (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfRegisteringCardPaymentBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3293,10 +3293,10 @@ class WebhookApi
     /**
      * receiveWebhookOfVirtualAccountPayment: 銀行振込（バーチャル口座）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount webhookEventPaymentVirtualAccount (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount webhookEventPaymentVirtualAccount (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfVirtualAccountPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookResponse
+     * @return \Fincode\OpenAPI\Model\WebhookResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3312,11 +3312,11 @@ class WebhookApi
     /**
      * receiveWebhookOfVirtualAccountPaymentWithHttpInfo: 銀行振込（バーチャル口座）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfVirtualAccountPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookResponse,
+     *     \Fincode\OpenAPI\Model\WebhookResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3343,19 +3343,19 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3370,7 +3370,7 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3381,7 +3381,7 @@ class WebhookApi
     /**
      * receiveWebhookOfVirtualAccountPaymentAsync: 銀行振込（バーチャル口座）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfVirtualAccountPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3396,14 +3396,14 @@ class WebhookApi
     /**
      * receiveWebhookOfVirtualAccountPaymentAsyncWithHttpInfo: 銀行振込（バーチャル口座）.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfVirtualAccountPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function receiveWebhookOfVirtualAccountPaymentAsyncWithHttpInfo(mixed $webhookEventPaymentVirtualAccount = null, string $contentType = self::contentTypes['receiveWebhookOfVirtualAccountPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookResponse';
         $request = $this->receiveWebhookOfVirtualAccountPaymentRequest($webhookEventPaymentVirtualAccount, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3428,7 +3428,7 @@ class WebhookApi
     /**
      * Create request for operation 'receiveWebhookOfVirtualAccountPayment'.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookEventPaymentVirtualAccount $webhookEventPaymentVirtualAccount (optional)
      * @param string                                                   $contentType                       The value for the Content-Type header. Check self::contentTypes['receiveWebhookOfVirtualAccountPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3495,7 +3495,7 @@ class WebhookApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveWebhookSetting'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3516,7 +3516,7 @@ class WebhookApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveWebhookSetting'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3543,31 +3543,31 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3582,11 +3582,11 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3621,7 +3621,7 @@ class WebhookApi
      */
     public function retrieveWebhookSettingAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveWebhookSetting'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookSettingRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookSettingRetrievingResponse';
         $request = $this->retrieveWebhookSettingRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3718,7 +3718,7 @@ class WebhookApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定から一覧で取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveWebhookSettingList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3738,7 +3738,7 @@ class WebhookApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveWebhookSettingList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3765,31 +3765,31 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3804,11 +3804,11 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3841,7 +3841,7 @@ class WebhookApi
      */
     public function retrieveWebhookSettingListAsyncWithHttpInfo(mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveWebhookSettingList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookSettingListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookSettingListRetrievingResponse';
         $request = $this->retrieveWebhookSettingListRequest($tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3928,10 +3928,10 @@ class WebhookApi
      *
      * @param string                                               $id                            Webhook設定のID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest webhookSettingUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest webhookSettingUpdatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['updateWebhookSetting'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3949,11 +3949,11 @@ class WebhookApi
      *
      * @param string                                               $id                            Webhook設定のID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['updateWebhookSetting'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3980,31 +3980,31 @@ class WebhookApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4019,11 +4019,11 @@ class WebhookApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -4036,7 +4036,7 @@ class WebhookApi
      *
      * @param string                                               $id                            Webhook設定のID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['updateWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4053,14 +4053,14 @@ class WebhookApi
      *
      * @param string                                               $id                            Webhook設定のID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['updateWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateWebhookSettingAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $webhookSettingUpdatingRequest = null, string $contentType = self::contentTypes['updateWebhookSetting'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\WebhookSettingUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\WebhookSettingUpdatingResponse';
         $request = $this->updateWebhookSettingRequest($id, $tenantShopId, $webhookSettingUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -4087,7 +4087,7 @@ class WebhookApi
      *
      * @param string                                               $id                            Webhook設定のID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づくWebhook設定のうち、指定したIDのWebhook設定を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\WebhookSettingUpdatingRequest $webhookSettingUpdatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['updateWebhookSetting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

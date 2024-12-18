@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkDeletingResponse implements ModelInterface, \ArrayAccess, \Json
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'deleteFlag' => '\OpenAPI\Fincode\Model\DeleteFlag'];
+    protected static array $openAPITypes = ['id' => 'string', 'deleteFlag' => '\Fincode\OpenAPI\Model\DeleteFlag'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

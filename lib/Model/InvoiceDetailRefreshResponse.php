@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'status' => 'string', 'invoiceUrl' => 'string', 'billMailSendFlag' => 'string', 'billPdfUrl' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'receiptPdfUrl' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customer' => '\OpenAPI\Fincode\Model\InvoiceCustomer', 'customerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceCustomerOverwrite', 'issuer' => '\OpenAPI\Fincode\Model\InvoiceIssuer', 'issuerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceIssuerOverwrite', 'issueDate' => 'string', 'lines' => '\OpenAPI\Fincode\Model\InvoiceLinesInner[]', 'totalAmount' => 'float', 'billingTotalAmount' => 'float', 'payTypes' => 'string[]', 'card' => '\OpenAPI\Fincode\Model\InvoiceCard', 'virtualAccount' => '\OpenAPI\Fincode\Model\InvoiceVirtualAccount', 'embeddedVirtualAccount' => '\OpenAPI\Fincode\Model\InvoiceEmbeddedVirtualAccount', 'isTaxIncluded' => 'bool', 'dueDate' => 'string', 'memo' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'isUncollectible' => 'bool', 'isPaidExternally' => 'bool', 'transactionDate' => 'string', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'status' => 'string', 'invoiceUrl' => 'string', 'billMailSendFlag' => 'string', 'billPdfUrl' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'receiptPdfUrl' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customer' => '\Fincode\OpenAPI\Model\InvoiceCustomer', 'customerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceCustomerOverwrite', 'issuer' => '\Fincode\OpenAPI\Model\InvoiceIssuer', 'issuerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceIssuerOverwrite', 'issueDate' => 'string', 'lines' => '\Fincode\OpenAPI\Model\InvoiceLinesInner[]', 'totalAmount' => 'float', 'billingTotalAmount' => 'float', 'payTypes' => 'string[]', 'card' => '\Fincode\OpenAPI\Model\InvoiceCard', 'virtualAccount' => '\Fincode\OpenAPI\Model\InvoiceVirtualAccount', 'embeddedVirtualAccount' => '\Fincode\OpenAPI\Model\InvoiceEmbeddedVirtualAccount', 'isTaxIncluded' => 'bool', 'dueDate' => 'string', 'memo' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'isUncollectible' => 'bool', 'isPaidExternally' => 'bool', 'transactionDate' => 'string', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -864,7 +864,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Gets lines.
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceLinesInner[]|null
+     * @return \Fincode\OpenAPI\Model\InvoiceLinesInner[]|null
      */
     public function getLines(): mixed
     {
@@ -874,7 +874,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets lines.
      *
-     * @param \OpenAPI\Fincode\Model\InvoiceLinesInner[] $lines 取引内容レコード
+     * @param \Fincode\OpenAPI\Model\InvoiceLinesInner[] $lines 取引内容レコード
      */
     public function setLines(mixed $lines): static
     {

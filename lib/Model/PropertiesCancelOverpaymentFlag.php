@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * キャンセル後支払フラグ\\ この決済をキャンセルした後に購入者がバーチャル口座に対して支払いを行った場合&#x60;1&#x60;になります。  - &#x60;0&#x60;: キャンセル後支払は行われていない - &#x60;1&#x60;: キャンセル後支払が行われた

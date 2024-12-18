@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ExaminationInfoV2UpdatingResponse implements ModelInterface, \ArrayAccess,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['statusCode' => '\OpenAPI\Fincode\Model\ContractStatus', 'contractInfo' => '\OpenAPI\Fincode\Model\ContractInfoV2', 'shopInfo' => '\OpenAPI\Fincode\Model\ShopInfoV2', 'bankAccountInfo' => '\OpenAPI\Fincode\Model\BankAccountInfoV2', 'depositCycleInfo' => '\OpenAPI\Fincode\Model\DepositCycleInfoV2'];
+    protected static array $openAPITypes = ['statusCode' => '\Fincode\OpenAPI\Model\ContractStatus', 'contractInfo' => '\Fincode\OpenAPI\Model\ContractInfoV2', 'shopInfo' => '\Fincode\OpenAPI\Model\ShopInfoV2', 'bankAccountInfo' => '\Fincode\OpenAPI\Model\BankAccountInfoV2', 'depositCycleInfo' => '\Fincode\OpenAPI\Model\DepositCycleInfoV2'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

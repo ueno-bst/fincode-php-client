@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class Examination implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['examinationMasterId' => '\OpenAPI\Fincode\Model\ContractExaminationMasterId', 'statusCode' => '\OpenAPI\Fincode\Model\ExaminationStatus', 'memberCode' => 'string', 'tdsAvailable' => 'bool', 'installmentsPaymentAvailable' => 'bool', 'mcc1' => 'string', 'mcc2' => 'string', 'paypayMid' => 'string', 'paypayStoreId' => 'string', 'paysleMerchantCode' => 'string', 'paysleUserId' => 'string', 'paysleUserPassword' => 'string', 'cutOverAt' => 'string'];
+    protected static array $openAPITypes = ['examinationMasterId' => '\Fincode\OpenAPI\Model\ContractExaminationMasterId', 'statusCode' => '\Fincode\OpenAPI\Model\ExaminationStatus', 'memberCode' => 'string', 'tdsAvailable' => 'bool', 'installmentsPaymentAvailable' => 'bool', 'mcc1' => 'string', 'mcc2' => 'string', 'paypayMid' => 'string', 'paypayStoreId' => 'string', 'paysleMerchantCode' => 'string', 'paysleUserId' => 'string', 'paysleUserPassword' => 'string', 'cutOverAt' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

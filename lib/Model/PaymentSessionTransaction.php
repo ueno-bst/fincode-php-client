@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * 決済共通項目\\ 決済手段を問わず共通して使用される、決済に関するデータです。
@@ -37,7 +37,7 @@ class PaymentSessionTransaction implements ModelInterface, \ArrayAccess, \JsonSe
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['payType' => '\OpenAPI\Fincode\Model\PaymentSessionPayType[]', 'orderId' => 'string', 'amount' => 'int', 'tax' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
+    protected static array $openAPITypes = ['payType' => '\Fincode\OpenAPI\Model\PaymentSessionPayType[]', 'orderId' => 'string', 'amount' => 'int', 'tax' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

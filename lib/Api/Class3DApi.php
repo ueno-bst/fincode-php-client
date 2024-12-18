@@ -16,8 +16,12 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Api;
+namespace Fincode\OpenAPI\Api;
 
+use Fincode\OpenAPI\ApiException;
+use Fincode\OpenAPI\Configuration;
+use Fincode\OpenAPI\HeaderSelector;
+use Fincode\OpenAPI\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -27,10 +31,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Fincode\ApiException;
-use OpenAPI\Fincode\Configuration;
-use OpenAPI\Fincode\HeaderSelector;
-use OpenAPI\Fincode\ObjectSerializer;
 
 class Class3DApi
 {
@@ -78,7 +78,7 @@ class Class3DApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証の結果を確定します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['confirmThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -99,7 +99,7 @@ class Class3DApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['confirmThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -126,31 +126,31 @@ class Class3DApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -165,11 +165,11 @@ class Class3DApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -204,7 +204,7 @@ class Class3DApi
      */
     public function confirmThreeDSecureecureAuthenticationAsyncWithHttpInfo(mixed $accessId, mixed $tenantShopId = null, string $contentType = self::contentTypes['confirmThreeDSecureecureAuthentication'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ThreeDSecureConfirmingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ThreeDSecureConfirmingResponse';
         $request = $this->confirmThreeDSecureecureAuthenticationRequest($accessId, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -304,10 +304,10 @@ class Class3DApi
      *
      * @param string                                                $accessId                       取引ID (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証を開始します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest threeDSecureAuthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest threeDSecureAuthorizingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['executeThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -325,11 +325,11 @@ class Class3DApi
      *
      * @param string                                                $accessId                       取引ID (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証を開始します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['executeThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -356,31 +356,31 @@ class Class3DApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -395,11 +395,11 @@ class Class3DApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -412,7 +412,7 @@ class Class3DApi
      *
      * @param string                                                $accessId                       取引ID (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証を開始します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['executeThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -429,14 +429,14 @@ class Class3DApi
      *
      * @param string                                                $accessId                       取引ID (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証を開始します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['executeThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function executeThreeDSecureecureAuthenticationAsyncWithHttpInfo(mixed $accessId, mixed $tenantShopId = null, mixed $threeDSecureAuthorizingRequest = null, string $contentType = self::contentTypes['executeThreeDSecureecureAuthentication'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ThreeDSecureAuthorizingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ThreeDSecureAuthorizingResponse';
         $request = $this->executeThreeDSecureecureAuthenticationRequest($accessId, $tenantShopId, $threeDSecureAuthorizingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -463,7 +463,7 @@ class Class3DApi
      *
      * @param string                                                $accessId                       取引ID (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの決済情報のうち、指定した&#x60;access_id&#x60;のカード決済の3Dセキュア認証を開始します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ThreeDSecureAuthorizingRequest $threeDSecureAuthorizingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['executeThreeDSecureecureAuthentication'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

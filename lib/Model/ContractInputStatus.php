@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 本番環境申請情報入力ステータス  - &#x60;301&#x60;: 全項目未入力 - &#x60;302&#x60;: 一部入力済み - &#x60;303&#x60;: 全項目入力済み - &#x60;304&#x60;: 本番環境申請済み

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventCard implements ModelInterface, \ArrayAccess, \JsonSerializabl
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'cardId' => 'string', 'defaultFlag' => '\OpenAPI\Fincode\Model\DefaultFlag', 'cardNoDisplay' => 'mixed', 'expireDisplay' => 'mixed', 'processDate' => 'string', 'processType' => 'string', 'payType' => 'string', 'forward' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'cardId' => 'string', 'defaultFlag' => '\Fincode\OpenAPI\Model\DefaultFlag', 'cardNoDisplay' => 'mixed', 'expireDisplay' => 'mixed', 'processDate' => 'string', 'processType' => 'string', 'payType' => 'string', 'forward' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

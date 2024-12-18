@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座）.

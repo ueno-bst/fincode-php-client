@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText color--blue-400\&quot;&gt;[3Dセキュア認証パラメータ]&lt;/span&gt;\\ 商品納品時間枠  - &#x60;01&#x60;: 電子デリバリー - &#x60;02&#x60;: 当日出荷 - &#x60;03&#x60;: 翌日出荷 - &#x60;04&#x60;: 2日目以降の出荷.

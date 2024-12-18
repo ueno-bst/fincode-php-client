@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * ステータス  - &#x60;ACTIVE&#x60;: サブスクリプションが有効&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;設定した課金日に顧客に対して課金が行われます。&lt;/span&gt; - &#x60;RUNNING&#x60;: 課金処理中 - &#x60;CANCELED&#x60;: 解約済み&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;顧客に対して課金は行われません。&lt;/span&gt; - &#x60;INCOMPLETE&#x60;: 登録失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;何らかの理由により登録に失敗しました。顧客に対して課金は行われません。&lt;/span&gt;.

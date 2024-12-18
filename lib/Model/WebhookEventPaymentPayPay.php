@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventPaymentPayPay implements ModelInterface, \ArrayAccess, \JsonSe
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'customerId' => 'string', 'processDate' => 'string', 'jobCode' => '\OpenAPI\Fincode\Model\PayPayPaymentJobCode', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'codeExpiryDate' => 'string', 'authMaxDate' => 'string', 'orderDescription' => 'string', 'codeId' => 'string', 'paymentId' => 'string', 'paymentDate' => 'string', 'merchantPaymentId' => 'string', 'merchantUpdateId' => 'string', 'merchantRevertId' => 'string', 'merchantRefundId' => 'string', 'errorCode' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'customerId' => 'string', 'processDate' => 'string', 'jobCode' => '\Fincode\OpenAPI\Model\PayPayPaymentJobCode', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'codeExpiryDate' => 'string', 'authMaxDate' => 'string', 'orderDescription' => 'string', 'codeId' => 'string', 'paymentId' => 'string', 'paymentDate' => 'string', 'merchantPaymentId' => 'string', 'merchantUpdateId' => 'string', 'merchantRevertId' => 'string', 'merchantRefundId' => 'string', 'errorCode' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

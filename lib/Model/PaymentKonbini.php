@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentKonbini implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['payType' => '\OpenAPI\Fincode\Model\PayType', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'paymentTermDay' => 'int', 'paymentTerm' => 'string', 'paymentDate' => 'string', 'barcode' => 'string', 'barcodeFormat' => 'string', 'barcodeWidth' => 'string', 'barcodeHeight' => 'string', 'overpaymentFlag' => 'string', 'cancelOverpaymentFlag' => 'string', 'konbiniCode' => '\OpenAPI\Fincode\Model\KonbiniCode', 'konbiniStoreCode' => 'mixed', 'deviceName' => 'string', 'osVersion' => 'mixed', 'winWidth' => 'string', 'winHeight' => 'string', 'xdpi' => 'mixed', 'ydpi' => 'mixed', 'result' => '\OpenAPI\Fincode\Model\KonbiniPaymentProcessResult', 'orderSerial' => 'string', 'invoiceId' => 'string'];
+    protected static array $openAPITypes = ['payType' => '\Fincode\OpenAPI\Model\PayType', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'paymentTermDay' => 'int', 'paymentTerm' => 'string', 'paymentDate' => 'string', 'barcode' => 'string', 'barcodeFormat' => 'string', 'barcodeWidth' => 'string', 'barcodeHeight' => 'string', 'overpaymentFlag' => 'string', 'cancelOverpaymentFlag' => 'string', 'konbiniCode' => '\Fincode\OpenAPI\Model\KonbiniCode', 'konbiniStoreCode' => 'mixed', 'deviceName' => 'string', 'osVersion' => 'mixed', 'winWidth' => 'string', 'winHeight' => 'string', 'xdpi' => 'mixed', 'ydpi' => 'mixed', 'result' => '\Fincode\OpenAPI\Model\KonbiniPaymentProcessResult', 'orderSerial' => 'string', 'invoiceId' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

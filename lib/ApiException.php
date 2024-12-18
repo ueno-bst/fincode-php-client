@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode;
+namespace Fincode\OpenAPI;
 
 class ApiException extends \Exception
 {

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 管理画面におけるAPIキー表示フラグ。  - &#x60;0&#x60;: 表示しない - &#x60;1&#x60;: 表示する.

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 顧客情報共有フラグ  - &#x60;0&#x60;: 顧客情報を共有しない&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;顧客情報は各テナントごとに管理され、各テナントは自ショップに登録された顧客に対してのみ決済を行えます。&lt;/span&gt; - &#x60;1&#x60;: 顧客情報を共有する&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;顧客情報はプラットフォーム全体で共有され、いずれのテナントもいずれの顧客に対し決済を行えます。&lt;/span&gt;.

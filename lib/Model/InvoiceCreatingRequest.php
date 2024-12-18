@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class InvoiceCreatingRequest implements ModelInterface, \ArrayAccess, \JsonSeria
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'billMailSendFlag' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestCustomerOverwrite', 'issuerOverwrite' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestIssuerOverwrite', 'lines' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[]', 'payTypes' => 'string[]', 'card' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestCard', 'virtualAccount' => '\OpenAPI\Fincode\Model\InvoiceCreatingRequestVirtualAccount', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'billMailSendFlag' => 'string', 'receiptMailSendFlag' => 'string', 'underpaymentMailSendFlag' => 'string', 'invoiceNumber' => 'string', 'customerId' => 'string', 'customerHonorific' => 'string', 'customerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestCustomerOverwrite', 'issuerOverwrite' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestIssuerOverwrite', 'lines' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[]', 'payTypes' => 'string[]', 'card' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestCard', 'virtualAccount' => '\Fincode\OpenAPI\Model\InvoiceCreatingRequestVirtualAccount', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -527,7 +527,7 @@ class InvoiceCreatingRequest implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Gets lines.
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[]|null
+     * @return \Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[]|null
      */
     public function getLines(): mixed
     {
@@ -537,7 +537,7 @@ class InvoiceCreatingRequest implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets lines.
      *
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequestLinesInner[] $lines 取引内容
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequestLinesInner[] $lines 取引内容
      */
     public function setLines(mixed $lines): static
     {

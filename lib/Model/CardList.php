@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CardList implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\Card[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\Card[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class CardList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\Card[]|null
+     * @return \Fincode\OpenAPI\Model\Card[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class CardList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\Card[] $list list
+     * @param \Fincode\OpenAPI\Model\Card[] $list list
      */
     public function setList(mixed $list): static
     {

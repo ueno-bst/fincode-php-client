@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 決済手段のステータス  - &#x60;INACTIVATED&#x60;: 有効化前&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;まだこの決済手段は決済に使用できません。&lt;/span&gt; - &#x60;AWAITING_CUSTOMER_ACTION&#x60;: 顧客のアクション待ち&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段は登録のための購入者の承認がされていない状態です。まだこの決済手段は決済に使用できません。&lt;/span&gt; - &#x60;ACTIVATED&#x60;: 有効化済み&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段は決済に使用できます。&lt;/span&gt; - &#x60;FAILED&#x60;: 失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段は決済に使用できません。&lt;/span&gt;.

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventSubscriptionDirectDebit implements ModelInterface, \ArrayAcces
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'subscriptionId' => 'string', 'planId' => 'string', 'customerId' => 'string', 'paymentMethodId' => 'string', 'defaultFlag' => '\OpenAPI\Fincode\Model\PropertiesDefaultFlag', 'status' => '\OpenAPI\Fincode\Model\SubscriptionStatus', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'remarks' => 'string', 'startDate' => 'string', 'stopDate' => 'string', 'nextChargeDate' => 'string', 'endMonthFlag' => '\OpenAPI\Fincode\Model\EndMonthFlag', 'payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'subscriptionId' => 'string', 'planId' => 'string', 'customerId' => 'string', 'paymentMethodId' => 'string', 'defaultFlag' => '\Fincode\OpenAPI\Model\PropertiesDefaultFlag', 'status' => '\Fincode\OpenAPI\Model\SubscriptionStatus', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'remarks' => 'string', 'startDate' => 'string', 'stopDate' => 'string', 'nextChargeDate' => 'string', 'endMonthFlag' => '\Fincode\OpenAPI\Model\EndMonthFlag', 'payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

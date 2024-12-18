@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 取引種別\\ この決済に対し決済実行を行った際、仮売上にするか即座に売上確定するか、カードの有効性チェックのみを行うかを指定します。  - &#x60;AUTH&#x60;：仮売上にする - &#x60;CAPTURE&#x60;：即時売上.

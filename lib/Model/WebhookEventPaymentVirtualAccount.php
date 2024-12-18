@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventPaymentVirtualAccount implements ModelInterface, \ArrayAccess,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'customerGroupId' => 'string', 'customerId' => 'string', 'processDate' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'billingAmount' => 'int', 'billingTax' => 'int', 'billingTotalAmount' => 'int', 'paymentTermDay' => 'int', 'paymentTerm' => 'string', 'paymentMethodId' => 'string', 'vaBranchCode' => 'string', 'vaBranchName' => 'string', 'vaAccountNumber' => 'string', 'vaAccountName' => 'string', 'accountAssignmentDate' => 'string', 'virtualAccountId' => 'string', 'transactionDate' => 'string', 'valueDate' => 'string', 'remitterBankName' => 'string', 'remitterBranchName' => 'string', 'remitterAccountName' => 'string', 'errorCode' => 'string', 'overpaymentFlag' => '\OpenAPI\Fincode\Model\PropertiesOverpaymentFlag', 'cancelOverpaymentFlag' => '\OpenAPI\Fincode\Model\PropertiesCancelOverpaymentFlag', 'expireOverpaymentFlag' => '\OpenAPI\Fincode\Model\ExpireOverpaymentFlag', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'customerGroupId' => 'string', 'customerId' => 'string', 'processDate' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'billingAmount' => 'int', 'billingTax' => 'int', 'billingTotalAmount' => 'int', 'paymentTermDay' => 'int', 'paymentTerm' => 'string', 'paymentMethodId' => 'string', 'vaBranchCode' => 'string', 'vaBranchName' => 'string', 'vaAccountNumber' => 'string', 'vaAccountName' => 'string', 'accountAssignmentDate' => 'string', 'virtualAccountId' => 'string', 'transactionDate' => 'string', 'valueDate' => 'string', 'remitterBankName' => 'string', 'remitterBranchName' => 'string', 'remitterAccountName' => 'string', 'errorCode' => 'string', 'overpaymentFlag' => '\Fincode\OpenAPI\Model\PropertiesOverpaymentFlag', 'cancelOverpaymentFlag' => '\Fincode\OpenAPI\Model\PropertiesCancelOverpaymentFlag', 'expireOverpaymentFlag' => '\Fincode\OpenAPI\Model\ExpireOverpaymentFlag', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

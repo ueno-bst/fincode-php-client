@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class SubscriptionUpdatingRequest implements ModelInterface, \ArrayAccess, \Json
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'planId' => 'string', 'startDate' => 'string', 'stopDate' => 'string', 'endMonthFlag' => '\OpenAPI\Fincode\Model\EndMonthFlag', 'initialAmount' => 'string', 'initialTax' => 'string', 'remarks' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
+    protected static array $openAPITypes = ['payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'planId' => 'string', 'startDate' => 'string', 'stopDate' => 'string', 'endMonthFlag' => '\Fincode\OpenAPI\Model\EndMonthFlag', 'initialAmount' => 'string', 'initialTax' => 'string', 'remarks' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

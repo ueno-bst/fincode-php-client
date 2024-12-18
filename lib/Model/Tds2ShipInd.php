@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText color--blue-400\&quot;&gt;[3Dセキュア認証パラメータ]&lt;/span&gt;\\ 取引商品の配送方法  - &#x60;01&#x60;: 顧客の請求先住所に配送 - &#x60;02&#x60;: 加盟店が保持している確認済み住所（請求先住所でない）に配送 - &#x60;03&#x60;: 顧客の請求先住所と異なる住所に配送 - &#x60;04&#x60;: 店舗への配送（店舗の住所は配送先住所で指定） - &#x60;05&#x60;: デジタル商品（オンラインサービス、電子ギフトカードおよび償還コードを含む） - &#x60;06&#x60;: 配送なし（旅行およびイベントのチケット） - &#x60;07&#x60;: その他（ゲーム、配送されないデジタルサービス、電子メディアの購読料など）.

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText color--blue-400\&quot;&gt;[3Dセキュア認証パラメータ]&lt;/span&gt;\\ 購入者名と配送先名が一致しているか否か\\ 購入者名と登録に使用される配送先名の一致/不一致を設定  - &#x60;01&#x60;: 顧客名と配送先名が一致 - &#x60;02&#x60;: 顧客名と配送先名が不一致.

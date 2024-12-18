@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * ステータス\\ サブスクリプション課金のステータス（結果）です。  - &#x60;CHECKED&#x60;：有効性チェックに成功 - &#x60;SUCCEEDED&#x60;：課金成功 - &#x60;FAILED&#x60;：課金失敗.

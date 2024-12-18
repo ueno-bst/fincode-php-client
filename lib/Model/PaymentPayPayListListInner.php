@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentPayPayListListInner implements ModelInterface, \ArrayAccess, \JsonS
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'jobCode' => '\OpenAPI\Fincode\Model\PayPayPaymentJobCode', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'codeUrl' => 'string', 'codeExpiryDate' => 'string', 'redirectUrl' => 'string', 'redirectType' => 'string', 'authMaxDate' => 'string', 'orderDescription' => 'string', 'captureDescription' => 'string', 'updateDescription' => 'string', 'cancelDescription' => 'string', 'storeId' => 'string', 'codeId' => 'string', 'paymentId' => 'string', 'paypayResultCode' => 'string', 'merchantPaymentId' => 'string', 'merchantCaptureId' => 'string', 'merchantUpdateId' => 'string', 'merchantRevertId' => 'string', 'merchantRefundId' => 'string', 'paymentDate' => 'string'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'jobCode' => '\Fincode\OpenAPI\Model\PayPayPaymentJobCode', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'codeUrl' => 'string', 'codeExpiryDate' => 'string', 'redirectUrl' => 'string', 'redirectType' => 'string', 'authMaxDate' => 'string', 'orderDescription' => 'string', 'captureDescription' => 'string', 'updateDescription' => 'string', 'cancelDescription' => 'string', 'storeId' => 'string', 'codeId' => 'string', 'paymentId' => 'string', 'paypayResultCode' => 'string', 'merchantPaymentId' => 'string', 'merchantCaptureId' => 'string', 'merchantUpdateId' => 'string', 'merchantRevertId' => 'string', 'merchantRefundId' => 'string', 'paymentDate' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

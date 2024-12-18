@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 入金サイクルマスタID\\ 入金サイクルについては[Docs &gt; 精算管理 &gt; クレジットカード決済の入金サイクル](https://docs.fincode.jp/business_management/deposit)を参照できます。  - &#x60;1&#x60;: スタンダード（月1回, 月末締め翌月末入金） - &#x60;2&#x60;: スタンダード（月2回, 15日&amp;月末締め15日後入金）.

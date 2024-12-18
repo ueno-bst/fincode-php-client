@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 審査対象  - &#x60;UC&#x60;: VISA／Mastercard（UCカード） - &#x60;TFC&#x60;: VISA／Mastercard（トヨタファイナンス） - &#x60;JCB/AMEX&#x60;: JCB／AMEX（JCB） - &#x60;DINERS&#x60;: DINERS（JCB） - &#x60;APPLE PAY UC&#x60;: Apple Pay（UCカード） - &#x60;APPLE PAY JCB/AMEX&#x60;: Apple Pay（JCB） - &#x60;PAYSLE&#x60;: コンビニ決済（電算システム） - &#x60;PAYPAY&#x60;: コンビニ決済（PayPay） - &#x60;DIRECT DEBIT&#x60;: 口座振替（SMBCファイナンスサービス）.

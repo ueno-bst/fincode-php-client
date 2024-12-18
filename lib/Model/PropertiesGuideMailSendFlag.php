@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * カード登録メール 送信フラグ\\ リダイレクト型カード登録URLをfincodeからのメール送信機能で送信したかどうかを示します。  - &#x60;0&#x60;：送信しなかった（デフォルト） - &#x60;1&#x60;：送信した

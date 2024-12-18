@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 月末課金フラグ  - &#x60;0&#x60;：月末課金を行わない - &#x60;1&#x60;：月末課金を行う.

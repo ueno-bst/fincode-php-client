@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class SubscriptionResultListRetrievingResponse implements ModelInterface, \Array
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\OpenAPI\Fincode\Model\SubscriptionResult[]'];
+    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\Fincode\OpenAPI\Model\SubscriptionResult[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -409,7 +409,7 @@ class SubscriptionResultListRetrievingResponse implements ModelInterface, \Array
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionResult[]|null
+     * @return \Fincode\OpenAPI\Model\SubscriptionResult[]|null
      */
     public function getList(): mixed
     {
@@ -419,7 +419,7 @@ class SubscriptionResultListRetrievingResponse implements ModelInterface, \Array
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionResult[] $list list
+     * @param \Fincode\OpenAPI\Model\SubscriptionResult[] $list list
      */
     public function setList(mixed $list): static
     {

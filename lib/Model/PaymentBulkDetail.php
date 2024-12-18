@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkDetail implements ModelInterface, \ArrayAccess, \JsonSerializab
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'jobCode' => '\OpenAPI\Fincode\Model\CardPaymentJobCode', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'method' => '\OpenAPI\Fincode\Model\CardPayMethod', 'payTimes' => '\OpenAPI\Fincode\Model\CardPayTimesResponse', 'customerId' => 'string', 'cardId' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'itemCode' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'forward' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'jobCode' => '\Fincode\OpenAPI\Model\CardPaymentJobCode', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'method' => '\Fincode\OpenAPI\Model\CardPayMethod', 'payTimes' => '\Fincode\OpenAPI\Model\CardPayTimesResponse', 'customerId' => 'string', 'cardId' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'itemCode' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'forward' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

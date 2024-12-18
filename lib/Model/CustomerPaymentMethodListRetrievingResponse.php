@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CustomerPaymentMethodListRetrievingResponse implements ModelInterface, \Ar
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponseListInner[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponseListInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class CustomerPaymentMethodListRetrievingResponse implements ModelInterface, \Ar
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponseListInner[]|null
+     * @return \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponseListInner[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class CustomerPaymentMethodListRetrievingResponse implements ModelInterface, \Ar
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponseListInner[] $list list
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponseListInner[] $list list
      */
     public function setList(mixed $list): static
     {

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode;
+namespace Fincode\OpenAPI;
 
 class Configuration
 {
@@ -359,7 +359,7 @@ class Configuration
      */
     public static function toDebugReport(): string
     {
-        $report = 'PHP SDK (OpenAPI\Fincode) Debug Report:'.PHP_EOL;
+        $report = 'PHP SDK (Fincode\OpenAPI) Debug Report:'.PHP_EOL;
         $report .= '    OS: '.php_uname().PHP_EOL;
         $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
         $report .= '    The version of the OpenAPI document: 1.2.0'.PHP_EOL;

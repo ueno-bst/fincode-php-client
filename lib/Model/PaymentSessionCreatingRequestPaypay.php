@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * PayPayパラメータ\\ &#x60;pay_type&#x60;に&#x60;Paypay&#x60;を含めた場合に用いられる、PayPayによる決済に関するパラメータです。
@@ -37,7 +37,7 @@ class PaymentSessionCreatingRequestPaypay implements ModelInterface, \ArrayAcces
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['jobCode' => '\OpenAPI\Fincode\Model\PayPayPaymentJobCode', 'orderDescription' => 'string'];
+    protected static array $openAPITypes = ['jobCode' => '\Fincode\OpenAPI\Model\PayPayPaymentJobCode', 'orderDescription' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

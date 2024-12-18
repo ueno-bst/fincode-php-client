@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PlatformAccountListItemList implements ModelInterface, \ArrayAccess, \Json
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\PlatformAccountListItem[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\PlatformAccountListItem[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class PlatformAccountListItemList implements ModelInterface, \ArrayAccess, \Json
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PlatformAccountListItem[]|null
+     * @return \Fincode\OpenAPI\Model\PlatformAccountListItem[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class PlatformAccountListItemList implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PlatformAccountListItem[] $list プラットフォーム利用料による売上入金情報のリスト
+     * @param \Fincode\OpenAPI\Model\PlatformAccountListItem[] $list プラットフォーム利用料による売上入金情報のリスト
      */
     public function setList(mixed $list): static
     {

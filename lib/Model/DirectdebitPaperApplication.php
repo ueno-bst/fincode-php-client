@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * 依頼書登録のパラメータ&lt;br /&gt; &lt;span class&#x3D;\&quot;smallText\&quot;&gt; ※ 依頼書登録により登録された口座の場合、この&#x60;paper_application&#x60;オブジェクトに依頼書からfincodeに転記した内容が含められます。 &lt;/span&gt;.

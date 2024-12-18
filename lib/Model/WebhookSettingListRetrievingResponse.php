@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookSettingListRetrievingResponse implements ModelInterface, \ArrayAcce
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\WebhookSetting[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\WebhookSetting[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class WebhookSettingListRetrievingResponse implements ModelInterface, \ArrayAcce
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\WebhookSetting[]|null
+     * @return \Fincode\OpenAPI\Model\WebhookSetting[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class WebhookSettingListRetrievingResponse implements ModelInterface, \ArrayAcce
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookSetting[] $list list
+     * @param \Fincode\OpenAPI\Model\WebhookSetting[] $list list
      */
     public function setList(mixed $list): static
     {

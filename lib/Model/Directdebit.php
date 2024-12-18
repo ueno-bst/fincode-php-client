@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段が振替用口座を表す（&#x60;pay_type &#x3D; Directdebit&#x60;）とき、口座情報の詳細がこの&#x60;directdebit&#x60;オブジェクトに格納されます。&lt;/span&gt;.
@@ -37,7 +37,7 @@ class Directdebit implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['applicationType' => '\OpenAPI\Fincode\Model\DirectDebitApplicationType', 'expectedBillableDate' => 'string', 'lastWithdrawalDate' => 'string', 'lastResultCode' => '\OpenAPI\Fincode\Model\DirectDebitLastResultCode', 'bankType' => 'string', 'bankCode' => 'string', 'bankName' => 'string', 'branchCode' => 'string', 'branchName' => 'string', 'accountType' => 'string', 'accountNumber' => 'string', 'postalAccountNumber1' => 'string', 'postalAccountNumber2' => 'string', 'accountName' => 'string', 'accountNameKana' => 'string', 'paperApplication' => '\OpenAPI\Fincode\Model\DirectdebitPaperApplication'];
+    protected static array $openAPITypes = ['applicationType' => '\Fincode\OpenAPI\Model\DirectDebitApplicationType', 'expectedBillableDate' => 'string', 'lastWithdrawalDate' => 'string', 'lastResultCode' => '\Fincode\OpenAPI\Model\DirectDebitLastResultCode', 'bankType' => 'string', 'bankCode' => 'string', 'bankName' => 'string', 'branchCode' => 'string', 'branchName' => 'string', 'accountType' => 'string', 'accountNumber' => 'string', 'postalAccountNumber1' => 'string', 'postalAccountNumber2' => 'string', 'accountName' => 'string', 'accountNameKana' => 'string', 'paperApplication' => '\Fincode\OpenAPI\Model\DirectdebitPaperApplication'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

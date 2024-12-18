@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentApplePayCapturingResponse implements ModelInterface, \ArrayAccess, 
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'jobCode' => '\OpenAPI\Fincode\Model\ApplePayPaymentJobCode', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'brand' => '\OpenAPI\Fincode\Model\CardBrand', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'cardNoHash' => 'string', 'method' => '\OpenAPI\Fincode\Model\CardPayMethod', 'payTimes' => '\OpenAPI\Fincode\Model\CardPayTimesResponse', 'forward' => 'string', 'issuer' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'authMaxDate' => 'string', 'itemCode' => 'string', 'sendUrl' => 'string'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'jobCode' => '\Fincode\OpenAPI\Model\ApplePayPaymentJobCode', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'brand' => '\Fincode\OpenAPI\Model\CardBrand', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'cardNoHash' => 'string', 'method' => '\Fincode\OpenAPI\Model\CardPayMethod', 'payTimes' => '\Fincode\OpenAPI\Model\CardPayTimesResponse', 'forward' => 'string', 'issuer' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'authMaxDate' => 'string', 'itemCode' => 'string', 'sendUrl' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

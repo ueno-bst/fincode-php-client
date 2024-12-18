@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkDetailListRetrievingResponse implements ModelInterface, \ArrayA
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\OpenAPI\Fincode\Model\PaymentBulkDetail[]', 'errorDetail' => '\OpenAPI\Fincode\Model\PaymentBulkErrorDetail[]', 'errorCode' => 'string'];
+    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\Fincode\OpenAPI\Model\PaymentBulkDetail[]', 'errorDetail' => '\Fincode\OpenAPI\Model\PaymentBulkErrorDetail[]', 'errorCode' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -417,7 +417,7 @@ class PaymentBulkDetailListRetrievingResponse implements ModelInterface, \ArrayA
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkDetail[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentBulkDetail[]|null
      */
     public function getList(): mixed
     {
@@ -427,7 +427,7 @@ class PaymentBulkDetailListRetrievingResponse implements ModelInterface, \ArrayA
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkDetail[] $list 一括決済詳細リスト\\ \\ 決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます
+     * @param \Fincode\OpenAPI\Model\PaymentBulkDetail[] $list 一括決済詳細リスト\\ \\ 決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます
      */
     public function setList(mixed $list): static
     {
@@ -442,7 +442,7 @@ class PaymentBulkDetailListRetrievingResponse implements ModelInterface, \ArrayA
     /**
      * Gets errorDetail.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkErrorDetail[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentBulkErrorDetail[]|null
      */
     public function getErrorDetail(): mixed
     {
@@ -452,7 +452,7 @@ class PaymentBulkDetailListRetrievingResponse implements ModelInterface, \ArrayA
     /**
      * Sets errorDetail.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkErrorDetail[] $errorDetail 一括決済エラー詳細リスト\\ \\ エラー1件につき1オブジェクトが格納され、オブジェクト内にはエラーが発生した決済のIDとその決済で発生したエラーのリストが格納されます
+     * @param \Fincode\OpenAPI\Model\PaymentBulkErrorDetail[] $errorDetail 一括決済エラー詳細リスト\\ \\ エラー1件につき1オブジェクトが格納され、オブジェクト内にはエラーが発生した決済のIDとその決済で発生したエラーのリストが格納されます
      */
     public function setErrorDetail(mixed $errorDetail): static
     {

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * このインボイス情報に対して発行されたバーチャル口座情報\\ このバーチャル口座に対して振込を行うことでインボイスによる請求に対して支払いできます。

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkCreatingResponse implements ModelInterface, \ArrayAccess, \Json
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PaymentBulkPayType', 'status' => '\OpenAPI\Fincode\Model\PaymentBulkDetailStatus', 'processPlanDate' => 'string', 'fileName' => 'string', 'processStartDate' => 'string', 'processEndDate' => 'string', 'totalCount' => 'int', 'processSuccessCount' => 'int', 'processFailureCount' => 'int', 'errorCode' => 'string', 'deleteFlag' => '\OpenAPI\Fincode\Model\DeleteFlag', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PaymentBulkPayType', 'status' => '\Fincode\OpenAPI\Model\PaymentBulkDetailStatus', 'processPlanDate' => 'string', 'fileName' => 'string', 'processStartDate' => 'string', 'processEndDate' => 'string', 'totalCount' => 'int', 'processSuccessCount' => 'int', 'processFailureCount' => 'int', 'errorCode' => 'string', 'deleteFlag' => '\Fincode\OpenAPI\Model\DeleteFlag', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

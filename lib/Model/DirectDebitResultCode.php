@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 振替結果コード  - &#x60;0&#x60;: 振替成功&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;振替が成功しました。&lt;/span&gt; - &#x60;1&#x60;: 残高不足（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;口座残高の不足により振替に失敗しました。&lt;/span&gt; - &#x60;2&#x60;: 預金取引無し（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;指定した口座が存在しないなどの理由により振替に失敗しました。&lt;/span&gt; - &#x60;3&#x60;: 購入者事由（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;購入者による振替取引の停止等により振替に失敗しました。&lt;/span&gt; - &#x60;4&#x60;: 依頼書未着・不備（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;（依頼書登録）この決済に所定の期日までの口座振替依頼書の提出が確認出来なかったため振替に失敗しました。&lt;/span&gt; - &#x60;8&#x60;: ショップ事由（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;ショップに起因する事由により振替に失敗しました。詳細はfincodeにお問い合わせください。&lt;/span&gt; - &#x60;9 | E | N&#x60;: その他（失敗）&lt;br&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;その他の理由により振替に失敗しました（通常は発生しません）。詳細はfincodeにお問い合わせください。&lt;/span&gt;  [お問い合わせはこちらのフォームから](https://dashboard.fincode.jp/contact)いただけます。

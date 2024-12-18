@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentSessionCard implements ModelInterface, \ArrayAccess, \JsonSerializa
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['jobCode' => '\OpenAPI\Fincode\Model\CardPaymentSessionJobCode', 'tdsType' => '\OpenAPI\Fincode\Model\TdsType', 'tdTenantName' => 'string', 'tds2Type' => '\OpenAPI\Fincode\Model\Tds2Type', 'itemCode' => 'string'];
+    protected static array $openAPITypes = ['jobCode' => '\Fincode\OpenAPI\Model\CardPaymentSessionJobCode', 'tdsType' => '\Fincode\OpenAPI\Model\TdsType', 'tdTenantName' => 'string', 'tds2Type' => '\Fincode\OpenAPI\Model\Tds2Type', 'itemCode' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

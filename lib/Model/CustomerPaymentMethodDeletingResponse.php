@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CustomerPaymentMethodDeletingResponse implements ModelInterface, \ArrayAcc
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'payType' => 'string', 'customerId' => 'string', 'status' => '\OpenAPI\Fincode\Model\PaymentMethodStatus', 'redirectUrl' => 'string', 'redirectUrlAccessedFlag' => '\OpenAPI\Fincode\Model\RedirectUrlAccessedFlag', 'returnUrl' => 'string', 'defaultFlag' => '\OpenAPI\Fincode\Model\PropertiesDefaultFlag', 'clientField1' => 'mixed', 'clientField2' => 'mixed', 'clientField3' => 'mixed', 'deleteFlag' => '\OpenAPI\Fincode\Model\PropertiesDeleteFlag', 'processDate' => 'mixed', 'created' => 'mixed', 'updated' => 'mixed', 'directdebit' => '\OpenAPI\Fincode\Model\Directdebit'];
+    protected static array $openAPITypes = ['id' => 'string', 'payType' => 'string', 'customerId' => 'string', 'status' => '\Fincode\OpenAPI\Model\PaymentMethodStatus', 'redirectUrl' => 'string', 'redirectUrlAccessedFlag' => '\Fincode\OpenAPI\Model\RedirectUrlAccessedFlag', 'returnUrl' => 'string', 'defaultFlag' => '\Fincode\OpenAPI\Model\PropertiesDefaultFlag', 'clientField1' => 'mixed', 'clientField2' => 'mixed', 'clientField3' => 'mixed', 'deleteFlag' => '\Fincode\OpenAPI\Model\PropertiesDeleteFlag', 'processDate' => 'mixed', 'created' => 'mixed', 'updated' => 'mixed', 'directdebit' => '\Fincode\OpenAPI\Model\Directdebit'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 多重支払フラグ\\ この決済に対して複数回支払いが行われた場合&#x60;1&#x60;になります。  - &#x60;0&#x60;: 0回、または1回の支払いが行われた - &#x60;1&#x60;: 2回以上、同一のバーコードを用いて支払いが行われた

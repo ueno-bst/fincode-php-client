@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ExaminationFileUploadExaminationFilesInner implements ModelInterface, \Arr
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'type' => '\OpenAPI\Fincode\Model\ExaminationFileType', 'filename' => 'string', 'filesize' => 'float'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'type' => '\Fincode\OpenAPI\Model\ExaminationFileType', 'filename' => 'string', 'filesize' => 'float'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

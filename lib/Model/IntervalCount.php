@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 課金間隔数\\ 課金間隔（&#x60;interval_pattern&#x60;）を指定した場合必須です。 省略した場合、&#x60;1&#x60;が設定されます。  - &#x60;1&#x60;：月次／年次の課金 - &#x60;2&#x60;：2ヶ月に1回の課金 - &#x60;3&#x60;：3ヶ月に1回の課金 - &#x60;6&#x60;：6ヶ月に1回の課金.

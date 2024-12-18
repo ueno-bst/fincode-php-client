@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PlanUpdatingRequest implements ModelInterface, \ArrayAccess, \JsonSerializ
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['planName' => 'string', 'description' => 'string', 'amount' => 'string', 'tax' => 'string', 'intervalPattern' => '\OpenAPI\Fincode\Model\IntervalPattern', 'intervalCount' => '\OpenAPI\Fincode\Model\IntervalCount'];
+    protected static array $openAPITypes = ['planName' => 'string', 'description' => 'string', 'amount' => 'string', 'tax' => 'string', 'intervalPattern' => '\Fincode\OpenAPI\Model\IntervalPattern', 'intervalCount' => '\Fincode\OpenAPI\Model\IntervalCount'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

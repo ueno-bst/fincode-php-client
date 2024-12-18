@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 最新の振替結果コード。\\ この決済手段で最後に行われた振替の結果コードです。  - &#x60;0&#x60;: 振替成功 - &#x60;1&#x60;: 残高不足による失敗 - &#x60;2&#x60;: 預金取引なしによる失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;存在しない口座に対して請求した場合などに発生します。&lt;/span&gt; - &#x60;3&#x60;: 購入者事由による失敗 - &#x60;4&#x60;: 依頼書未着・不備による失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;口座振替依頼書が金融機関側で登録されていない場合に発生します。&lt;/span&gt; - &#x60;8&#x60;: ショップ事由による失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 &lt;/span&gt; - &#x60;9&#x60;: その他の失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 &lt;/span&gt; - &#x60;E&#x60;: データエラーに起因する失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 &lt;/span&gt; - &#x60;N&#x60;: 振替結果未着&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;通常は発生しません。発生し調査が必要な場合はfincodeにお問い合わせください。 &lt;/span&gt;  [お問い合わせはこちらへ](https://dashboard.fincode.jp/contact?_gl&#x3D;1*vssgo5*_ga*MTU2NDM2NzY1MS4xNjk5MzI0Nzk4*_ga_8Y6Q0J470G*MTcwNzg4MzY4MS4zMTkuMS4xNzA3ODg5NTYwLjYwLjAuMA..&amp;_ga&#x3D;2.240544707.1302727582.1707783144-1564367651.1699324798).

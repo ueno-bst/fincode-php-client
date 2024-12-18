@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 代表者 性別  - &#x60;0&#x60;: 男性 - &#x60;1&#x60;: 女性.

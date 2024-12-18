@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentCardListListInner implements ModelInterface, \ArrayAccess, \JsonSer
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'jobCode' => '\OpenAPI\Fincode\Model\CardPaymentJobCode', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'cardId' => 'string', 'brand' => '\OpenAPI\Fincode\Model\CardBrand', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'cardNoHash' => 'string', 'method' => '\OpenAPI\Fincode\Model\CardPayMethod', 'payTimes' => '\OpenAPI\Fincode\Model\CardPayTimesResponse', 'bulkPaymentId' => 'string', 'subscriptionId' => 'string', 'tdsType' => '\OpenAPI\Fincode\Model\TdsType', 'tds2Type' => '\OpenAPI\Fincode\Model\Tds2Type', 'tds2RetUrl' => 'string', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'tds2Status' => '\OpenAPI\Fincode\Model\ThreeDSecure2Status', 'merchantName' => 'string', 'forward' => 'string', 'issuer' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'authMaxDate' => 'string', 'itemCode' => 'string', 'sendUrl' => 'string', 'acs' => 'string'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'id' => 'string', 'accessId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'processDate' => 'string', 'customerId' => 'string', 'customerGroupId' => 'string', 'errorCode' => 'string', 'created' => 'string', 'updated' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'jobCode' => '\Fincode\OpenAPI\Model\CardPaymentJobCode', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'cardId' => 'string', 'brand' => '\Fincode\OpenAPI\Model\CardBrand', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'cardNoHash' => 'string', 'method' => '\Fincode\OpenAPI\Model\CardPayMethod', 'payTimes' => '\Fincode\OpenAPI\Model\CardPayTimesResponse', 'bulkPaymentId' => 'string', 'subscriptionId' => 'string', 'tdsType' => '\Fincode\OpenAPI\Model\TdsType', 'tds2Type' => '\Fincode\OpenAPI\Model\Tds2Type', 'tds2RetUrl' => 'string', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'tds2Status' => '\Fincode\OpenAPI\Model\ThreeDSecure2Status', 'merchantName' => 'string', 'forward' => 'string', 'issuer' => 'string', 'transactionId' => 'string', 'approve' => 'string', 'authMaxDate' => 'string', 'itemCode' => 'string', 'sendUrl' => 'string', 'acs' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

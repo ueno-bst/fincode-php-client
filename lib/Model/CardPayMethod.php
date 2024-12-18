@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 支払方法  - &#x60;1&#x60;: 一括払い - &#x60;2&#x60;: 分割払い - &#x60;5&#x60;: リボ払い.

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentListRetrievingVirtualAccountQueryParams implements ModelInterface, 
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'billingTotalAmountMin' => 'string', 'billingTotalAmountMax' => 'string', 'paymentTermFrom' => 'string', 'paymentTermTo' => 'string', 'transactionDateFrom' => 'string', 'transactionDateTo' => 'string', 'updatedFrom' => 'string', 'updatedTo' => 'string', 'overpaymentFlag' => 'string', 'cancelOverpaymentFlag' => 'string', 'expireOverpaymentFlag' => 'string', 'amountPattern' => 'string', 'sort' => 'string'];
+    protected static array $openAPITypes = ['status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'billingTotalAmountMin' => 'string', 'billingTotalAmountMax' => 'string', 'paymentTermFrom' => 'string', 'paymentTermTo' => 'string', 'transactionDateFrom' => 'string', 'transactionDateTo' => 'string', 'updatedFrom' => 'string', 'updatedTo' => 'string', 'overpaymentFlag' => 'string', 'cancelOverpaymentFlag' => 'string', 'expireOverpaymentFlag' => 'string', 'amountPattern' => 'string', 'sort' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

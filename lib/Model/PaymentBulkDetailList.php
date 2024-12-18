@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkDetailList implements ModelInterface, \ArrayAccess, \JsonSerial
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\PaymentBulkDetail[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\PaymentBulkDetail[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class PaymentBulkDetailList implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkDetail[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentBulkDetail[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class PaymentBulkDetailList implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkDetail[] $list 一括決済詳細リスト\\ \\ 決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます
+     * @param \Fincode\OpenAPI\Model\PaymentBulkDetail[] $list 一括決済詳細リスト\\ \\ 決済1件につき1オブジェクトが格納され、オブジェクト内には決済情報が格納されます
      */
     public function setList(mixed $list): static
     {

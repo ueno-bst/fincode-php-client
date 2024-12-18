@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class AccountListItem implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'accountId' => 'int', 'shopId' => 'string', 'scheduledDepositDate' => 'string', 'aggregateTermStart' => 'string', 'aggregateTermEnd' => 'string', 'depositDate' => 'string', 'paymentDeadline' => 'string', 'paymentCompletionDate' => 'string', 'statusCode' => '\OpenAPI\Fincode\Model\DepositStatusCode', 'count' => 'int', 'bankTransferFee' => 'int', 'totalAmount' => 'int', 'feeAmount' => 'int', 'depositAmount' => 'int', 'platformFeeAmount' => 'int', 'platformFeeTaxAmount' => 'int', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'accountId' => 'int', 'shopId' => 'string', 'scheduledDepositDate' => 'string', 'aggregateTermStart' => 'string', 'aggregateTermEnd' => 'string', 'depositDate' => 'string', 'paymentDeadline' => 'string', 'paymentCompletionDate' => 'string', 'statusCode' => '\Fincode\OpenAPI\Model\DepositStatusCode', 'count' => 'int', 'bankTransferFee' => 'int', 'totalAmount' => 'int', 'feeAmount' => 'int', 'depositAmount' => 'int', 'platformFeeAmount' => 'int', 'platformFeeTaxAmount' => 'int', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

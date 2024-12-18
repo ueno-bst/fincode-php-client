@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class RetrieveAccountListQueryParameter implements ModelInterface, \ArrayAccess,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['page' => 'int', 'limit' => 'int', 'countOnly' => 'bool', 'processed' => 'string', 'status' => '\OpenAPI\Fincode\Model\DepositStatusCode', 'scheduledFrom' => '\DateTime', 'scheduledTo' => '\DateTime'];
+    protected static array $openAPITypes = ['page' => 'int', 'limit' => 'int', 'countOnly' => 'bool', 'processed' => 'string', 'status' => '\Fincode\OpenAPI\Model\DepositStatusCode', 'scheduledFrom' => '\DateTime', 'scheduledTo' => '\DateTime'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

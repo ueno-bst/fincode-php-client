@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * 追加提出情報\\ \\ 審査開始時点でショップのWebサイトが公開されていない場合（&#x60;use_of_fincode.used_on_web&#x60;が&#x60;false&#x60;または&#x60;site_published&#x60;が&#x60;false&#x60;の場合）、追加で提供する情報です。\\ 特定商取引法に基づく表示情報を基に値を設定してください。

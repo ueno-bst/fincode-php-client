@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 銀行振込 支払い画面案内メール送信フラグ\\ 銀行振込の支払い画面案内メールを送信するかどうかを設定します。  - &#x60;0&#x60;：送信しない - &#x60;1&#x60;：送信する.

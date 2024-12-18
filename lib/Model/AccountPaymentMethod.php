@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * この売上入金明細に対応する決済で利用された決済手段  - &#x60;VM&#x60;: カード決済（VISA / Mastercard） - &#x60;JA&#x60;: カード決済（JCB / American Express / Diners Club / Discover） - &#x60;KONBINI&#x60;: コンビニ決済 - &#x60;Paypay&#x60;: PayPay決済 - &#x60;ApplepayVM&#x60;: Apple Pay決済（VISA / Mastercard） - &#x60;ApplepayJA&#x60;: Apple Pay決済（JCB / American Express / Discover） - &#x60;Directdebit&#x60;: 口座振替

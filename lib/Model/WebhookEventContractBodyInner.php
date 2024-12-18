@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventContractBodyInner implements ModelInterface, \ArrayAccess, \Js
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['acquirer' => '\OpenAPI\Fincode\Model\Acquirer', 'examinationTask' => 'string', 'statusCode' => '\OpenAPI\Fincode\Model\AcquirerContractStatus', 'status' => 'string', 'isUpdated' => 'bool'];
+    protected static array $openAPITypes = ['acquirer' => '\Fincode\OpenAPI\Model\Acquirer', 'examinationTask' => 'string', 'statusCode' => '\Fincode\OpenAPI\Model\AcquirerContractStatus', 'status' => 'string', 'isUpdated' => 'bool'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

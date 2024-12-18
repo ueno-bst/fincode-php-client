@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CustomerPaymentMethodCreatingRequest implements ModelInterface, \ArrayAcce
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['payType' => '\OpenAPI\Fincode\Model\PaymentMethodPayType', 'defaultFlag' => '\OpenAPI\Fincode\Model\PropertiesDefaultFlag', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'clientField1' => 'mixed', 'clientField2' => 'mixed', 'clientField3' => 'mixed', 'card' => '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequestCard', 'directdebit' => '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequestDirectdebit'];
+    protected static array $openAPITypes = ['payType' => '\Fincode\OpenAPI\Model\PaymentMethodPayType', 'defaultFlag' => '\Fincode\OpenAPI\Model\PropertiesDefaultFlag', 'returnUrl' => 'string', 'returnUrlOnFailure' => 'string', 'clientField1' => 'mixed', 'clientField2' => 'mixed', 'clientField3' => 'mixed', 'card' => '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequestCard', 'directdebit' => '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequestDirectdebit'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

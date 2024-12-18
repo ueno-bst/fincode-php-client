@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 通貨コード\\ この決済で利用された通貨のコードです。  - &#x60;JPY&#x60;: 日本円.

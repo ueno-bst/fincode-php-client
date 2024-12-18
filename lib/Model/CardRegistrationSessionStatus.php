@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * ステータス\\ リダイレクト型カード登録URLのステータスを表します。  - &#x60;CREATE&#x60;：カード登録URLが作成された状態.

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 支払い方法\\ \\ キャンセル金額の超過などによりfincodeへの支払が発生した場合の支払い方法  - &#x60;0&#x60;: クレジットカード - &#x60;1&#x60;: 銀行口座.

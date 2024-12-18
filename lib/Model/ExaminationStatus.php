@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 審査ステータス  - &#x60;1&#x60;: 審査中&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;まだこの決済手段による決済を受け付けることはできません。&lt;/span&gt; - &#x60;2&#x60;: 審査OK&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段による決済を受け付けることができます。&lt;/span&gt; - &#x60;3&#x60;: 審査NG&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済手段による決済を受け付けることはできません。&lt;/span&gt;.

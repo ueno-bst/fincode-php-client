@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * リダイレクト先種別\\ &#x60;redirect_url&#x60;の種別  - &#x60;1&#x60;： Webページ／Webアプリケーション - &#x60;2&#x60;： ネイティブアプリ.

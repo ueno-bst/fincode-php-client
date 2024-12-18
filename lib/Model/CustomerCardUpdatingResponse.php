@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class CustomerCardUpdatingResponse implements ModelInterface, \ArrayAccess, \Jso
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'customerId' => 'string', 'defaultFlag' => 'string', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'type' => '\OpenAPI\Fincode\Model\CardType', 'brand' => '\OpenAPI\Fincode\Model\CardBrand', 'cardNoHash' => 'string', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'customerId' => 'string', 'defaultFlag' => 'string', 'cardNo' => 'string', 'expire' => 'string', 'holderName' => 'string', 'type' => '\Fincode\OpenAPI\Model\CardType', 'brand' => '\Fincode\OpenAPI\Model\CardBrand', 'cardNoHash' => 'string', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentPayPayListRetrievingResponse implements ModelInterface, \ArrayAcces
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\OpenAPI\Fincode\Model\PaymentPayPayListListInner[]'];
+    protected static array $openAPITypes = ['totalCount' => 'int', 'lastPage' => 'int', 'currentPage' => 'int', 'limit' => 'int', 'linkNext' => 'string', 'linkPrevious' => 'string', 'list' => '\Fincode\OpenAPI\Model\PaymentPayPayListListInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -409,7 +409,7 @@ class PaymentPayPayListRetrievingResponse implements ModelInterface, \ArrayAcces
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentPayPayListListInner[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentPayPayListListInner[]|null
      */
     public function getList(): mixed
     {
@@ -419,7 +419,7 @@ class PaymentPayPayListRetrievingResponse implements ModelInterface, \ArrayAcces
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentPayPayListListInner[] $list list
+     * @param \Fincode\OpenAPI\Model\PaymentPayPayListListInner[] $list list
      */
     public function setList(mixed $list): static
     {

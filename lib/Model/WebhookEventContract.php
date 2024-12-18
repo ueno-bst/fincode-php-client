@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventContract implements ModelInterface, \ArrayAccess, \JsonSeriali
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent', 'body' => '\OpenAPI\Fincode\Model\WebhookEventContractBodyInner[]'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent', 'body' => '\Fincode\OpenAPI\Model\WebhookEventContractBodyInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -303,7 +303,7 @@ class WebhookEventContract implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Gets body.
      *
-     * @return \OpenAPI\Fincode\Model\WebhookEventContractBodyInner[]|null
+     * @return \Fincode\OpenAPI\Model\WebhookEventContractBodyInner[]|null
      */
     public function getBody(): mixed
     {
@@ -313,7 +313,7 @@ class WebhookEventContract implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets body.
      *
-     * @param \OpenAPI\Fincode\Model\WebhookEventContractBodyInner[] $body 決済手段 契約状況リスト\\ \\ 決済手段の種別とその契約ステータスを含むオブジェクトの配列です
+     * @param \Fincode\OpenAPI\Model\WebhookEventContractBodyInner[] $body 決済手段 契約状況リスト\\ \\ 決済手段の種別とその契約ステータスを含むオブジェクトの配列です
      */
     public function setBody(mixed $body): static
     {

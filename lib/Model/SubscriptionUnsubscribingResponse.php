@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class SubscriptionUnsubscribingResponse implements ModelInterface, \ArrayAccess,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'planId' => 'string', 'planName' => 'string', 'customerId' => 'string', 'cardId' => 'string', 'paymentMethodId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'initialAmount' => 'int', 'initialTax' => 'int', 'initialTotalAmount' => 'int', 'status' => '\OpenAPI\Fincode\Model\SubscriptionStatus', 'startDate' => 'string', 'nextChargeDate' => 'string', 'stopDate' => 'string', 'endMonthFlag' => 'string', 'sendUrl' => 'string', 'errorCode' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'remarks' => 'string', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'shopId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'planId' => 'string', 'planName' => 'string', 'customerId' => 'string', 'cardId' => 'string', 'paymentMethodId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'initialAmount' => 'int', 'initialTax' => 'int', 'initialTotalAmount' => 'int', 'status' => '\Fincode\OpenAPI\Model\SubscriptionStatus', 'startDate' => 'string', 'nextChargeDate' => 'string', 'stopDate' => 'string', 'endMonthFlag' => 'string', 'sendUrl' => 'string', 'errorCode' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'remarks' => 'string', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

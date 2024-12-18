@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventPaymentCard implements ModelInterface, \ArrayAccess, \JsonSeri
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'customerId' => 'string', 'method' => '\OpenAPI\Fincode\Model\CardPayMethod', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'currency' => '\OpenAPI\Fincode\Model\CurrencyCode', 'jobCode' => '\OpenAPI\Fincode\Model\CardPaymentJobCode', 'subscriptionId' => 'string', 'bulkPaymentId' => 'string', 'forward' => 'string', 'transactionId' => 'string', 'transactionDate' => 'string', 'approve' => 'string', 'errorCode' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'customerId' => 'string', 'method' => '\Fincode\OpenAPI\Model\CardPayMethod', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'currency' => '\Fincode\OpenAPI\Model\CurrencyCode', 'jobCode' => '\Fincode\OpenAPI\Model\CardPaymentJobCode', 'subscriptionId' => 'string', 'bulkPaymentId' => 'string', 'forward' => 'string', 'transactionId' => 'string', 'transactionDate' => 'string', 'approve' => 'string', 'errorCode' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

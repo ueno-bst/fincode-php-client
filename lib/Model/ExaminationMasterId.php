@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 審査種別マスタID。\\ プラットフォーム料率の適用対象とする決済手段の種別を表します。  - &#x60;vm&#x60;: カード決済（VISA / Mastercard） - &#x60;jad&#x60;: カード決済（JCB / American Express / Diners Club / Discover） - &#x60;applepay_vm&#x60;: Apple Pay（VISA / Mastercard） - &#x60;applepay_jad&#x60;: Apple Pay（JCB / American Express / Diners Club / Discover） - &#x60;konbini&#x60;: コンビニ決済 - &#x60;paypay&#x60;: PayPay - &#x60;directdebit&#x60;: 口座振替 - &#x60;virtualaccount&#x60;: 銀行振込（バーチャル口座） - &#x60;aupay&#x60;: AUPay.

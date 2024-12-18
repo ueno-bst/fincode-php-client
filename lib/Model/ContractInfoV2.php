@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ContractInfoV2 implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['representativeLastName' => 'string', 'representativeLastNameKana' => 'string', 'representativeFirstName' => 'string', 'representativeFirstNameKana' => 'string', 'representativePostalCode' => 'string', 'representativePrefecture' => 'string', 'representativePrefectureKana' => 'string', 'representativeAddressMunicipality' => 'string', 'representativeAddressMunicipalityKana' => 'string', 'representativeAddressSection' => 'string', 'representativeAddressSectionKana' => 'string', 'representativeAddressChrome' => 'string', 'representativeAddressChromeKana' => 'string', 'representativeAddressBuildingName' => 'string', 'representativeAddressBuildingNameKana' => 'string', 'representativeTel' => 'string', 'representativeBirthday' => 'string', 'representativeGender' => 'int', 'staff1LastName' => 'string', 'staff1LastNameKana' => 'string', 'staff1FirstName' => 'string', 'staff1FirstNameKana' => 'string', 'staff1CompanyName' => 'string', 'staff1Belongs' => 'string', 'staff1Tel' => 'string', 'staff1Mail' => 'string', 'staff2LastName' => 'string', 'staff2LastNameKana' => 'string', 'staff2FirstName' => 'string', 'staff2FirstNameKana' => 'string', 'staff2CompanyName' => 'string', 'staff2Belongs' => 'string', 'staff2Tel' => 'string', 'staff2Mail' => 'string', 'corporate' => 'bool', 'corporateInfo' => '\OpenAPI\Fincode\Model\CorporateInfoV2'];
+    protected static array $openAPITypes = ['representativeLastName' => 'string', 'representativeLastNameKana' => 'string', 'representativeFirstName' => 'string', 'representativeFirstNameKana' => 'string', 'representativePostalCode' => 'string', 'representativePrefecture' => 'string', 'representativePrefectureKana' => 'string', 'representativeAddressMunicipality' => 'string', 'representativeAddressMunicipalityKana' => 'string', 'representativeAddressSection' => 'string', 'representativeAddressSectionKana' => 'string', 'representativeAddressChrome' => 'string', 'representativeAddressChromeKana' => 'string', 'representativeAddressBuildingName' => 'string', 'representativeAddressBuildingNameKana' => 'string', 'representativeTel' => 'string', 'representativeBirthday' => 'string', 'representativeGender' => 'int', 'staff1LastName' => 'string', 'staff1LastNameKana' => 'string', 'staff1FirstName' => 'string', 'staff1FirstNameKana' => 'string', 'staff1CompanyName' => 'string', 'staff1Belongs' => 'string', 'staff1Tel' => 'string', 'staff1Mail' => 'string', 'staff2LastName' => 'string', 'staff2LastNameKana' => 'string', 'staff2FirstName' => 'string', 'staff2FirstNameKana' => 'string', 'staff2CompanyName' => 'string', 'staff2Belongs' => 'string', 'staff2Tel' => 'string', 'staff2Mail' => 'string', 'corporate' => 'bool', 'corporateInfo' => '\Fincode\OpenAPI\Model\CorporateInfoV2'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

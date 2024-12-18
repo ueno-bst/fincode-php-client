@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * カードブランドを表します。  - &#x60;VISA&#x60;: VISA - &#x60;MASTER&#x60;: Mastercard - &#x60;JCB&#x60;: JCB - &#x60;AMEX&#x60;: American Express - &#x60;DINERS&#x60;: Diners Club - &#x60;DISCOVER&#x60;: Discover - &#x60;\&quot;\&quot;&#x60;（空文字列） : 判定不能.

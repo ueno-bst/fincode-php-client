@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 完了メール 送信フラグ\\ 決済が完了した際に購入者に完了メールを送信するかどうかを示します。  - &#x60;0&#x60;：送信しない（デフォルト） - &#x60;1&#x60;：送信する.

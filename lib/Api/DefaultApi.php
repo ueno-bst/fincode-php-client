@@ -16,8 +16,12 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Api;
+namespace Fincode\OpenAPI\Api;
 
+use Fincode\OpenAPI\ApiException;
+use Fincode\OpenAPI\Configuration;
+use Fincode\OpenAPI\HeaderSelector;
+use Fincode\OpenAPI\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -27,10 +31,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Fincode\ApiException;
-use OpenAPI\Fincode\Configuration;
-use OpenAPI\Fincode\HeaderSelector;
-use OpenAPI\Fincode\ObjectSerializer;
 
 class DefaultApi
 {
@@ -76,10 +76,10 @@ class DefaultApi
      *
      * @param string                                                 $id                              オーダーID（決済情報のID） (required)
      * @param string                                                 $tenantShopId                    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済のオーソリを再度実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest paymentCardReauthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -97,11 +97,11 @@ class DefaultApi
      *
      * @param string                                                 $id                              オーダーID（決済情報のID） (required)
      * @param string                                                 $tenantShopId                    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済のオーソリを再度実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -128,31 +128,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -167,11 +167,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -184,7 +184,7 @@ class DefaultApi
      *
      * @param string                                                 $id                              オーダーID（決済情報のID） (required)
      * @param string                                                 $tenantShopId                    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済のオーソリを再度実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -201,14 +201,14 @@ class DefaultApi
      *
      * @param string                                                 $id                              オーダーID（決済情報のID） (required)
      * @param string                                                 $tenantShopId                    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済のオーソリを再度実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function authorizePaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $paymentCardReauthorizingRequest = null, string $contentType = self::contentTypes['authorizePayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentCardReauthorizingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentCardReauthorizingResponse';
         $request = $this->authorizePaymentRequest($id, $tenantShopId, $paymentCardReauthorizingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -235,7 +235,7 @@ class DefaultApi
      *
      * @param string                                                 $id                              オーダーID（決済情報のID） (required)
      * @param string                                                 $tenantShopId                    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済のオーソリを再度実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardReauthorizingRequest $paymentCardReauthorizingRequest (optional)
      * @param string                                                 $contentType                     The value for the Content-Type header. Check self::contentTypes['authorizePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -314,7 +314,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書のキャンセルができます。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['cancelInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -335,7 +335,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['cancelInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -362,31 +362,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -401,11 +401,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -440,7 +440,7 @@ class DefaultApi
      */
     public function cancelInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['cancelInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailCancelingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailCancelingResponse';
         $request = $this->cancelInvoicesRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -536,10 +536,10 @@ class DefaultApi
      *
      * @param string                                      $id                   オーダーID（決済情報のID） (required)
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済をキャンセルします。 (optional)
-     * @param \OpenAPI\Fincode\Model\CancelPaymentRequest $cancelPaymentRequest cancelPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CancelPaymentRequest $cancelPaymentRequest cancelPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['cancelPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CancelPayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CancelPayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -557,11 +557,11 @@ class DefaultApi
      *
      * @param string                                      $id                   オーダーID（決済情報のID） (required)
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済をキャンセルします。 (optional)
-     * @param \OpenAPI\Fincode\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['cancelPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CancelPayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CancelPayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -588,31 +588,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CancelPayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CancelPayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CancelPayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CancelPayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CancelPayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CancelPayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CancelPayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\CancelPayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -627,11 +627,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CancelPayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CancelPayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -644,7 +644,7 @@ class DefaultApi
      *
      * @param string                                      $id                   オーダーID（決済情報のID） (required)
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済をキャンセルします。 (optional)
-     * @param \OpenAPI\Fincode\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['cancelPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -661,14 +661,14 @@ class DefaultApi
      *
      * @param string                                      $id                   オーダーID（決済情報のID） (required)
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済をキャンセルします。 (optional)
-     * @param \OpenAPI\Fincode\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['cancelPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function cancelPaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $cancelPaymentRequest = null, string $contentType = self::contentTypes['cancelPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CancelPayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\CancelPayment200Response';
         $request = $this->cancelPaymentRequest($id, $tenantShopId, $cancelPaymentRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -695,7 +695,7 @@ class DefaultApi
      *
      * @param string                                      $id                   オーダーID（決済情報のID） (required)
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済をキャンセルします。 (optional)
-     * @param \OpenAPI\Fincode\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CancelPaymentRequest $cancelPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['cancelPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -772,10 +772,10 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の売上確定を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CapturePaymentRequest $capturePaymentRequest capturePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CapturePaymentRequest $capturePaymentRequest capturePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['capturePayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CapturePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CapturePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -793,11 +793,11 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の売上確定を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CapturePaymentRequest $capturePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CapturePaymentRequest $capturePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['capturePayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CapturePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CapturePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -824,31 +824,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CapturePayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CapturePayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CapturePayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CapturePayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CapturePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CapturePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CapturePayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\CapturePayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -863,11 +863,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CapturePayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CapturePayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -880,7 +880,7 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の売上確定を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CapturePaymentRequest $capturePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CapturePaymentRequest $capturePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['capturePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -897,14 +897,14 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の売上確定を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CapturePaymentRequest $capturePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CapturePaymentRequest $capturePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['capturePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function capturePaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $capturePaymentRequest = null, string $contentType = self::contentTypes['capturePayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CapturePayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\CapturePayment200Response';
         $request = $this->capturePaymentRequest($id, $tenantShopId, $capturePaymentRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -931,7 +931,7 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の売上確定を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CapturePaymentRequest $capturePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CapturePaymentRequest $capturePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['capturePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1008,10 +1008,10 @@ class DefaultApi
      *
      * @param string                                              $id                           オーダーID（決済情報のID） (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の利用金額を変更します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest changeAmountOfPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest changeAmountOfPaymentRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['changeAmountOfPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1029,11 +1029,11 @@ class DefaultApi
      *
      * @param string                                              $id                           オーダーID（決済情報のID） (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の利用金額を変更します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['changeAmountOfPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1060,31 +1060,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1099,11 +1099,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1116,7 +1116,7 @@ class DefaultApi
      *
      * @param string                                              $id                           オーダーID（決済情報のID） (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の利用金額を変更します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['changeAmountOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1133,14 +1133,14 @@ class DefaultApi
      *
      * @param string                                              $id                           オーダーID（決済情報のID） (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の利用金額を変更します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['changeAmountOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function changeAmountOfPaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $changeAmountOfPaymentRequest = null, string $contentType = self::contentTypes['changeAmountOfPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ChangeAmountOfPayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\ChangeAmountOfPayment200Response';
         $request = $this->changeAmountOfPaymentRequest($id, $tenantShopId, $changeAmountOfPaymentRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1167,7 +1167,7 @@ class DefaultApi
      *
      * @param string                                              $id                           オーダーID（決済情報のID） (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の利用金額を変更します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ChangeAmountOfPaymentRequest $changeAmountOfPaymentRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['changeAmountOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1243,10 +1243,10 @@ class DefaultApi
      * createCardRegistrationSession: カード登録URL 作成.
      *
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest cardRegistrationSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest cardRegistrationSessionCreatingRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['createCardRegistrationSession'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1263,11 +1263,11 @@ class DefaultApi
      * createCardRegistrationSessionWithHttpInfo: カード登録URL 作成.
      *
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['createCardRegistrationSession'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1294,31 +1294,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1333,11 +1333,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1349,7 +1349,7 @@ class DefaultApi
      * createCardRegistrationSessionAsync: カード登録URL 作成.
      *
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['createCardRegistrationSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1365,14 +1365,14 @@ class DefaultApi
      * createCardRegistrationSessionAsyncWithHttpInfo: カード登録URL 作成.
      *
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['createCardRegistrationSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createCardRegistrationSessionAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $cardRegistrationSessionCreatingRequest = null, string $contentType = self::contentTypes['createCardRegistrationSession'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CardRegistrationSessionCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CardRegistrationSessionCreatingResponse';
         $request = $this->createCardRegistrationSessionRequest($tenantShopId, $cardRegistrationSessionCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1398,7 +1398,7 @@ class DefaultApi
      * Create request for operation 'createCardRegistrationSession'.
      *
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップ上の顧客に対してカードを登録するためのカード登録URLを発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CardRegistrationSessionCreatingRequest $cardRegistrationSessionCreatingRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['createCardRegistrationSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1466,10 +1466,10 @@ class DefaultApi
      * createCustomer: 顧客 登録.
      *
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに紐づく形で顧客情報を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCreatingRequest $customerCreatingRequest customerCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCreatingRequest $customerCreatingRequest customerCreatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1486,11 +1486,11 @@ class DefaultApi
      * createCustomerWithHttpInfo: 顧客 登録.
      *
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに紐づく形で顧客情報を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1517,31 +1517,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1556,11 +1556,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1572,7 +1572,7 @@ class DefaultApi
      * createCustomerAsync: 顧客 登録.
      *
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに紐づく形で顧客情報を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1588,14 +1588,14 @@ class DefaultApi
      * createCustomerAsyncWithHttpInfo: 顧客 登録.
      *
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに紐づく形で顧客情報を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createCustomerAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $customerCreatingRequest = null, string $contentType = self::contentTypes['createCustomer'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCreatingResponse';
         $request = $this->createCustomerRequest($tenantShopId, $customerCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1621,7 +1621,7 @@ class DefaultApi
      * Create request for operation 'createCustomer'.
      *
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに紐づく形で顧客情報を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCreatingRequest $customerCreatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1690,10 +1690,10 @@ class DefaultApi
      *
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardCreatingRequest $customerCardCreatingRequest customerCardCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardCreatingRequest $customerCardCreatingRequest customerCardCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createCustomerCard'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCardCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCardCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1711,11 +1711,11 @@ class DefaultApi
      *
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createCustomerCard'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCardCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCardCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1742,31 +1742,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCardCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCardCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCardCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCardCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCardCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCardCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCardCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCardCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -1781,11 +1781,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCardCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCardCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1798,7 +1798,7 @@ class DefaultApi
      *
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1815,14 +1815,14 @@ class DefaultApi
      *
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createCustomerCardAsyncWithHttpInfo(mixed $customerId, mixed $tenantShopId = null, mixed $customerCardCreatingRequest = null, string $contentType = self::contentTypes['createCustomerCard'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCardCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCardCreatingResponse';
         $request = $this->createCustomerCardRequest($customerId, $tenantShopId, $customerCardCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -1849,7 +1849,7 @@ class DefaultApi
      *
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対してカードを登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardCreatingRequest $customerCardCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1926,10 +1926,10 @@ class DefaultApi
      *
      * @param string                                                      $customerId                           顧客ID (required)
      * @param string                                                      $tenantShopId                         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest customerPaymentMethodCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest customerPaymentMethodCreatingRequest (optional)
      * @param string                                                      $contentType                          The value for the Content-Type header. Check self::contentTypes['createCustomerPaymentMethod'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -1947,11 +1947,11 @@ class DefaultApi
      *
      * @param string                                                      $customerId                           顧客ID (required)
      * @param string                                                      $tenantShopId                         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
      * @param string                                                      $contentType                          The value for the Content-Type header. Check self::contentTypes['createCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -1978,31 +1978,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2017,11 +2017,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2034,7 +2034,7 @@ class DefaultApi
      *
      * @param string                                                      $customerId                           顧客ID (required)
      * @param string                                                      $tenantShopId                         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
      * @param string                                                      $contentType                          The value for the Content-Type header. Check self::contentTypes['createCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2051,14 +2051,14 @@ class DefaultApi
      *
      * @param string                                                      $customerId                           顧客ID (required)
      * @param string                                                      $tenantShopId                         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
      * @param string                                                      $contentType                          The value for the Content-Type header. Check self::contentTypes['createCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createCustomerPaymentMethodAsyncWithHttpInfo(mixed $customerId, mixed $tenantShopId = null, mixed $customerPaymentMethodCreatingRequest = null, string $contentType = self::contentTypes['createCustomerPaymentMethod'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingResponse';
         $request = $this->createCustomerPaymentMethodRequest($customerId, $tenantShopId, $customerPaymentMethodCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2085,7 +2085,7 @@ class DefaultApi
      *
      * @param string                                                      $customerId                           顧客ID (required)
      * @param string                                                      $tenantShopId                         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して決済手段を登録します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodCreatingRequest $customerPaymentMethodCreatingRequest (optional)
      * @param string                                                      $contentType                          The value for the Content-Type header. Check self::contentTypes['createCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2165,10 +2165,10 @@ class DefaultApi
      * createPayment: 決済 登録.
      *
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが&#x60;pay_type&#x60;で指定する決済手段契約の審査を完了させている必要があります。 (optional)
-     * @param \OpenAPI\Fincode\Model\CreatePaymentRequest $createPaymentRequest createPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CreatePaymentRequest $createPaymentRequest createPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['createPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CreatePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CreatePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2185,11 +2185,11 @@ class DefaultApi
      * createPaymentWithHttpInfo: 決済 登録.
      *
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが&#x60;pay_type&#x60;で指定する決済手段契約の審査を完了させている必要があります。 (optional)
-     * @param \OpenAPI\Fincode\Model\CreatePaymentRequest $createPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CreatePaymentRequest $createPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['createPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CreatePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CreatePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2216,31 +2216,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CreatePayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CreatePayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CreatePayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CreatePayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CreatePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CreatePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CreatePayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\CreatePayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2255,11 +2255,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CreatePayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CreatePayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2271,7 +2271,7 @@ class DefaultApi
      * createPaymentAsync: 決済 登録.
      *
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが&#x60;pay_type&#x60;で指定する決済手段契約の審査を完了させている必要があります。 (optional)
-     * @param \OpenAPI\Fincode\Model\CreatePaymentRequest $createPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CreatePaymentRequest $createPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['createPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2287,14 +2287,14 @@ class DefaultApi
      * createPaymentAsyncWithHttpInfo: 決済 登録.
      *
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが&#x60;pay_type&#x60;で指定する決済手段契約の審査を完了させている必要があります。 (optional)
-     * @param \OpenAPI\Fincode\Model\CreatePaymentRequest $createPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CreatePaymentRequest $createPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['createPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createPaymentAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $createPaymentRequest = null, string $contentType = self::contentTypes['createPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CreatePayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\CreatePayment200Response';
         $request = $this->createPaymentRequest($tenantShopId, $createPaymentRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2320,7 +2320,7 @@ class DefaultApi
      * Create request for operation 'createPayment'.
      *
      * @param string                                      $tenantShopId         &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主として決済を登録します。テナントが&#x60;pay_type&#x60;で指定する決済手段契約の審査を完了させている必要があります。 (optional)
-     * @param \OpenAPI\Fincode\Model\CreatePaymentRequest $createPaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CreatePaymentRequest $createPaymentRequest (optional)
      * @param string                                      $contentType          The value for the Content-Type header. Check self::contentTypes['createPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2387,13 +2387,13 @@ class DefaultApi
     /**
      * createPaymentBulk: 一括決済 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         payType (required)
+     * @param \Fincode\OpenAPI\Model\PaymentBulkPayType $payType         payType (required)
      * @param string                                    $processPlanDate processPlanDate (required)
      * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
      * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
      * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentBulkCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2409,14 +2409,14 @@ class DefaultApi
     /**
      * createPaymentBulkWithHttpInfo: 一括決済 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param \Fincode\OpenAPI\Model\PaymentBulkPayType $payType         (required)
      * @param string                                    $processPlanDate (required)
      * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
      * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
      * @param string                                    $contentType     The value for the Content-Type header. Check self::contentTypes['createPaymentBulk'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentBulkCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentBulkCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2443,31 +2443,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2482,11 +2482,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2497,7 +2497,7 @@ class DefaultApi
     /**
      * createPaymentBulkAsync: 一括決済 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param \Fincode\OpenAPI\Model\PaymentBulkPayType $payType         (required)
      * @param string                                    $processPlanDate (required)
      * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
      * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
@@ -2515,7 +2515,7 @@ class DefaultApi
     /**
      * createPaymentBulkAsyncWithHttpInfo: 一括決済 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param \Fincode\OpenAPI\Model\PaymentBulkPayType $payType         (required)
      * @param string                                    $processPlanDate (required)
      * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
      * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
@@ -2525,7 +2525,7 @@ class DefaultApi
      */
     public function createPaymentBulkAsyncWithHttpInfo(mixed $payType, mixed $processPlanDate, mixed $tenantShopId = null, mixed $file = null, string $contentType = self::contentTypes['createPaymentBulk'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentBulkCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentBulkCreatingResponse';
         $request = $this->createPaymentBulkRequest($payType, $processPlanDate, $tenantShopId, $file, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2550,7 +2550,7 @@ class DefaultApi
     /**
      * Create request for operation 'createPaymentBulk'.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkPayType $payType         (required)
+     * @param \Fincode\OpenAPI\Model\PaymentBulkPayType $payType         (required)
      * @param string                                    $processPlanDate (required)
      * @param string                                    $tenantShopId    &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済情報を一括登録します。 (optional)
      * @param string                                    $file            一括決済情報を記載したJSONファイル。\\\\ \\\\ 以下のようなファイルをアップロードします。 &#x60;&#x60;&#x60;json {     \\\&quot;data\\\&quot;: [         {             \\\&quot;id\\\&quot;: \\\&quot;order_001\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;tax\\\&quot;: \\\&quot;100\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;,             \\\&quot;client_field_1\\\&quot;: \\\&quot;自由項目1\\\&quot;,             \\\&quot;client_field_2\\\&quot;: \\\&quot;自由項目2\\\&quot;,             \\\&quot;client_field_3\\\&quot;: \\\&quot;自由項目3\\\&quot;         },         {             \\\&quot;id\\\&quot;: \\\&quot;order_002\\\&quot;,             \\\&quot;amount\\\&quot;: \\\&quot;1000\\\&quot;,             \\\&quot;customer_id\\\&quot;: \\\&quot;c_**********************\\\&quot;,             \\\&quot;card_id\\\&quot;: \\\&quot;cs_**********************\\\&quot;         },         ...     ] } &#x60;&#x60;&#x60; パラメータ仕様は以下の通りで、各パラメータの形式は決済登録・決済実行APIに準拠します。（*は必須項目）  - &#x60;data&#x60;: 決済情報のリストを格納する配列 - &#x60;data[].id&#x60;: オーダーID* - &#x60;data[].amount&#x60;: 利用金額* - &#x60;data[].tax&#x60;: 税送料 - &#x60;data[].customer_id&#x60;: 顧客ID* - &#x60;data[].card_id&#x60;: カードID - &#x60;data[].client_field_1&#x60;: 自由項目1 - &#x60;data[].client_field_2&#x60;: 自由項目2 - &#x60;data[].client_field_3&#x60;: 自由項目3 (optional)
@@ -2652,10 +2652,10 @@ class DefaultApi
      * createPaymentSession: 決済URL 作成.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップで決済を行います。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest paymentSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest paymentSessionCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createPaymentSession'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentSessionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentSessionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2672,11 +2672,11 @@ class DefaultApi
      * createPaymentSessionWithHttpInfo: 決済URL 作成.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップで決済を行います。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createPaymentSession'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentSessionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentSessionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2703,31 +2703,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2742,11 +2742,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2758,7 +2758,7 @@ class DefaultApi
      * createPaymentSessionAsync: 決済URL 作成.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップで決済を行います。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createPaymentSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2774,14 +2774,14 @@ class DefaultApi
      * createPaymentSessionAsyncWithHttpInfo: 決済URL 作成.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップで決済を行います。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createPaymentSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createPaymentSessionAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $paymentSessionCreatingRequest = null, string $contentType = self::contentTypes['createPaymentSession'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentSessionCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentSessionCreatingResponse';
         $request = $this->createPaymentSessionRequest($tenantShopId, $paymentSessionCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -2807,7 +2807,7 @@ class DefaultApi
      * Create request for operation 'createPaymentSession'.
      *
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップで決済を行います。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentSessionCreatingRequest $paymentSessionCreatingRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['createPaymentSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2874,10 +2874,10 @@ class DefaultApi
     /**
      * createPlan: プラン 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PlanCreatingRequest $planCreatingRequest planCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanCreatingRequest $planCreatingRequest planCreatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlanCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlanCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -2893,11 +2893,11 @@ class DefaultApi
     /**
      * createPlanWithHttpInfo: プラン 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PlanCreatingRequest $planCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanCreatingRequest $planCreatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlanCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlanCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -2924,31 +2924,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlanCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlanCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlanCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlanCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlanCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlanCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlanCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlanCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -2963,11 +2963,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlanCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlanCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -2978,7 +2978,7 @@ class DefaultApi
     /**
      * createPlanAsync: プラン 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PlanCreatingRequest $planCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanCreatingRequest $planCreatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2993,14 +2993,14 @@ class DefaultApi
     /**
      * createPlanAsyncWithHttpInfo: プラン 登録.
      *
-     * @param \OpenAPI\Fincode\Model\PlanCreatingRequest $planCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanCreatingRequest $planCreatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createPlanAsyncWithHttpInfo(mixed $planCreatingRequest = null, string $contentType = self::contentTypes['createPlan'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlanCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlanCreatingResponse';
         $request = $this->createPlanRequest($planCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3025,7 +3025,7 @@ class DefaultApi
     /**
      * Create request for operation 'createPlan'.
      *
-     * @param \OpenAPI\Fincode\Model\PlanCreatingRequest $planCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanCreatingRequest $planCreatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3088,10 +3088,10 @@ class DefaultApi
     /**
      * createSubscription: サブスクリプション 登録.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest subscriptionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest subscriptionCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3107,11 +3107,11 @@ class DefaultApi
     /**
      * createSubscriptionWithHttpInfo: サブスクリプション 登録.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3138,31 +3138,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3177,11 +3177,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3192,7 +3192,7 @@ class DefaultApi
     /**
      * createSubscriptionAsync: サブスクリプション 登録.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3207,14 +3207,14 @@ class DefaultApi
     /**
      * createSubscriptionAsyncWithHttpInfo: サブスクリプション 登録.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createSubscriptionAsyncWithHttpInfo(mixed $subscriptionCreatingRequest = null, string $contentType = self::contentTypes['createSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionCreatingResponse';
         $request = $this->createSubscriptionRequest($subscriptionCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3239,7 +3239,7 @@ class DefaultApi
     /**
      * Create request for operation 'createSubscription'.
      *
-     * @param \OpenAPI\Fincode\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionCreatingRequest $subscriptionCreatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3302,10 +3302,10 @@ class DefaultApi
     /**
      * createTenantWithExistingUser: テナントショップ 作成（既存ユーザー参加）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest pOSTJoinTenantsRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest pOSTJoinTenantsRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['createTenantWithExistingUser'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\POSTJoinTenantsResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\POSTJoinTenantsResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3321,11 +3321,11 @@ class DefaultApi
     /**
      * createTenantWithExistingUserWithHttpInfo: テナントショップ 作成（既存ユーザー参加）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['createTenantWithExistingUser'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\POSTJoinTenantsResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\POSTJoinTenantsResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3352,31 +3352,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\POSTJoinTenantsResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\POSTJoinTenantsResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\POSTJoinTenantsResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\POSTJoinTenantsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\POSTJoinTenantsResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\POSTJoinTenantsResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\POSTJoinTenantsResponse';
+            $returnType = '\Fincode\OpenAPI\Model\POSTJoinTenantsResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3391,11 +3391,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\POSTJoinTenantsResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\POSTJoinTenantsResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3406,7 +3406,7 @@ class DefaultApi
     /**
      * createTenantWithExistingUserAsync: テナントショップ 作成（既存ユーザー参加）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['createTenantWithExistingUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3421,14 +3421,14 @@ class DefaultApi
     /**
      * createTenantWithExistingUserAsyncWithHttpInfo: テナントショップ 作成（既存ユーザー参加）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['createTenantWithExistingUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createTenantWithExistingUserAsyncWithHttpInfo(mixed $pOSTJoinTenantsRequest = null, string $contentType = self::contentTypes['createTenantWithExistingUser'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\POSTJoinTenantsResponse';
+        $returnType = '\Fincode\OpenAPI\Model\POSTJoinTenantsResponse';
         $request = $this->createTenantWithExistingUserRequest($pOSTJoinTenantsRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3453,7 +3453,7 @@ class DefaultApi
     /**
      * Create request for operation 'createTenantWithExistingUser'.
      *
-     * @param \OpenAPI\Fincode\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTJoinTenantsRequest $pOSTJoinTenantsRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['createTenantWithExistingUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3516,10 +3516,10 @@ class DefaultApi
     /**
      * createTenantWithNewUser: テナントショップ 作成（新規ユーザー登録）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest pOSTTenantEntriesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest pOSTTenantEntriesRequest (optional)
      * @param string                                          $contentType              The value for the Content-Type header. Check self::contentTypes['createTenantWithNewUser'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\POSTTenantEntriesResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\POSTTenantEntriesResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3535,11 +3535,11 @@ class DefaultApi
     /**
      * createTenantWithNewUserWithHttpInfo: テナントショップ 作成（新規ユーザー登録）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
      * @param string                                          $contentType              The value for the Content-Type header. Check self::contentTypes['createTenantWithNewUser'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\POSTTenantEntriesResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\POSTTenantEntriesResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3566,31 +3566,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\POSTTenantEntriesResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\POSTTenantEntriesResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\POSTTenantEntriesResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\POSTTenantEntriesResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\POSTTenantEntriesResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\POSTTenantEntriesResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\POSTTenantEntriesResponse';
+            $returnType = '\Fincode\OpenAPI\Model\POSTTenantEntriesResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3605,11 +3605,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\POSTTenantEntriesResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\POSTTenantEntriesResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3620,7 +3620,7 @@ class DefaultApi
     /**
      * createTenantWithNewUserAsync: テナントショップ 作成（新規ユーザー登録）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
      * @param string                                          $contentType              The value for the Content-Type header. Check self::contentTypes['createTenantWithNewUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3635,14 +3635,14 @@ class DefaultApi
     /**
      * createTenantWithNewUserAsyncWithHttpInfo: テナントショップ 作成（新規ユーザー登録）.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
      * @param string                                          $contentType              The value for the Content-Type header. Check self::contentTypes['createTenantWithNewUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function createTenantWithNewUserAsyncWithHttpInfo(mixed $pOSTTenantEntriesRequest = null, string $contentType = self::contentTypes['createTenantWithNewUser'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\POSTTenantEntriesResponse';
+        $returnType = '\Fincode\OpenAPI\Model\POSTTenantEntriesResponse';
         $request = $this->createTenantWithNewUserRequest($pOSTTenantEntriesRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3667,7 +3667,7 @@ class DefaultApi
     /**
      * Create request for operation 'createTenantWithNewUser'.
      *
-     * @param \OpenAPI\Fincode\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\POSTTenantEntriesRequest $pOSTTenantEntriesRequest (optional)
      * @param string                                          $contentType              The value for the Content-Type header. Check self::contentTypes['createTenantWithNewUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3734,7 +3734,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomer'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3755,7 +3755,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomer'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -3782,31 +3782,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -3821,11 +3821,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -3860,7 +3860,7 @@ class DefaultApi
      */
     public function deleteCustomerAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['deleteCustomer'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerDeletingResponse';
         $request = $this->deleteCustomerRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -3959,7 +3959,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードを削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomerCard'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCardDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCardDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -3981,7 +3981,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomerCard'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCardDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCardDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -4008,31 +4008,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCardDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCardDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCardDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCardDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCardDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCardDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCardDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCardDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4047,11 +4047,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCardDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCardDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -4088,7 +4088,7 @@ class DefaultApi
      */
     public function deleteCustomerCardAsyncWithHttpInfo(mixed $customerId, mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['deleteCustomerCard'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCardDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCardDeletingResponse';
         $request = $this->deleteCustomerCardRequest($customerId, $id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -4197,7 +4197,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomerPaymentMethod'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -4220,7 +4220,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -4247,31 +4247,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4286,11 +4286,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -4329,7 +4329,7 @@ class DefaultApi
      */
     public function deleteCustomerPaymentMethodAsyncWithHttpInfo(mixed $customerId, mixed $id, mixed $payType, mixed $tenantShopId = null, string $contentType = self::contentTypes['deleteCustomerPaymentMethod'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodDeletingResponse';
         $request = $this->deleteCustomerPaymentMethodRequest($customerId, $id, $payType, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -4458,7 +4458,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -4479,7 +4479,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deleteInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -4506,31 +4506,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4545,11 +4545,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -4584,7 +4584,7 @@ class DefaultApi
      */
     public function deleteInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['deleteInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailDeletingResponse';
         $request = $this->deleteInvoicesRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -4682,7 +4682,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を削除します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deletePaymentBulk'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentBulkDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -4703,7 +4703,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['deletePaymentBulk'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentBulkDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentBulkDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -4730,31 +4730,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4769,11 +4769,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -4808,7 +4808,7 @@ class DefaultApi
      */
     public function deletePaymentBulkAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['deletePaymentBulk'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentBulkDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentBulkDeletingResponse';
         $request = $this->deletePaymentBulkRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -4905,7 +4905,7 @@ class DefaultApi
      * @param string $id          プランID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlanDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlanDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -4925,7 +4925,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlanDeletingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlanDeletingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -4952,31 +4952,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlanDeletingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlanDeletingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlanDeletingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlanDeletingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlanDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlanDeletingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlanDeletingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlanDeletingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -4991,11 +4991,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlanDeletingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlanDeletingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -5028,7 +5028,7 @@ class DefaultApi
      */
     public function deletePlanAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['deletePlan'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlanDeletingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlanDeletingResponse';
         $request = $this->deletePlanRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -5119,10 +5119,10 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済処理を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ExecutePaymentRequest $executePaymentRequest executePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExecutePaymentRequest $executePaymentRequest executePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['executePayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExecutePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExecutePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -5140,11 +5140,11 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済処理を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ExecutePaymentRequest $executePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExecutePaymentRequest $executePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['executePayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExecutePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExecutePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5171,31 +5171,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExecutePayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExecutePayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExecutePayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExecutePayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExecutePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExecutePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExecutePayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\ExecutePayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -5210,11 +5210,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExecutePayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExecutePayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -5227,7 +5227,7 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済処理を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ExecutePaymentRequest $executePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExecutePaymentRequest $executePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['executePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5244,14 +5244,14 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済処理を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ExecutePaymentRequest $executePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExecutePaymentRequest $executePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['executePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function executePaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $executePaymentRequest = null, string $contentType = self::contentTypes['executePayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExecutePayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\ExecutePayment200Response';
         $request = $this->executePaymentRequest($id, $tenantShopId, $executePaymentRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -5278,7 +5278,7 @@ class DefaultApi
      *
      * @param string                                       $id                    オーダーID（決済情報のID） (required)
      * @param string                                       $tenantShopId          &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済処理を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\ExecutePaymentRequest $executePaymentRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExecutePaymentRequest $executePaymentRequest (optional)
      * @param string                                       $contentType           The value for the Content-Type header. Check self::contentTypes['executePayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5359,10 +5359,10 @@ class DefaultApi
      *
      * @param string                                                              $id                                           オーダーID（決済情報のID） (required)
      * @param string                                                              $tenantShopId                                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の3Dセキュア認証後決済を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest paymentCardExecutingAfterThreeDSecureRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -5380,11 +5380,11 @@ class DefaultApi
      *
      * @param string                                                              $id                                           オーダーID（決済情報のID） (required)
      * @param string                                                              $tenantShopId                                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の3Dセキュア認証後決済を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5411,31 +5411,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -5450,11 +5450,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -5467,7 +5467,7 @@ class DefaultApi
      *
      * @param string                                                              $id                                           オーダーID（決済情報のID） (required)
      * @param string                                                              $tenantShopId                                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の3Dセキュア認証後決済を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5484,14 +5484,14 @@ class DefaultApi
      *
      * @param string                                                              $id                                           オーダーID（決済情報のID） (required)
      * @param string                                                              $tenantShopId                                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の3Dセキュア認証後決済を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function executePaymentAfterThreeDSecureecureAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $paymentCardExecutingAfterThreeDSecureRequest = null, string $contentType = self::contentTypes['executePaymentAfterThreeDSecureecure'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureResponse';
         $request = $this->executePaymentAfterThreeDSecureecureRequest($id, $tenantShopId, $paymentCardExecutingAfterThreeDSecureRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -5518,7 +5518,7 @@ class DefaultApi
      *
      * @param string                                                              $id                                           オーダーID（決済情報のID） (required)
      * @param string                                                              $tenantShopId                                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済の3Dセキュア認証後決済を実行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentCardExecutingAfterThreeDSecureRequest $paymentCardExecutingAfterThreeDSecureRequest (optional)
      * @param string                                                              $contentType                                  The value for the Content-Type header. Check self::contentTypes['executePaymentAfterThreeDSecureecure'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5599,10 +5599,10 @@ class DefaultApi
      *
      * @param string                                                        $id                                     オーダーID（決済情報のID） (required)
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、&#x60;id&#x60;で指定した決済のバーコードを再度発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest paymentKonbiniGeneratingBarcodeRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -5620,11 +5620,11 @@ class DefaultApi
      *
      * @param string                                                        $id                                     オーダーID（決済情報のID） (required)
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、&#x60;id&#x60;で指定した決済のバーコードを再度発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5651,31 +5651,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -5690,11 +5690,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -5707,7 +5707,7 @@ class DefaultApi
      *
      * @param string                                                        $id                                     オーダーID（決済情報のID） (required)
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、&#x60;id&#x60;で指定した決済のバーコードを再度発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5724,14 +5724,14 @@ class DefaultApi
      *
      * @param string                                                        $id                                     オーダーID（決済情報のID） (required)
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、&#x60;id&#x60;で指定した決済のバーコードを再度発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function generateBarcodeOfPaymentAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $paymentKonbiniGeneratingBarcodeRequest = null, string $contentType = self::contentTypes['generateBarcodeOfPayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeResponse';
         $request = $this->generateBarcodeOfPaymentRequest($id, $tenantShopId, $paymentKonbiniGeneratingBarcodeRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -5758,7 +5758,7 @@ class DefaultApi
      *
      * @param string                                                        $id                                     オーダーID（決済情報のID） (required)
      * @param string                                                        $tenantShopId                           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主としたコンビニ決済のうち、&#x60;id&#x60;で指定した決済のバーコードを再度発行します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaymentKonbiniGeneratingBarcodeRequest $paymentKonbiniGeneratingBarcodeRequest (optional)
      * @param string                                                        $contentType                            The value for the Content-Type header. Check self::contentTypes['generateBarcodeOfPayment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5837,7 +5837,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定することで、指定したテナントショップのインボイス請求書情報を取得できます。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -5858,7 +5858,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -5885,31 +5885,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -5924,11 +5924,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -5963,7 +5963,7 @@ class DefaultApi
      */
     public function getInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['getInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailRetrievingResponse';
         $request = $this->getInvoicesRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -6058,10 +6058,10 @@ class DefaultApi
      * getInvoicesList: インボイス 一覧取得.
      *
      * @param string                                               $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
      * @param string                                               $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoicesList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -6078,11 +6078,11 @@ class DefaultApi
      * getInvoicesListWithHttpInfo: インボイス 一覧取得.
      *
      * @param string                                               $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
      * @param string                                               $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoicesList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -6109,31 +6109,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -6148,11 +6148,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -6164,7 +6164,7 @@ class DefaultApi
      * getInvoicesListAsync: インボイス 一覧取得.
      *
      * @param string                                               $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
      * @param string                                               $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoicesList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6180,14 +6180,14 @@ class DefaultApi
      * getInvoicesListAsyncWithHttpInfo: インボイス 一覧取得.
      *
      * @param string                                               $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
      * @param string                                               $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoicesList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function getInvoicesListAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $query = null, string $contentType = self::contentTypes['getInvoicesList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceListRetrievingResponse';
         $request = $this->getInvoicesListRequest($tenantShopId, $query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -6213,7 +6213,7 @@ class DefaultApi
      * Create request for operation 'getInvoicesList'.
      *
      * @param string                                               $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\GetInvoicesListQueryParameter $query        検索条件クエリパラメータ (optional)
      * @param string                                               $contentType  The value for the Content-Type header. Check self::contentTypes['getInvoicesList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6288,10 +6288,10 @@ class DefaultApi
      *
      * @param string                                             $id                          インボイスID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest invoiceDetailOpeningRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest invoiceDetailOpeningRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['openInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -6309,11 +6309,11 @@ class DefaultApi
      *
      * @param string                                             $id                          インボイスID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['openInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -6340,31 +6340,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -6379,11 +6379,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -6396,7 +6396,7 @@ class DefaultApi
      *
      * @param string                                             $id                          インボイスID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['openInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6413,14 +6413,14 @@ class DefaultApi
      *
      * @param string                                             $id                          インボイスID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['openInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function openInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $invoiceDetailOpeningRequest = null, string $contentType = self::contentTypes['openInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailOpeningResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailOpeningResponse';
         $request = $this->openInvoicesRequest($id, $tenantShopId, $invoiceDetailOpeningRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -6447,7 +6447,7 @@ class DefaultApi
      *
      * @param string                                             $id                          インボイスID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書の請求を実施します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailOpeningRequest $invoiceDetailOpeningRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['openInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6524,10 +6524,10 @@ class DefaultApi
      *
      * @param string                                               $id                            インボイスID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest paidExternallyInvoicesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest paidExternallyInvoicesRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['paidExternallyInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -6545,11 +6545,11 @@ class DefaultApi
      *
      * @param string                                               $id                            インボイスID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['paidExternallyInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -6576,31 +6576,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -6615,11 +6615,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -6632,7 +6632,7 @@ class DefaultApi
      *
      * @param string                                               $id                            インボイスID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['paidExternallyInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6649,14 +6649,14 @@ class DefaultApi
      *
      * @param string                                               $id                            インボイスID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['paidExternallyInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function paidExternallyInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $paidExternallyInvoicesRequest = null, string $contentType = self::contentTypes['paidExternallyInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailMarkingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailMarkingResponse';
         $request = $this->paidExternallyInvoicesRequest($id, $tenantShopId, $paidExternallyInvoicesRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -6683,7 +6683,7 @@ class DefaultApi
      *
      * @param string                                               $id                            インボイスID (required)
      * @param string                                               $tenantShopId                  &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元としたインボイス請求書についての更新ができます。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PaidExternallyInvoicesRequest $paidExternallyInvoicesRequest (optional)
      * @param string                                               $contentType                   The value for the Content-Type header. Check self::contentTypes['paidExternallyInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6761,7 +6761,7 @@ class DefaultApi
      * @param string $id          インボイスID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['refreshInvoicesVirtualaccount'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -6781,7 +6781,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['refreshInvoicesVirtualaccount'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -6808,31 +6808,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -6847,11 +6847,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -6884,7 +6884,7 @@ class DefaultApi
      */
     public function refreshInvoicesVirtualaccountAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['refreshInvoicesVirtualaccount'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailRefreshResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailRefreshResponse';
         $request = $this->refreshInvoicesVirtualaccountRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -6980,10 +6980,10 @@ class DefaultApi
      * registerInvoices: インボイス 作成.
      *
      * @param string                                        $tenantShopId           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequest $invoiceCreatingRequest invoiceCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequest $invoiceCreatingRequest invoiceCreatingRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['registerInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -7000,11 +7000,11 @@ class DefaultApi
      * registerInvoicesWithHttpInfo: インボイス 作成.
      *
      * @param string                                        $tenantShopId           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['registerInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceCreatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceCreatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -7031,31 +7031,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceCreatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceCreatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceCreatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceCreatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceCreatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceCreatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceCreatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -7070,11 +7070,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceCreatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceCreatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -7086,7 +7086,7 @@ class DefaultApi
      * registerInvoicesAsync: インボイス 作成.
      *
      * @param string                                        $tenantShopId           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['registerInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7102,14 +7102,14 @@ class DefaultApi
      * registerInvoicesAsyncWithHttpInfo: インボイス 作成.
      *
      * @param string                                        $tenantShopId           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['registerInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function registerInvoicesAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $invoiceCreatingRequest = null, string $contentType = self::contentTypes['registerInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceCreatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceCreatingResponse';
         $request = $this->registerInvoicesRequest($tenantShopId, $invoiceCreatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -7135,7 +7135,7 @@ class DefaultApi
      * Create request for operation 'registerInvoices'.
      *
      * @param string                                        $tenantShopId           &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを請求元とした請求書情報を作成します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceCreatingRequest $invoiceCreatingRequest (optional)
      * @param string                                        $contentType            The value for the Content-Type header. Check self::contentTypes['registerInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7207,7 +7207,7 @@ class DefaultApi
      * @param bool   $enableImmediateUse VISA/Mastercard即時利用をリクエストするかどうか  - &#x60;true&#x60;： 即時利用をリクエストする - &#x60;false&#x60;： 即時利用をリクエストしない  即時利用は以下の場合リクエストできません。  - &#x60;本番環境申請情報.contract_info.site_published&#x60;が&#x60;true&#x60;でない（審査時点でWebサイトが用意されていない） - &#x60;本番環境申請情報.shop_info.deals_long_apply_content&#x60;が&#x60;true&#x60;である（審査に時間がかかる商材を取り扱うと表明している） (required)
      * @param string $contentType        The value for the Content-Type header. Check self::contentTypes['requestProductionEnvironment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\POSTContractsExaminationsResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\POSTContractsExaminationsResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -7229,7 +7229,7 @@ class DefaultApi
      * @param string $contentType        The value for the Content-Type header. Check self::contentTypes['requestProductionEnvironment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\POSTContractsExaminationsResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\POSTContractsExaminationsResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -7256,31 +7256,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse';
+            $returnType = '\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -7295,11 +7295,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -7336,7 +7336,7 @@ class DefaultApi
      */
     public function requestProductionEnvironmentAsyncWithHttpInfo(mixed $tenantShopId, mixed $shopId, mixed $enableImmediateUse, string $contentType = self::contentTypes['requestProductionEnvironment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\POSTContractsExaminationsResponse';
+        $returnType = '\Fincode\OpenAPI\Model\POSTContractsExaminationsResponse';
         $request = $this->requestProductionEnvironmentRequest($tenantShopId, $shopId, $enableImmediateUse, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -7443,12 +7443,12 @@ class DefaultApi
     /**
      * reserveProvider: テナントショップ 決済手段追加申請.
      *
-     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param \Fincode\OpenAPI\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \Fincode\OpenAPI\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
      * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\POSTProviderReserveResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\POSTProviderReserveResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -7464,13 +7464,13 @@ class DefaultApi
     /**
      * reserveProviderWithHttpInfo: テナントショップ 決済手段追加申請.
      *
-     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param \Fincode\OpenAPI\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \Fincode\OpenAPI\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
      * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\POSTProviderReserveResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\POSTProviderReserveResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -7497,31 +7497,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\POSTProviderReserveResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\POSTProviderReserveResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\POSTProviderReserveResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\POSTProviderReserveResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\POSTProviderReserveResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\POSTProviderReserveResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\POSTProviderReserveResponse';
+            $returnType = '\Fincode\OpenAPI\Model\POSTProviderReserveResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -7536,11 +7536,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\POSTProviderReserveResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\POSTProviderReserveResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -7551,9 +7551,9 @@ class DefaultApi
     /**
      * reserveProviderAsync: テナントショップ 決済手段追加申請.
      *
-     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param \Fincode\OpenAPI\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \Fincode\OpenAPI\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
      * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7568,16 +7568,16 @@ class DefaultApi
     /**
      * reserveProviderAsyncWithHttpInfo: テナントショップ 決済手段追加申請.
      *
-     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param \Fincode\OpenAPI\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \Fincode\OpenAPI\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
      * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function reserveProviderAsyncWithHttpInfo(mixed $id, mixed $tenantShopId, mixed $provider, string $contentType = self::contentTypes['reserveProvider'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\POSTProviderReserveResponse';
+        $returnType = '\Fincode\OpenAPI\Model\POSTProviderReserveResponse';
         $request = $this->reserveProviderRequest($id, $tenantShopId, $provider, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -7602,9 +7602,9 @@ class DefaultApi
     /**
      * Create request for operation 'reserveProvider'.
      *
-     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                   $id           指定したテナントショップに対して決済手段を追加申請します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップに対して決済手段を追加申請します。 (required)
-     * @param \OpenAPI\Fincode\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \OpenAPI\Fincode\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
+     * @param \Fincode\OpenAPI\Model\PaymentProvider[] $provider     追加対象決済手段\\\\ \\\\ 追加で申請する決済手段をリストで指定します。  - &#x60;PAYSLE&#x60;: コンビニ決済 - &#x60;PAYPAY&#x60;: \Fincode\OpenAPI\Model\PayPay - &#x60;APPLE_PAY_UC&#x60;: Apple Pay（VISA/Mastercard） - &#x60;APPLE_PAY_JCB_AMEX&#x60;: Apple Pay（JCB/American Express） - &#x60;DIRECT_DEBIT&#x60;: 口座振替 - &#x60;VIRTUAL_ACCOUNT&#x60;: 銀行振込（バーチャル口座） (required)
      * @param string                                   $contentType  The value for the Content-Type header. Check self::contentTypes['reserveProvider'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7688,7 +7688,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報を取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccount'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\AccountRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\AccountRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -7709,7 +7709,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccount'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\AccountRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\AccountRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -7736,31 +7736,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\AccountRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\AccountRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\AccountRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\AccountRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\AccountRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\AccountRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\AccountRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\AccountRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -7775,11 +7775,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\AccountRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\AccountRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -7814,7 +7814,7 @@ class DefaultApi
      */
     public function retrieveAccountAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveAccount'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\AccountRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\AccountRetrievingResponse';
         $request = $this->retrieveAccountRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -7910,10 +7910,10 @@ class DefaultApi
      *
      * @param string                                       $id           売上入金ID (required)
      * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -7931,11 +7931,11 @@ class DefaultApi
      *
      * @param string                                       $id           売上入金ID (required)
      * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -7962,31 +7962,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -8001,11 +8001,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -8018,7 +8018,7 @@ class DefaultApi
      *
      * @param string                                       $id           売上入金ID (required)
      * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8035,14 +8035,14 @@ class DefaultApi
      *
      * @param string                                       $id           売上入金ID (required)
      * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrieveAccountDetailListAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $query = null, string $contentType = self::contentTypes['retrieveAccountDetailList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\AccountDetailListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\AccountDetailListRetrievingResponse';
         $request = $this->retrieveAccountDetailListRequest($id, $tenantShopId, $query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -8069,7 +8069,7 @@ class DefaultApi
      *
      * @param string                                       $id           売上入金ID (required)
      * @param string                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報のうち、指定したIDの売上入金情報の売上入金詳細を取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\PaginationQueryParams $query        売上入金詳細の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountDetailList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8151,10 +8151,10 @@ class DefaultApi
      * retrieveAccountList: 売上入金 一覧取得.
      *
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報から一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\AccountListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\AccountListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -8171,11 +8171,11 @@ class DefaultApi
      * retrieveAccountListWithHttpInfo: 売上入金 一覧取得.
      *
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報から一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\AccountListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\AccountListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -8202,31 +8202,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\AccountListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\AccountListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\AccountListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\AccountListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\AccountListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\AccountListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\AccountListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\AccountListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -8241,11 +8241,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\AccountListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\AccountListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -8257,7 +8257,7 @@ class DefaultApi
      * retrieveAccountListAsync: 売上入金 一覧取得.
      *
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報から一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8273,14 +8273,14 @@ class DefaultApi
      * retrieveAccountListAsyncWithHttpInfo: 売上入金 一覧取得.
      *
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報から一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrieveAccountListAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $query = null, string $contentType = self::contentTypes['retrieveAccountList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\AccountListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\AccountListRetrievingResponse';
         $request = $this->retrieveAccountListRequest($tenantShopId, $query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -8306,7 +8306,7 @@ class DefaultApi
      * Create request for operation 'retrieveAccountList'.
      *
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップの売上入金情報から一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveAccountListQueryParameter $query        売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8383,7 +8383,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomer'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -8404,7 +8404,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomer'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -8431,31 +8431,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -8470,11 +8470,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -8509,7 +8509,7 @@ class DefaultApi
      */
     public function retrieveCustomerAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomer'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerRetrievingResponse';
         $request = $this->retrieveCustomerRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -8612,7 +8612,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードから取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerCard'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCardRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCardRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -8634,7 +8634,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerCard'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCardRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCardRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -8661,31 +8661,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -8700,11 +8700,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -8741,7 +8741,7 @@ class DefaultApi
      */
     public function retrieveCustomerCardAsyncWithHttpInfo(mixed $customerId, mixed $id, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomerCard'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCardRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCardRetrievingResponse';
         $request = $this->retrieveCustomerCardRequest($customerId, $id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -8852,7 +8852,7 @@ class DefaultApi
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの一覧を取得します。 (optional)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerCardList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -8873,7 +8873,7 @@ class DefaultApi
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerCardList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -8900,31 +8900,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -8939,11 +8939,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -8978,7 +8978,7 @@ class DefaultApi
      */
     public function retrieveCustomerCardListAsyncWithHttpInfo(mixed $customerId, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomerCardList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCardListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCardListRetrievingResponse';
         $request = $this->retrieveCustomerCardListRequest($customerId, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -9076,11 +9076,11 @@ class DefaultApi
     /**
      * retrieveCustomerList: 顧客 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                    $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客から一覧で取得します。 (optional)
      * @param string                                                    $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -9096,12 +9096,12 @@ class DefaultApi
     /**
      * retrieveCustomerListWithHttpInfo: 顧客 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                    $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客から一覧で取得します。 (optional)
      * @param string                                                    $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -9128,31 +9128,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -9167,11 +9167,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -9182,7 +9182,7 @@ class DefaultApi
     /**
      * retrieveCustomerListAsync: 顧客 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                    $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客から一覧で取得します。 (optional)
      * @param string                                                    $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerList'] to see the possible values for this operation
      *
@@ -9198,7 +9198,7 @@ class DefaultApi
     /**
      * retrieveCustomerListAsyncWithHttpInfo: 顧客 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                    $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客から一覧で取得します。 (optional)
      * @param string                                                    $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerList'] to see the possible values for this operation
      *
@@ -9206,7 +9206,7 @@ class DefaultApi
      */
     public function retrieveCustomerListAsyncWithHttpInfo(mixed $query = null, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomerList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerListRetrievingResponse';
         $request = $this->retrieveCustomerListRequest($query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -9231,7 +9231,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveCustomerList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveCustomerListQueryParameter $query        顧客情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                    $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客から一覧で取得します。 (optional)
      * @param string                                                    $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerList'] to see the possible values for this operation
      *
@@ -9307,11 +9307,11 @@ class DefaultApi
      *
      * @param string                                                            $customerId   顧客ID (required)
      * @param string                                                            $id           決済手段ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
      * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
      * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -9329,12 +9329,12 @@ class DefaultApi
      *
      * @param string                                                            $customerId   顧客ID (required)
      * @param string                                                            $id           決済手段ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
      * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
      * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -9361,31 +9361,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -9400,11 +9400,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -9417,7 +9417,7 @@ class DefaultApi
      *
      * @param string                                                            $customerId   顧客ID (required)
      * @param string                                                            $id           決済手段ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
      * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
      * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
@@ -9435,7 +9435,7 @@ class DefaultApi
      *
      * @param string                                                            $customerId   顧客ID (required)
      * @param string                                                            $id           決済手段ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
      * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
      * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
@@ -9443,7 +9443,7 @@ class DefaultApi
      */
     public function retrieveCustomerPaymentMethodAsyncWithHttpInfo(mixed $customerId, mixed $id, mixed $query, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomerPaymentMethod'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingResponse';
         $request = $this->retrieveCustomerPaymentMethodRequest($customerId, $id, $query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -9470,7 +9470,7 @@ class DefaultApi
      *
      * @param string                                                            $customerId   顧客ID (required)
      * @param string                                                            $id           決済手段ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams $query        決済手段の取得において検索条件となるクエリパラメータ (required)
      * @param string                                                            $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段からIDで指定した決済手段を取得します。 (optional)
      * @param string                                                            $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethod'] to see the possible values for this operation
      *
@@ -9569,11 +9569,11 @@ class DefaultApi
      * retrieveCustomerPaymentMethodList: 決済手段 一覧取得.
      *
      * @param string                                                                $customerId   顧客ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
      * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -9590,12 +9590,12 @@ class DefaultApi
      * retrieveCustomerPaymentMethodListWithHttpInfo: 決済手段 一覧取得.
      *
      * @param string                                                                $customerId   顧客ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
      * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -9622,31 +9622,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -9661,11 +9661,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -9677,7 +9677,7 @@ class DefaultApi
      * retrieveCustomerPaymentMethodListAsync: 決済手段 一覧取得.
      *
      * @param string                                                                $customerId   顧客ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
      * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
@@ -9694,7 +9694,7 @@ class DefaultApi
      * retrieveCustomerPaymentMethodListAsyncWithHttpInfo: 決済手段 一覧取得.
      *
      * @param string                                                                $customerId   顧客ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
      * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
@@ -9702,7 +9702,7 @@ class DefaultApi
      */
     public function retrieveCustomerPaymentMethodListAsyncWithHttpInfo(mixed $customerId, mixed $query, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrieveCustomerPaymentMethodList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingResponse';
         $request = $this->retrieveCustomerPaymentMethodListRequest($customerId, $query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -9728,7 +9728,7 @@ class DefaultApi
      * Create request for operation 'retrieveCustomerPaymentMethodList'.
      *
      * @param string                                                                $customerId   顧客ID (required)
-     * @param \OpenAPI\Fincode\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams $query        決済手段の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                                $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に紐づく決済手段から一覧で取得します。 (optional)
      * @param string                                                                $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveCustomerPaymentMethodList'] to see the possible values for this operation
      *
@@ -9819,11 +9819,11 @@ class DefaultApi
      * retrievePayment: 決済 取得.
      *
      * @param string                                              $id           オーダーID（決済情報のID） (required)
-     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
      * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
      * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\RetrievePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\RetrievePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -9840,12 +9840,12 @@ class DefaultApi
      * retrievePaymentWithHttpInfo: 決済 取得.
      *
      * @param string                                              $id           オーダーID（決済情報のID） (required)
-     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
      * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
      * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\RetrievePayment200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\RetrievePayment200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -9872,31 +9872,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\RetrievePayment200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\RetrievePayment200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\RetrievePayment200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\RetrievePayment200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\RetrievePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\RetrievePayment200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\RetrievePayment200Response';
+            $returnType = '\Fincode\OpenAPI\Model\RetrievePayment200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -9911,11 +9911,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\RetrievePayment200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\RetrievePayment200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -9927,7 +9927,7 @@ class DefaultApi
      * retrievePaymentAsync: 決済 取得.
      *
      * @param string                                              $id           オーダーID（決済情報のID） (required)
-     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
      * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
      * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
@@ -9944,7 +9944,7 @@ class DefaultApi
      * retrievePaymentAsyncWithHttpInfo: 決済 取得.
      *
      * @param string                                              $id           オーダーID（決済情報のID） (required)
-     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
      * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
      * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
@@ -9952,7 +9952,7 @@ class DefaultApi
      */
     public function retrievePaymentAsyncWithHttpInfo(mixed $id, mixed $query, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrievePayment'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\RetrievePayment200Response';
+        $returnType = '\Fincode\OpenAPI\Model\RetrievePayment200Response';
         $request = $this->retrievePaymentRequest($id, $query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -9978,7 +9978,7 @@ class DefaultApi
      * Create request for operation 'retrievePayment'.
      *
      * @param string                                              $id           オーダーID（決済情報のID） (required)
-     * @param \OpenAPI\Fincode\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\PaymentRetrievingQueryParams $query        決済の取得において検索条件となるクエリパラメータ (required)
      * @param string                                              $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした決済のうち、&#x60;id&#x60;で指定した決済情報を取得します。 (optional)
      * @param string                                              $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePayment'] to see the possible values for this operation
      *
@@ -10065,11 +10065,11 @@ class DefaultApi
      * retrievePaymentBulkDetailList: 一括決済詳細 一覧取得.
      *
      * @param string                                                             $id           一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                             $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 (optional)
      * @param string                                                             $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkDetailList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -10086,12 +10086,12 @@ class DefaultApi
      * retrievePaymentBulkDetailListWithHttpInfo: 一括決済詳細 一覧取得.
      *
      * @param string                                                             $id           一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                             $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 (optional)
      * @param string                                                             $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkDetailList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -10118,31 +10118,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -10157,11 +10157,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -10173,7 +10173,7 @@ class DefaultApi
      * retrievePaymentBulkDetailListAsync: 一括決済詳細 一覧取得.
      *
      * @param string                                                             $id           一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                             $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 (optional)
      * @param string                                                             $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkDetailList'] to see the possible values for this operation
      *
@@ -10190,7 +10190,7 @@ class DefaultApi
      * retrievePaymentBulkDetailListAsyncWithHttpInfo: 一括決済詳細 一覧取得.
      *
      * @param string                                                             $id           一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                             $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 (optional)
      * @param string                                                             $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkDetailList'] to see the possible values for this operation
      *
@@ -10198,7 +10198,7 @@ class DefaultApi
      */
     public function retrievePaymentBulkDetailListAsyncWithHttpInfo(mixed $id, mixed $query, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrievePaymentBulkDetailList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentBulkDetailListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentBulkDetailListRetrievingResponse';
         $request = $this->retrievePaymentBulkDetailListRequest($id, $query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -10224,7 +10224,7 @@ class DefaultApi
      * Create request for operation 'retrievePaymentBulkDetailList'.
      *
      * @param string                                                             $id           一括決済ID。\\ 詳細を取得する一括決済情報のIDを指定します。 (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkDetailListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                             $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済の詳細を一覧で取得します。 (optional)
      * @param string                                                             $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkDetailList'] to see the possible values for this operation
      *
@@ -10311,10 +10311,10 @@ class DefaultApi
      * retrievePaymentBulkList: 一括決済 一覧取得.
      *
      * @param string                                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -10331,11 +10331,11 @@ class DefaultApi
      * retrievePaymentBulkListWithHttpInfo: 一括決済 一覧取得.
      *
      * @param string                                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -10362,31 +10362,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -10401,11 +10401,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -10417,7 +10417,7 @@ class DefaultApi
      * retrievePaymentBulkListAsync: 一括決済 一覧取得.
      *
      * @param string                                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10433,14 +10433,14 @@ class DefaultApi
      * retrievePaymentBulkListAsyncWithHttpInfo: 一括決済 一覧取得.
      *
      * @param string                                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrievePaymentBulkListAsyncWithHttpInfo(mixed $tenantShopId = null, mixed $query = null, string $contentType = self::contentTypes['retrievePaymentBulkList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PaymentBulkListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PaymentBulkListRetrievingResponse';
         $request = $this->retrievePaymentBulkListRequest($tenantShopId, $query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -10466,7 +10466,7 @@ class DefaultApi
      * Create request for operation 'retrievePaymentBulkList'.
      *
      * @param string                                                       $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした一括決済情報を一覧で取得します。 (optional)
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentBulkListQueryParameter $query        一括決済情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                       $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentBulkList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10539,11 +10539,11 @@ class DefaultApi
     /**
      * retrievePaymentList: 決済 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\RetrievePaymentList200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\RetrievePaymentList200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -10559,12 +10559,12 @@ class DefaultApi
     /**
      * retrievePaymentListWithHttpInfo: 決済 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\RetrievePaymentList200Response|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\RetrievePaymentList200Response|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -10591,31 +10591,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\RetrievePaymentList200Response' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\RetrievePaymentList200Response' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\RetrievePaymentList200Response' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\RetrievePaymentList200Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\RetrievePaymentList200Response', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\RetrievePaymentList200Response', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\RetrievePaymentList200Response';
+            $returnType = '\Fincode\OpenAPI\Model\RetrievePaymentList200Response';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -10630,11 +10630,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\RetrievePaymentList200Response', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\RetrievePaymentList200Response', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -10645,7 +10645,7 @@ class DefaultApi
     /**
      * retrievePaymentListAsync: 決済 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentList'] to see the possible values for this operation
      *
@@ -10661,7 +10661,7 @@ class DefaultApi
     /**
      * retrievePaymentListAsyncWithHttpInfo: 決済 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentList'] to see the possible values for this operation
      *
@@ -10669,7 +10669,7 @@ class DefaultApi
      */
     public function retrievePaymentListAsyncWithHttpInfo(mixed $query, mixed $tenantShopId = null, string $contentType = self::contentTypes['retrievePaymentList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\RetrievePaymentList200Response';
+        $returnType = '\Fincode\OpenAPI\Model\RetrievePaymentList200Response';
         $request = $this->retrievePaymentListRequest($query, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -10694,7 +10694,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrievePaymentList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrievePaymentListQueryParameter $query        決済の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                   $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく決済から一覧で取得します。 (optional)
      * @param string                                                   $contentType  The value for the Content-Type header. Check self::contentTypes['retrievePaymentList'] to see the possible values for this operation
      *
@@ -10775,7 +10775,7 @@ class DefaultApi
      * @param string $id          プランID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlan'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlanRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlanRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -10795,7 +10795,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlan'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlanRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlanRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -10822,31 +10822,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlanRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlanRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlanRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlanRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlanRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlanRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlanRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlanRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -10861,11 +10861,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlanRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlanRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -10898,7 +10898,7 @@ class DefaultApi
      */
     public function retrievePlanAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['retrievePlan'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlanRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlanRetrievingResponse';
         $request = $this->retrievePlanRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -10987,10 +10987,10 @@ class DefaultApi
     /**
      * retrievePlanList: プラン 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlanList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlanListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlanListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -11006,11 +11006,11 @@ class DefaultApi
     /**
      * retrievePlanListWithHttpInfo: プラン 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlanList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlanListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlanListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11037,31 +11037,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlanListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlanListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlanListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlanListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlanListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlanListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlanListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlanListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -11076,11 +11076,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlanListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlanListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -11091,7 +11091,7 @@ class DefaultApi
     /**
      * retrievePlanListAsync: プラン 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlanList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11106,14 +11106,14 @@ class DefaultApi
     /**
      * retrievePlanListAsyncWithHttpInfo: プラン 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlanList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrievePlanListAsyncWithHttpInfo(mixed $query = null, string $contentType = self::contentTypes['retrievePlanList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlanListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlanListRetrievingResponse';
         $request = $this->retrievePlanListRequest($query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -11138,7 +11138,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrievePlanList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlanListQueryParameter $query       プラン情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlanList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11210,7 +11210,7 @@ class DefaultApi
      * @param string $id          プラットフォーム利用料収入ID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccount'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -11230,7 +11230,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccount'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11257,31 +11257,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -11296,11 +11296,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -11333,7 +11333,7 @@ class DefaultApi
      */
     public function retrievePlatformAccountAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['retrievePlatformAccount'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformAccountRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformAccountRetrievingResponse';
         $request = $this->retrievePlatformAccountRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -11422,10 +11422,10 @@ class DefaultApi
     /**
      * retrievePlatformAccountList: プラットフォーム利用料収入 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                           $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -11441,11 +11441,11 @@ class DefaultApi
     /**
      * retrievePlatformAccountListWithHttpInfo: プラットフォーム利用料収入 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                           $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11472,31 +11472,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -11511,11 +11511,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -11526,7 +11526,7 @@ class DefaultApi
     /**
      * retrievePlatformAccountListAsync: プラットフォーム利用料収入 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                           $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11541,14 +11541,14 @@ class DefaultApi
     /**
      * retrievePlatformAccountListAsyncWithHttpInfo: プラットフォーム利用料収入 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                           $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrievePlatformAccountListAsyncWithHttpInfo(mixed $query = null, string $contentType = self::contentTypes['retrievePlatformAccountList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformAccountListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformAccountListRetrievingResponse';
         $request = $this->retrievePlatformAccountListRequest($query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -11573,7 +11573,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrievePlatformAccountList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                           $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11643,10 +11643,10 @@ class DefaultApi
      * retrievePlatformAccountSummaryList: プラットフォーム利用料収入サマリー 一覧取得.
      *
      * @param string                                                                  $id          プラットフォーム利用料収入ID (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                                  $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountSummaryList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -11663,11 +11663,11 @@ class DefaultApi
      * retrievePlatformAccountSummaryListWithHttpInfo: プラットフォーム利用料収入サマリー 一覧取得.
      *
      * @param string                                                                  $id          プラットフォーム利用料収入ID (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                                  $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountSummaryList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11694,31 +11694,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -11733,11 +11733,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -11749,7 +11749,7 @@ class DefaultApi
      * retrievePlatformAccountSummaryListAsync: プラットフォーム利用料収入サマリー 一覧取得.
      *
      * @param string                                                                  $id          プラットフォーム利用料収入ID (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                                  $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountSummaryList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11765,14 +11765,14 @@ class DefaultApi
      * retrievePlatformAccountSummaryListAsyncWithHttpInfo: プラットフォーム利用料収入サマリー 一覧取得.
      *
      * @param string                                                                  $id          プラットフォーム利用料収入ID (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                                  $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountSummaryList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrievePlatformAccountSummaryListAsyncWithHttpInfo(mixed $id, mixed $query = null, string $contentType = self::contentTypes['retrievePlatformAccountSummaryList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformAccountSummaryListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformAccountSummaryListRetrievingResponse';
         $request = $this->retrievePlatformAccountSummaryListRequest($id, $query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -11798,7 +11798,7 @@ class DefaultApi
      * Create request for operation 'retrievePlatformAccountSummaryList'.
      *
      * @param string                                                                  $id          プラットフォーム利用料収入ID (required)
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformAccountSummaryListQueryParameter $query       プラットフォーム利用料による売上入金情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                                  $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformAccountSummaryList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11878,7 +11878,7 @@ class DefaultApi
      * @param string $id          ショップID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShop'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformShopRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformShopRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -11898,7 +11898,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShop'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformShopRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformShopRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -11925,31 +11925,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -11964,11 +11964,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -12001,7 +12001,7 @@ class DefaultApi
      */
     public function retrievePlatformShopAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['retrievePlatformShop'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformShopRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformShopRetrievingResponse';
         $request = $this->retrievePlatformShopRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -12090,10 +12090,10 @@ class DefaultApi
     /**
      * retrievePlatformShopList: プラットフォームショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShopList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -12109,11 +12109,11 @@ class DefaultApi
     /**
      * retrievePlatformShopListWithHttpInfo: プラットフォームショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShopList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -12140,31 +12140,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -12179,11 +12179,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -12194,7 +12194,7 @@ class DefaultApi
     /**
      * retrievePlatformShopListAsync: プラットフォームショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12209,14 +12209,14 @@ class DefaultApi
     /**
      * retrievePlatformShopListAsyncWithHttpInfo: プラットフォームショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrievePlatformShopListAsyncWithHttpInfo(mixed $query = null, string $contentType = self::contentTypes['retrievePlatformShopList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformShopListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformShopListRetrievingResponse';
         $request = $this->retrievePlatformShopListRequest($query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -12241,7 +12241,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrievePlatformShopList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrievePlatformShopListQueryParameter $query       プラットフォーム情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrievePlatformShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12313,7 +12313,7 @@ class DefaultApi
      * @param string $id          サブスクリプションID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -12333,7 +12333,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -12360,31 +12360,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -12399,11 +12399,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -12436,7 +12436,7 @@ class DefaultApi
      */
     public function retrieveSubscriptionAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['retrieveSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionRetrievingResponse';
         $request = $this->retrieveSubscriptionRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -12525,10 +12525,10 @@ class DefaultApi
     /**
      * retrieveSubscriptionList: サブスクリプション 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -12544,11 +12544,11 @@ class DefaultApi
     /**
      * retrieveSubscriptionListWithHttpInfo: サブスクリプション 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -12575,31 +12575,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -12614,11 +12614,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -12629,7 +12629,7 @@ class DefaultApi
     /**
      * retrieveSubscriptionListAsync: サブスクリプション 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12644,14 +12644,14 @@ class DefaultApi
     /**
      * retrieveSubscriptionListAsyncWithHttpInfo: サブスクリプション 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrieveSubscriptionListAsyncWithHttpInfo(mixed $query, string $contentType = self::contentTypes['retrieveSubscriptionList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionListRetrievingResponse';
         $request = $this->retrieveSubscriptionListRequest($query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -12676,7 +12676,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveSubscriptionList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionListQueryParameter $query       サブスクリプション情報の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                        $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12749,11 +12749,11 @@ class DefaultApi
     /**
      * retrieveSubscriptionResultList: サブスクリプション結果 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -12769,12 +12769,12 @@ class DefaultApi
     /**
      * retrieveSubscriptionResultListWithHttpInfo: サブスクリプション結果 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -12801,31 +12801,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -12840,11 +12840,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -12855,7 +12855,7 @@ class DefaultApi
     /**
      * retrieveSubscriptionResultListAsync: サブスクリプション結果 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
@@ -12871,7 +12871,7 @@ class DefaultApi
     /**
      * retrieveSubscriptionResultListAsyncWithHttpInfo: サブスクリプション結果 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
@@ -12879,7 +12879,7 @@ class DefaultApi
      */
     public function retrieveSubscriptionResultListAsyncWithHttpInfo(mixed $query, mixed $id, string $contentType = self::contentTypes['retrieveSubscriptionResultList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionResultListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionResultListRetrievingResponse';
         $request = $this->retrieveSubscriptionResultListRequest($query, $id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -12904,7 +12904,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveSubscriptionResultList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
+     * @param \Fincode\OpenAPI\Model\RetrieveSubscriptionResultListQueryParameter $query       サブスクリプション結果の一覧取得において検索条件となるクエリパラメータ (required)
      * @param string                                                              $id          サブスクリプションID (required)
      * @param string                                                              $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSubscriptionResultList'] to see the possible values for this operation
      *
@@ -12986,11 +12986,11 @@ class DefaultApi
     /**
      * retrieveTenantContract: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ContractsRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ContractsRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -13006,12 +13006,12 @@ class DefaultApi
     /**
      * retrieveTenantContractWithHttpInfo: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ContractsRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ContractsRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -13038,31 +13038,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ContractsRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ContractsRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ContractsRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ContractsRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ContractsRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ContractsRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ContractsRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ContractsRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -13077,11 +13077,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ContractsRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ContractsRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -13092,7 +13092,7 @@ class DefaultApi
     /**
      * retrieveTenantContractAsync: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -13108,7 +13108,7 @@ class DefaultApi
     /**
      * retrieveTenantContractAsyncWithHttpInfo: テナントショップ契約情報 取得.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -13116,7 +13116,7 @@ class DefaultApi
      */
     public function retrieveTenantContractAsyncWithHttpInfo(mixed $id, mixed $tenantShopId, string $contentType = self::contentTypes['retrieveTenantContract'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ContractsRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ContractsRetrievingResponse';
         $request = $this->retrieveTenantContractRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -13141,7 +13141,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantContract'.
      *
-     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの契約情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの契約情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantContract'] to see the possible values for this operation
      *
@@ -13214,11 +13214,11 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -13236,12 +13236,12 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoWithHttpInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -13270,31 +13270,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -13309,11 +13309,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -13324,7 +13324,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoAsync: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -13342,7 +13342,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoAsyncWithHttpInfo: （旧）テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -13352,7 +13352,7 @@ class DefaultApi
      */
     public function retrieveTenantExaminationInfoAsyncWithHttpInfo(mixed $id, mixed $tenantShopId, string $contentType = self::contentTypes['retrieveTenantExaminationInfo'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoRetrievingResponse';
         $request = $this->retrieveTenantExaminationInfoRequest($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -13377,7 +13377,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantExaminationInfo'.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfo'] to see the possible values for this operation
      *
@@ -13452,11 +13452,11 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -13472,12 +13472,12 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2WithHttpInfo: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -13504,31 +13504,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -13543,11 +13543,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -13558,7 +13558,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2Async: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -13574,7 +13574,7 @@ class DefaultApi
     /**
      * retrieveTenantExaminationInfoV2AsyncWithHttpInfo: テナントショップ本番環境申請情報 取得.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -13582,7 +13582,7 @@ class DefaultApi
      */
     public function retrieveTenantExaminationInfoV2AsyncWithHttpInfo(mixed $id, mixed $tenantShopId, string $contentType = self::contentTypes['retrieveTenantExaminationInfoV2'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoV2RetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoV2RetrievingResponse';
         $request = $this->retrieveTenantExaminationInfoV2Request($id, $tenantShopId, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -13607,7 +13607,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantExaminationInfoV2'.
      *
-     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string $id           指定したテナントショップの本番環境申請情報を取得します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を取得します。 (required)
      * @param string $contentType  The value for the Content-Type header. Check self::contentTypes['retrieveTenantExaminationInfoV2'] to see the possible values for this operation
      *
@@ -13683,7 +13683,7 @@ class DefaultApi
      * @param string $id          ショップID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShop'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\TenantShopRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\TenantShopRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -13703,7 +13703,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShop'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\TenantShopRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\TenantShopRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -13730,31 +13730,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\TenantShopRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\TenantShopRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\TenantShopRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\TenantShopRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\TenantShopRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\TenantShopRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\TenantShopRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\TenantShopRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -13769,11 +13769,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\TenantShopRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\TenantShopRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -13806,7 +13806,7 @@ class DefaultApi
      */
     public function retrieveTenantShopAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['retrieveTenantShop'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\TenantShopRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\TenantShopRetrievingResponse';
         $request = $this->retrieveTenantShopRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -13895,10 +13895,10 @@ class DefaultApi
     /**
      * retrieveTenantShopList: テナントショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                      $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShopList'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\TenantShopListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\TenantShopListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -13914,11 +13914,11 @@ class DefaultApi
     /**
      * retrieveTenantShopListWithHttpInfo: テナントショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                      $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShopList'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\TenantShopListRetrievingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\TenantShopListRetrievingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -13945,31 +13945,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -13984,11 +13984,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -13999,7 +13999,7 @@ class DefaultApi
     /**
      * retrieveTenantShopListAsync: テナントショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                      $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14014,14 +14014,14 @@ class DefaultApi
     /**
      * retrieveTenantShopListAsyncWithHttpInfo: テナントショップ 一覧取得.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                      $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function retrieveTenantShopListAsyncWithHttpInfo(mixed $query = null, string $contentType = self::contentTypes['retrieveTenantShopList'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\TenantShopListRetrievingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\TenantShopListRetrievingResponse';
         $request = $this->retrieveTenantShopListRequest($query, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -14046,7 +14046,7 @@ class DefaultApi
     /**
      * Create request for operation 'retrieveTenantShopList'.
      *
-     * @param \OpenAPI\Fincode\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
+     * @param \Fincode\OpenAPI\Model\RetrieveTenantShopListQueryParameter $query       テナント情報の一覧取得において検索条件となるクエリパラメータ (optional)
      * @param string                                                      $contentType The value for the Content-Type header. Check self::contentTypes['retrieveTenantShopList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14118,7 +14118,7 @@ class DefaultApi
      * @param string $id          サブスクリプションID (required)
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['unsubscripbeSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -14138,7 +14138,7 @@ class DefaultApi
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['unsubscripbeSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -14165,31 +14165,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -14204,11 +14204,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -14241,7 +14241,7 @@ class DefaultApi
      */
     public function unsubscripbeSubscriptionAsyncWithHttpInfo(mixed $id, string $contentType = self::contentTypes['unsubscripbeSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionUnsubscribingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionUnsubscribingResponse';
         $request = $this->unsubscripbeSubscriptionRequest($id, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -14332,10 +14332,10 @@ class DefaultApi
      *
      * @param string                                         $id                      顧客ID (required)
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerUpdatingRequest $customerUpdatingRequest customerUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerUpdatingRequest $customerUpdatingRequest customerUpdatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -14353,11 +14353,11 @@ class DefaultApi
      *
      * @param string                                         $id                      顧客ID (required)
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -14384,31 +14384,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -14423,11 +14423,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -14440,7 +14440,7 @@ class DefaultApi
      *
      * @param string                                         $id                      顧客ID (required)
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14457,14 +14457,14 @@ class DefaultApi
      *
      * @param string                                         $id                      顧客ID (required)
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateCustomerAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $customerUpdatingRequest = null, string $contentType = self::contentTypes['updateCustomer'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerUpdatingResponse';
         $request = $this->updateCustomerRequest($id, $tenantShopId, $customerUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -14491,7 +14491,7 @@ class DefaultApi
      *
      * @param string                                         $id                      顧客ID (required)
      * @param string                                         $tenantShopId            &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerUpdatingRequest $customerUpdatingRequest (optional)
      * @param string                                         $contentType             The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14569,10 +14569,10 @@ class DefaultApi
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $id                          更新するカードのID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest customerCardUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest customerCardUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateCustomerCard'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\CustomerCardUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\CustomerCardUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -14591,11 +14591,11 @@ class DefaultApi
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $id                          更新するカードのID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateCustomerCard'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\CustomerCardUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\CustomerCardUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -14622,31 +14622,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -14661,11 +14661,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -14679,7 +14679,7 @@ class DefaultApi
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $id                          更新するカードのID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14697,14 +14697,14 @@ class DefaultApi
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $id                          更新するカードのID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateCustomerCardAsyncWithHttpInfo(mixed $customerId, mixed $id, mixed $tenantShopId = null, mixed $customerCardUpdatingRequest = null, string $contentType = self::contentTypes['updateCustomerCard'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\CustomerCardUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\CustomerCardUpdatingResponse';
         $request = $this->updateCustomerCardRequest($customerId, $id, $tenantShopId, $customerCardUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -14732,7 +14732,7 @@ class DefaultApi
      * @param string                                             $customerId                  このカードが紐づく顧客のID (required)
      * @param string                                             $id                          更新するカードのID (required)
      * @param string                                             $tenantShopId                &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ 顧客情報を共有しないプラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ このテナントショップに紐づく顧客のうち、指定したIDの顧客に対して登録されたカードの情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\CustomerCardUpdatingRequest $customerCardUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateCustomerCard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14817,10 +14817,10 @@ class DefaultApi
      *
      * @param string                                              $id                           インボイスID (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest invoiceDetailUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest invoiceDetailUpdatingRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['updateInvoices'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -14838,11 +14838,11 @@ class DefaultApi
      *
      * @param string                                              $id                           インボイスID (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['updateInvoices'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -14869,31 +14869,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -14908,11 +14908,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -14925,7 +14925,7 @@ class DefaultApi
      *
      * @param string                                              $id                           インボイスID (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['updateInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14942,14 +14942,14 @@ class DefaultApi
      *
      * @param string                                              $id                           インボイスID (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['updateInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateInvoicesAsyncWithHttpInfo(mixed $id, mixed $tenantShopId = null, mixed $invoiceDetailUpdatingRequest = null, string $contentType = self::contentTypes['updateInvoices'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\InvoiceDetailUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\InvoiceDetailUpdatingResponse';
         $request = $this->updateInvoicesRequest($id, $tenantShopId, $invoiceDetailUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -14976,7 +14976,7 @@ class DefaultApi
      *
      * @param string                                              $id                           インボイスID (required)
      * @param string                                              $tenantShopId                 &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップを販売主とした請求書情報を更新します。 (optional)
-     * @param \OpenAPI\Fincode\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\InvoiceDetailUpdatingRequest $invoiceDetailUpdatingRequest (optional)
      * @param string                                              $contentType                  The value for the Content-Type header. Check self::contentTypes['updateInvoices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15052,10 +15052,10 @@ class DefaultApi
      * updatePlan: プラン 更新.
      *
      * @param string                                     $id                  プランID (required)
-     * @param \OpenAPI\Fincode\Model\PlanUpdatingRequest $planUpdatingRequest planUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanUpdatingRequest $planUpdatingRequest planUpdatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlanUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlanUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -15072,11 +15072,11 @@ class DefaultApi
      * updatePlanWithHttpInfo: プラン 更新.
      *
      * @param string                                     $id                  プランID (required)
-     * @param \OpenAPI\Fincode\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlanUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlanUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -15103,31 +15103,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlanUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlanUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlanUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlanUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlanUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlanUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlanUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlanUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -15142,11 +15142,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlanUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlanUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -15158,7 +15158,7 @@ class DefaultApi
      * updatePlanAsync: プラン 更新.
      *
      * @param string                                     $id                  プランID (required)
-     * @param \OpenAPI\Fincode\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15174,14 +15174,14 @@ class DefaultApi
      * updatePlanAsyncWithHttpInfo: プラン 更新.
      *
      * @param string                                     $id                  プランID (required)
-     * @param \OpenAPI\Fincode\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updatePlanAsyncWithHttpInfo(mixed $id, mixed $planUpdatingRequest = null, string $contentType = self::contentTypes['updatePlan'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlanUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlanUpdatingResponse';
         $request = $this->updatePlanRequest($id, $planUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -15207,7 +15207,7 @@ class DefaultApi
      * Create request for operation 'updatePlan'.
      *
      * @param string                                     $id                  プランID (required)
-     * @param \OpenAPI\Fincode\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlanUpdatingRequest $planUpdatingRequest (optional)
      * @param string                                     $contentType         The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15279,10 +15279,10 @@ class DefaultApi
      * updatePlatformShop: プラットフォームショップ 更新.
      *
      * @param string                                             $id                          ショップID (required)
-     * @param \OpenAPI\Fincode\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest platformShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest platformShopUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updatePlatformShop'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\PlatformShopUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\PlatformShopUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -15299,11 +15299,11 @@ class DefaultApi
      * updatePlatformShopWithHttpInfo: プラットフォームショップ 更新.
      *
      * @param string                                             $id                          ショップID (required)
-     * @param \OpenAPI\Fincode\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updatePlatformShop'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\PlatformShopUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\PlatformShopUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -15330,31 +15330,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -15369,11 +15369,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -15385,7 +15385,7 @@ class DefaultApi
      * updatePlatformShopAsync: プラットフォームショップ 更新.
      *
      * @param string                                             $id                          ショップID (required)
-     * @param \OpenAPI\Fincode\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updatePlatformShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15401,14 +15401,14 @@ class DefaultApi
      * updatePlatformShopAsyncWithHttpInfo: プラットフォームショップ 更新.
      *
      * @param string                                             $id                          ショップID (required)
-     * @param \OpenAPI\Fincode\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updatePlatformShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updatePlatformShopAsyncWithHttpInfo(mixed $id, mixed $platformShopUpdatingRequest = null, string $contentType = self::contentTypes['updatePlatformShop'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\PlatformShopUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\PlatformShopUpdatingResponse';
         $request = $this->updatePlatformShopRequest($id, $platformShopUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -15434,7 +15434,7 @@ class DefaultApi
      * Create request for operation 'updatePlatformShop'.
      *
      * @param string                                             $id                          ショップID (required)
-     * @param \OpenAPI\Fincode\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\PlatformShopUpdatingRequest $platformShopUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updatePlatformShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15506,10 +15506,10 @@ class DefaultApi
      * updateSubscription: サブスクリプション 更新.
      *
      * @param string                                             $id                          サブスクリプションID (required)
-     * @param \OpenAPI\Fincode\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest subscriptionUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest subscriptionUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\SubscriptionUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\SubscriptionUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -15526,11 +15526,11 @@ class DefaultApi
      * updateSubscriptionWithHttpInfo: サブスクリプション 更新.
      *
      * @param string                                             $id                          サブスクリプションID (required)
-     * @param \OpenAPI\Fincode\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\SubscriptionUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\SubscriptionUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -15557,31 +15557,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -15596,11 +15596,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -15612,7 +15612,7 @@ class DefaultApi
      * updateSubscriptionAsync: サブスクリプション 更新.
      *
      * @param string                                             $id                          サブスクリプションID (required)
-     * @param \OpenAPI\Fincode\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15628,14 +15628,14 @@ class DefaultApi
      * updateSubscriptionAsyncWithHttpInfo: サブスクリプション 更新.
      *
      * @param string                                             $id                          サブスクリプションID (required)
-     * @param \OpenAPI\Fincode\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateSubscriptionAsyncWithHttpInfo(mixed $id, mixed $subscriptionUpdatingRequest = null, string $contentType = self::contentTypes['updateSubscription'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\SubscriptionUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\SubscriptionUpdatingResponse';
         $request = $this->updateSubscriptionRequest($id, $subscriptionUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -15661,7 +15661,7 @@ class DefaultApi
      * Create request for operation 'updateSubscription'.
      *
      * @param string                                             $id                          サブスクリプションID (required)
-     * @param \OpenAPI\Fincode\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\SubscriptionUpdatingRequest $subscriptionUpdatingRequest (optional)
      * @param string                                             $contentType                 The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15732,12 +15732,12 @@ class DefaultApi
     /**
      * updateTenantExaminationInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest examinationInfoUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -15755,13 +15755,13 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoWithHttpInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -15790,31 +15790,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -15829,11 +15829,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -15844,9 +15844,9 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoAsync: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15863,9 +15863,9 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoAsyncWithHttpInfo: （旧）テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15874,7 +15874,7 @@ class DefaultApi
      */
     public function updateTenantExaminationInfoAsyncWithHttpInfo(mixed $id, mixed $tenantShopId, mixed $examinationInfoUpdatingRequest = null, string $contentType = self::contentTypes['updateTenantExaminationInfo'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoUpdatingResponse';
         $request = $this->updateTenantExaminationInfoRequest($id, $tenantShopId, $examinationInfoUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -15899,9 +15899,9 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantExaminationInfo'.
      *
-     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                $id                             指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                $tenantShopId                   &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoUpdatingRequest $examinationInfoUpdatingRequest (optional)
      * @param string                                                $contentType                    The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15982,12 +15982,12 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest examinationInfoV2UpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -16003,13 +16003,13 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2WithHttpInfo: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -16036,31 +16036,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -16075,11 +16075,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -16090,9 +16090,9 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2Async: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16107,16 +16107,16 @@ class DefaultApi
     /**
      * updateTenantExaminationInfoV2AsyncWithHttpInfo: テナントショップ本番環境申請情報 更新.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateTenantExaminationInfoV2AsyncWithHttpInfo(mixed $id, mixed $tenantShopId, mixed $examinationInfoV2UpdatingRequest = null, string $contentType = self::contentTypes['updateTenantExaminationInfoV2'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingResponse';
         $request = $this->updateTenantExaminationInfoV2Request($id, $tenantShopId, $examinationInfoV2UpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -16141,9 +16141,9 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantExaminationInfoV2'.
      *
-     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                                  $id                               指定したテナントショップの本番環境申請情報を更新します。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                                  $tenantShopId                     &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップの本番環境申請情報を更新します。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\ExaminationInfoV2UpdatingRequest $examinationInfoV2UpdatingRequest (optional)
      * @param string                                                  $contentType                      The value for the Content-Type header. Check self::contentTypes['updateTenantExaminationInfoV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16223,10 +16223,10 @@ class DefaultApi
      * updateTenantShop: テナントショップ 更新.
      *
      * @param string                                           $id                        ショップID (required)
-     * @param \OpenAPI\Fincode\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest tenantShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest tenantShopUpdatingRequest (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['updateTenantShop'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\TenantShopUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\TenantShopUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -16243,11 +16243,11 @@ class DefaultApi
      * updateTenantShopWithHttpInfo: テナントショップ 更新.
      *
      * @param string                                           $id                        ショップID (required)
-     * @param \OpenAPI\Fincode\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['updateTenantShop'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\TenantShopUpdatingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\TenantShopUpdatingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -16274,31 +16274,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\TenantShopUpdatingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\TenantShopUpdatingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\TenantShopUpdatingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\TenantShopUpdatingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\TenantShopUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\TenantShopUpdatingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\TenantShopUpdatingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\TenantShopUpdatingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -16313,11 +16313,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\TenantShopUpdatingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\TenantShopUpdatingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -16329,7 +16329,7 @@ class DefaultApi
      * updateTenantShopAsync: テナントショップ 更新.
      *
      * @param string                                           $id                        ショップID (required)
-     * @param \OpenAPI\Fincode\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['updateTenantShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16345,14 +16345,14 @@ class DefaultApi
      * updateTenantShopAsyncWithHttpInfo: テナントショップ 更新.
      *
      * @param string                                           $id                        ショップID (required)
-     * @param \OpenAPI\Fincode\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['updateTenantShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      */
     public function updateTenantShopAsyncWithHttpInfo(mixed $id, mixed $tenantShopUpdatingRequest = null, string $contentType = self::contentTypes['updateTenantShop'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\TenantShopUpdatingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\TenantShopUpdatingResponse';
         $request = $this->updateTenantShopRequest($id, $tenantShopUpdatingRequest, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -16378,7 +16378,7 @@ class DefaultApi
      * Create request for operation 'updateTenantShop'.
      *
      * @param string                                           $id                        ショップID (required)
-     * @param \OpenAPI\Fincode\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
+     * @param \Fincode\OpenAPI\Model\TenantShopUpdatingRequest $tenantShopUpdatingRequest (optional)
      * @param string                                           $contentType               The value for the Content-Type header. Check self::contentTypes['updateTenantShop'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16449,13 +16449,13 @@ class DefaultApi
     /**
      * uploadExaminationFile: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         type (required)
+     * @param \Fincode\OpenAPI\Model\ExaminationFileType $type         type (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
      * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['uploadExaminationFile'] to see the possible values for this operation
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationFileUploadingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse
+     * @return \Fincode\OpenAPI\Model\ExaminationFileUploadingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse
      *
      * @throws ApiException              on non-2xx response
      * @throws GuzzleException
@@ -16471,14 +16471,14 @@ class DefaultApi
     /**
      * uploadExaminationFileWithHttpInfo: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
+     * @param \Fincode\OpenAPI\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
      * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['uploadExaminationFile'] to see the possible values for this operation
      *
      * @return array{
-     *     \OpenAPI\Fincode\Model\ExaminationFileUploadingResponse|\OpenAPI\Fincode\Model\FincodeAPIErrorResponse,
+     *     \Fincode\OpenAPI\Model\ExaminationFileUploadingResponse|\Fincode\OpenAPI\Model\FincodeAPIErrorResponse,
      *     int,
      *     list<string>,
      * } Array of response body, status, and response headers
@@ -16505,31 +16505,31 @@ class DefaultApi
             }
             switch ($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse', []), $response->getStatusCode(), $response->getHeaders()];
                 case 400:
-                    if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
+                    if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody();
                     // stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Fincode\Model\FincodeAPIErrorResponse' !== 'string') {
+                        if ('\Fincode\OpenAPI\Model\FincodeAPIErrorResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
-                    return [ObjectSerializer::deserialize($content, '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
+                    return [ObjectSerializer::deserialize($content, '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', []), $response->getStatusCode(), $response->getHeaders()];
             }
-            $returnType = '\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse';
+            $returnType = '\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse';
             if ('\SplFileObject' === $returnType) {
                 $content = $response->getBody();
             // stream goes to serializer
@@ -16544,11 +16544,11 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 400:
-                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\OpenAPI\Fincode\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
+                    $data = ObjectSerializer::deserialize($e->getResponseBody(), '\Fincode\OpenAPI\Model\FincodeAPIErrorResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -16559,9 +16559,9 @@ class DefaultApi
     /**
      * uploadExaminationFileAsync: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
+     * @param \Fincode\OpenAPI\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
      * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['uploadExaminationFile'] to see the possible values for this operation
      *
@@ -16577,9 +16577,9 @@ class DefaultApi
     /**
      * uploadExaminationFileAsyncWithHttpInfo: テナントショップ 審査ファイルアップロード.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
+     * @param \Fincode\OpenAPI\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
      * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['uploadExaminationFile'] to see the possible values for this operation
      *
@@ -16587,7 +16587,7 @@ class DefaultApi
      */
     public function uploadExaminationFileAsyncWithHttpInfo(mixed $id, mixed $tenantShopId, mixed $type, mixed $data, string $contentType = self::contentTypes['uploadExaminationFile'][0]): PromiseInterface
     {
-        $returnType = '\OpenAPI\Fincode\Model\ExaminationFileUploadingResponse';
+        $returnType = '\Fincode\OpenAPI\Model\ExaminationFileUploadingResponse';
         $request = $this->uploadExaminationFileRequest($id, $tenantShopId, $type, $data, $contentType);
 
         return $this->client->sendAsync($request, $this->createHttpClientOption())->then(function ($response) use ($returnType) {
@@ -16612,9 +16612,9 @@ class DefaultApi
     /**
      * Create request for operation 'uploadExaminationFile'.
      *
-     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\OpenAPI\Fincode\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
+     * @param string                                     $id           指定したテナントショップのものとしてファイルをアップロードします。&#x60;Tenant-\Fincode\OpenAPI\Model\Shop-Id&#x60;ヘッダーも併せて指定してください。 (required)
      * @param string                                     $tenantShopId &lt;span class&#x3D;\&quot;smallText color--red-400\&quot;&gt;※ プラットフォームのメインショップのみ指定可&lt;/span&gt;\\ テナントショップID。\\ 指定したテナントショップのものとしてファイルをアップロードします。 (required)
-     * @param \OpenAPI\Fincode\Model\ExaminationFileType $type         (required)
+     * @param \Fincode\OpenAPI\Model\ExaminationFileType $type         (required)
      * @param mixed                                      $data         審査ファイルデータ\\\\ \\\\ 画像ファイルをマルチパートアップロードするときはこの&#x60;data&#x60;フィールドに画像データを設定します。 (required)
      * @param string                                     $contentType  The value for the Content-Type header. Check self::contentTypes['uploadExaminationFile'] to see the possible values for this operation
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText\&quot;&gt;※ &#x60;pay_type &#x3D; \&quot;Directdebit\&quot;&#x60;（この決済手段登録が口座振替用の口座情報登録である）のとき必須&lt;/span&gt;.
@@ -37,7 +37,7 @@ class CustomerPaymentMethodCreatingRequestDirectdebit implements ModelInterface,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['applicationType' => '\OpenAPI\Fincode\Model\DirectDebitApplicationType', 'bankCode' => 'string', 'branchCode' => 'string', 'accountType' => '\OpenAPI\Fincode\Model\AccountType', 'accountNumber' => 'string', 'accountName' => 'string', 'accountNameKana' => 'string', 'paperApplication' => '\OpenAPI\Fincode\Model\PaperApplication'];
+    protected static array $openAPITypes = ['applicationType' => '\Fincode\OpenAPI\Model\DirectDebitApplicationType', 'bankCode' => 'string', 'branchCode' => 'string', 'accountType' => '\Fincode\OpenAPI\Model\AccountType', 'accountNumber' => 'string', 'accountName' => 'string', 'accountNameKana' => 'string', 'paperApplication' => '\Fincode\OpenAPI\Model\PaperApplication'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

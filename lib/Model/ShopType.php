@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * ショップタイプ。  - &#x60;(null)&#x60;: スタンダードショップ - &#x60;platform&#x60;: プラットフォームショップ - &#x60;tenant&#x60;: テナントショップ.

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkErrorDetail implements ModelInterface, \ArrayAccess, \JsonSeria
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['number' => 'string', 'orderId' => 'string', 'errors' => '\OpenAPI\Fincode\Model\FincodeAPIError[]'];
+    protected static array $openAPITypes = ['number' => 'string', 'orderId' => 'string', 'errors' => '\Fincode\OpenAPI\Model\FincodeAPIError[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -303,7 +303,7 @@ class PaymentBulkErrorDetail implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Gets errors.
      *
-     * @return \OpenAPI\Fincode\Model\FincodeAPIError[]|null
+     * @return \Fincode\OpenAPI\Model\FincodeAPIError[]|null
      */
     public function getErrors(): mixed
     {
@@ -313,7 +313,7 @@ class PaymentBulkErrorDetail implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets errors.
      *
-     * @param \OpenAPI\Fincode\Model\FincodeAPIError[] $errors errors
+     * @param \Fincode\OpenAPI\Model\FincodeAPIError[] $errors errors
      */
     public function setErrors(mixed $errors): static
     {

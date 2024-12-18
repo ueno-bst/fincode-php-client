@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentListRetrievingDirectDebitQueryParams implements ModelInterface, \Ar
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['targetDateFrom' => 'string', 'targetDateTo' => 'string', 'withdrawalDateFrom' => 'string', 'withdrawalDateTo' => 'string', 'resultCode' => '\OpenAPI\Fincode\Model\DirectDebitResultCode', 'payPattern' => 'string', 'subscriptionId' => 'string', 'updatedFrom' => 'string', 'updatedTo' => 'string', 'sort' => 'string'];
+    protected static array $openAPITypes = ['targetDateFrom' => 'string', 'targetDateTo' => 'string', 'withdrawalDateFrom' => 'string', 'withdrawalDateTo' => 'string', 'resultCode' => '\Fincode\OpenAPI\Model\DirectDebitResultCode', 'payPattern' => 'string', 'subscriptionId' => 'string', 'updatedFrom' => 'string', 'updatedTo' => 'string', 'sort' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

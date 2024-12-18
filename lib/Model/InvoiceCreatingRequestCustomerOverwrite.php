@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * 上書き顧客（請求先）情報\\ &#x60;customer_id&#x60;で指定した顧客の情報のうち、上書きを行う場合に指定します。\\ 顧客情報の上書きはこのインボイス情報においてのみ適用されます。

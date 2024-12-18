@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 課金間隔\\ 課金間隔数（&#x60;interval_count&#x60;）を指定した場合必須です。 省略した場合、&#x60;month&#x60;が設定されます。  - &#x60;month&#x60;：月 - &#x60;year&#x60;：年.

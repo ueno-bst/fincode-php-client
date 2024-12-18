@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class InvoiceList implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['list' => '\OpenAPI\Fincode\Model\Invoice[]'];
+    protected static array $openAPITypes = ['list' => '\Fincode\OpenAPI\Model\Invoice[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class InvoiceList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets list.
      *
-     * @return \OpenAPI\Fincode\Model\Invoice[]|null
+     * @return \Fincode\OpenAPI\Model\Invoice[]|null
      */
     public function getList(): mixed
     {
@@ -249,7 +249,7 @@ class InvoiceList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets list.
      *
-     * @param \OpenAPI\Fincode\Model\Invoice[] $list list
+     * @param \Fincode\OpenAPI\Model\Invoice[] $list list
      */
     public function setList(mixed $list): static
     {

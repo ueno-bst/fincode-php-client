@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 取引種別\\ 値によって、集計の際にこの売上入金明細の利用金額が加算されるか減算されるかが異なります。  - &#x60;1&#x60;: 決済（加算）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この売上入金明細はある決済1件に対し発生したものであることを示します。&lt;/span&gt; - &#x60;2&#x60;: 返金（減算）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この売上入金明細はある決済に対し発生したキャンセル1件に対し発生したものであることを示します。&lt;/span&gt; - &#x60;3&#x60;: チャージバック（減算）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この売上入金明細はある決済に対し発生したチャージバック1件に対し発生したものであることを示します。&lt;/span&gt; - &#x60;4&#x60;: 調整（加算）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この売上入金明細は何らかの理由で売上入金情報を調整するために発生したものであることを示します。減算のためマイナス値が返されることもあります。&lt;/span&gt; - &#x60;5&#x60;: チャージバックの取消（加算）&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この売上入金明細はある決済に対し発生したチャージバック1件が取り消されたとき発生したものであることを示します。&lt;/span&gt;.

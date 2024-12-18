@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * クレジットカード種別。  - &#x60;0&#x60;: 不明（[テストカード](https://docs.fincode.jp/develop_support/test_resources)を含む） - &#x60;1&#x60;: デビットカード - &#x60;2&#x60;: プリペイドカード - &#x60;3&#x60;: クレジットカード.

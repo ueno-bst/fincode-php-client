@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 一括決済 ステータス  - &#x60;CHECKING&#x60;: チェック中&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;アップロードした一括決済リクエストデータの形式などをチェック中&lt;/span&gt; - &#x60;CHECKED&#x60;: チェック済み&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;データのチェックが完了し、決済処理の実行を待っています。&lt;/span&gt; - &#x60;RUNNING&#x60;: 決済処理中&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;一括決済処理が実行中&lt;/span&gt; - &#x60;COMPLETED&#x60;: 完了 - &#x60;ERROR&#x60;: エラー&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;決済処理中に1件以上のエラーが発生&lt;/span&gt;.

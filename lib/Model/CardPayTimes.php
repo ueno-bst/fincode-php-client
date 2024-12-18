@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * （分割払いの場合）支払回数\\ \\ 指定可能な値： &#x60;3&#x60;, &#x60;5&#x60;, &#x60;6&#x60;, &#x60;10&#x60;, &#x60;12&#x60;, &#x60;15&#x60;, &#x60;18&#x60;, &#x60;20&#x60;, &#x60;24&#x60;.

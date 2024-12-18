@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * コンビニ決済パラメータ\\ &#x60;pay_type&#x60;に&#x60;Konbini&#x60;を含めた場合に用いられる、コンビニ決済に関するパラメータです。
@@ -37,7 +37,7 @@ class PaymentSessionCreatingRequestKonbini implements ModelInterface, \ArrayAcce
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['paymentTermDay' => 'string', 'konbiniReceptionMailSendFlag' => '\OpenAPI\Fincode\Model\KonbiniReceptionMailSendFlag'];
+    protected static array $openAPITypes = ['paymentTermDay' => 'string', 'konbiniReceptionMailSendFlag' => '\Fincode\OpenAPI\Model\KonbiniReceptionMailSendFlag'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class ExaminationFileUploadingResponse implements ModelInterface, \ArrayAccess, 
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['examinationFiles' => '\OpenAPI\Fincode\Model\ExaminationFileUploadExaminationFilesInner[]'];
+    protected static array $openAPITypes = ['examinationFiles' => '\Fincode\OpenAPI\Model\ExaminationFileUploadExaminationFilesInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class ExaminationFileUploadingResponse implements ModelInterface, \ArrayAccess, 
     /**
      * Gets examinationFiles.
      *
-     * @return \OpenAPI\Fincode\Model\ExaminationFileUploadExaminationFilesInner[]|null
+     * @return \Fincode\OpenAPI\Model\ExaminationFileUploadExaminationFilesInner[]|null
      */
     public function getExaminationFiles(): mixed
     {
@@ -249,7 +249,7 @@ class ExaminationFileUploadingResponse implements ModelInterface, \ArrayAccess, 
     /**
      * Sets examinationFiles.
      *
-     * @param \OpenAPI\Fincode\Model\ExaminationFileUploadExaminationFilesInner[] $examinationFiles examinationFiles
+     * @param \Fincode\OpenAPI\Model\ExaminationFileUploadExaminationFilesInner[] $examinationFiles examinationFiles
      */
     public function setExaminationFiles(mixed $examinationFiles): static
     {

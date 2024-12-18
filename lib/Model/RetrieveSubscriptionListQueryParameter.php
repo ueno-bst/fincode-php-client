@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class RetrieveSubscriptionListQueryParameter implements ModelInterface, \ArrayAc
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['page' => 'int', 'limit' => 'int', 'countOnly' => 'bool', 'payType' => '\OpenAPI\Fincode\Model\SubscriptionPayType', 'id' => 'string', 'customerId' => 'string', 'planId' => 'string', 'status' => '\OpenAPI\Fincode\Model\SubscriptionStatus', 'totalAmountMin' => 'int', 'totalAmountMax' => 'int', 'intervalPattern' => '\OpenAPI\Fincode\Model\PropertiesIntervalPattern', 'startDateFrom' => 'string', 'startDateTo' => 'string', 'stopDateFrom' => 'string', 'stopDateTo' => 'string', 'nextChargeDateFrom' => 'string', 'nextChargeDateTo' => 'string', 'updateDateFrom' => 'string', 'updateDateTo' => 'string', 'sort' => 'string'];
+    protected static array $openAPITypes = ['page' => 'int', 'limit' => 'int', 'countOnly' => 'bool', 'payType' => '\Fincode\OpenAPI\Model\SubscriptionPayType', 'id' => 'string', 'customerId' => 'string', 'planId' => 'string', 'status' => '\Fincode\OpenAPI\Model\SubscriptionStatus', 'totalAmountMin' => 'int', 'totalAmountMax' => 'int', 'intervalPattern' => '\Fincode\OpenAPI\Model\PropertiesIntervalPattern', 'startDateFrom' => 'string', 'startDateTo' => 'string', 'stopDateFrom' => 'string', 'stopDateTo' => 'string', 'nextChargeDateFrom' => 'string', 'nextChargeDateTo' => 'string', 'updateDateFrom' => 'string', 'updateDateTo' => 'string', 'sort' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

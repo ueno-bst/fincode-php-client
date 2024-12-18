@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkErrorDetailList implements ModelInterface, \ArrayAccess, \JsonS
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['errorDetail' => '\OpenAPI\Fincode\Model\PaymentBulkErrorDetail[]'];
+    protected static array $openAPITypes = ['errorDetail' => '\Fincode\OpenAPI\Model\PaymentBulkErrorDetail[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class PaymentBulkErrorDetailList implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Gets errorDetail.
      *
-     * @return \OpenAPI\Fincode\Model\PaymentBulkErrorDetail[]|null
+     * @return \Fincode\OpenAPI\Model\PaymentBulkErrorDetail[]|null
      */
     public function getErrorDetail(): mixed
     {
@@ -249,7 +249,7 @@ class PaymentBulkErrorDetailList implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets errorDetail.
      *
-     * @param \OpenAPI\Fincode\Model\PaymentBulkErrorDetail[] $errorDetail 一括決済エラー詳細リスト\\ \\ エラー1件につき1オブジェクトが格納され、オブジェクト内にはエラーが発生した決済のIDとその決済で発生したエラーのリストが格納されます
+     * @param \Fincode\OpenAPI\Model\PaymentBulkErrorDetail[] $errorDetail 一括決済エラー詳細リスト\\ \\ エラー1件につき1オブジェクトが格納され、オブジェクト内にはエラーが発生した決済のIDとその決済で発生したエラーのリストが格納されます
      */
     public function setErrorDetail(mixed $errorDetail): static
     {

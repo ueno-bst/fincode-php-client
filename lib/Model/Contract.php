@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class Contract implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'platformId' => 'string', 'shopType' => '\OpenAPI\Fincode\Model\ShopType', 'statusCode' => '\OpenAPI\Fincode\Model\ContractStatus', 'examination' => '\OpenAPI\Fincode\Model\Examination[]', 'availableStatusCode' => 'int', 'createDate' => 'string', 'contractedAt' => 'string', 'startChargingAt' => 'string', 'expiredAt' => 'string', 'salesDepositStatusCode' => 'int', 'salesDepositStatusUpdatedDate' => 'string', 'deniedAt' => 'string', 'suspendedBilling' => 'bool', 'suspendedBillingDate' => 'string', 'suspendedPayment' => 'bool', 'suspendedPaymentDate' => 'string', 'suspendedService' => 'bool', 'suspendedServiceDate' => 'string', 'suspededImmediateUse' => 'bool', 'suspendedImmediateUseDate' => 'string', 'stopCancelaltionMemo' => 'string', 'obligationsNotice' => 'string', 'userShopName' => 'string', 'registerMail' => 'string', 'platformReprentativeShop' => 'bool', 'sharedCustomerFlag' => '\OpenAPI\Fincode\Model\SharedCustomerFlag', 'contractDetail' => '\OpenAPI\Fincode\Model\ContractContractDetail', 'contractBankAccount' => '\OpenAPI\Fincode\Model\ContractBankAccountInfo', 'contractVirtualBank' => '\OpenAPI\Fincode\Model\ContractBankAccountInfo', 'contractCardDestination' => '\OpenAPI\Fincode\Model\CardDestination[]', 'creditCardSetting' => '\OpenAPI\Fincode\Model\CardPaymentSetting', 'officialRegisteredCorporateInfo' => '\OpenAPI\Fincode\Model\RegistryCorporateInfo'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'platformId' => 'string', 'shopType' => '\Fincode\OpenAPI\Model\ShopType', 'statusCode' => '\Fincode\OpenAPI\Model\ContractStatus', 'examination' => '\Fincode\OpenAPI\Model\Examination[]', 'availableStatusCode' => 'int', 'createDate' => 'string', 'contractedAt' => 'string', 'startChargingAt' => 'string', 'expiredAt' => 'string', 'salesDepositStatusCode' => 'int', 'salesDepositStatusUpdatedDate' => 'string', 'deniedAt' => 'string', 'suspendedBilling' => 'bool', 'suspendedBillingDate' => 'string', 'suspendedPayment' => 'bool', 'suspendedPaymentDate' => 'string', 'suspendedService' => 'bool', 'suspendedServiceDate' => 'string', 'suspededImmediateUse' => 'bool', 'suspendedImmediateUseDate' => 'string', 'stopCancelaltionMemo' => 'string', 'obligationsNotice' => 'string', 'userShopName' => 'string', 'registerMail' => 'string', 'platformReprentativeShop' => 'bool', 'sharedCustomerFlag' => '\Fincode\OpenAPI\Model\SharedCustomerFlag', 'contractDetail' => '\Fincode\OpenAPI\Model\ContractContractDetail', 'contractBankAccount' => '\Fincode\OpenAPI\Model\ContractBankAccountInfo', 'contractVirtualBank' => '\Fincode\OpenAPI\Model\ContractBankAccountInfo', 'contractCardDestination' => '\Fincode\OpenAPI\Model\CardDestination[]', 'creditCardSetting' => '\Fincode\OpenAPI\Model\CardPaymentSetting', 'officialRegisteredCorporateInfo' => '\Fincode\OpenAPI\Model\RegistryCorporateInfo'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

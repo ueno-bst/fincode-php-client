@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentSessionCreatingRequest implements ModelInterface, \ArrayAccess, \Js
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['transaction' => '\OpenAPI\Fincode\Model\PaymentSessionCreatingRequestTransaction', 'card' => '\OpenAPI\Fincode\Model\PaymentSessionCreatingRequestCard', 'konbini' => '\OpenAPI\Fincode\Model\PaymentSessionCreatingRequestKonbini', 'paypay' => '\OpenAPI\Fincode\Model\PaymentSessionCreatingRequestPaypay', 'virtualaccount' => '\OpenAPI\Fincode\Model\PaymentSessionCreatingRequestVirtualaccount', 'successUrl' => 'string', 'cancelUrl' => 'string', 'expire' => 'string', 'shopServiceName' => 'string', 'guideMailSendFlag' => '\OpenAPI\Fincode\Model\GuideMailSendFlag', 'receiverMail' => 'string', 'mailCustomerName' => 'string', 'thanksMailSendFlag' => '\OpenAPI\Fincode\Model\ThanksMailSendFlag', 'shopMailTemplateId' => 'string'];
+    protected static array $openAPITypes = ['transaction' => '\Fincode\OpenAPI\Model\PaymentSessionCreatingRequestTransaction', 'card' => '\Fincode\OpenAPI\Model\PaymentSessionCreatingRequestCard', 'konbini' => '\Fincode\OpenAPI\Model\PaymentSessionCreatingRequestKonbini', 'paypay' => '\Fincode\OpenAPI\Model\PaymentSessionCreatingRequestPaypay', 'virtualaccount' => '\Fincode\OpenAPI\Model\PaymentSessionCreatingRequestVirtualaccount', 'successUrl' => 'string', 'cancelUrl' => 'string', 'expire' => 'string', 'shopServiceName' => 'string', 'guideMailSendFlag' => '\Fincode\OpenAPI\Model\GuideMailSendFlag', 'receiverMail' => 'string', 'mailCustomerName' => 'string', 'thanksMailSendFlag' => '\Fincode\OpenAPI\Model\ThanksMailSendFlag', 'shopMailTemplateId' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventPaymentKonbini implements ModelInterface, \ArrayAccess, \JsonS
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'status' => '\OpenAPI\Fincode\Model\PaymentStatus', 'customerId' => 'string', 'overpaymentFlag' => '\OpenAPI\Fincode\Model\OverpaymentFlag', 'cancelOverpaymentFlag' => '\OpenAPI\Fincode\Model\CancelOverpaymentFlag', 'paymentDate' => 'string', 'paymentTerm' => 'string', 'processDate' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'konbiniCode' => '\OpenAPI\Fincode\Model\KonbiniCode', 'konbiniStoreCode' => 'mixed', 'orderSerial' => 'string', 'invoiceId' => 'string', 'errorCode' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'orderId' => 'string', 'accessId' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'status' => '\Fincode\OpenAPI\Model\PaymentStatus', 'customerId' => 'string', 'overpaymentFlag' => '\Fincode\OpenAPI\Model\OverpaymentFlag', 'cancelOverpaymentFlag' => '\Fincode\OpenAPI\Model\CancelOverpaymentFlag', 'paymentDate' => 'string', 'paymentTerm' => 'string', 'processDate' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'amount' => 'string', 'tax' => 'string', 'konbiniCode' => '\Fincode\OpenAPI\Model\KonbiniCode', 'konbiniStoreCode' => 'mixed', 'orderSerial' => 'string', 'invoiceId' => 'string', 'errorCode' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

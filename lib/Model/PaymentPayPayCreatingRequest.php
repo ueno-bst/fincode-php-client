@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentPayPayCreatingRequest implements ModelInterface, \ArrayAccess, \Jso
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PayType', 'jobCode' => '\OpenAPI\Fincode\Model\PayPayPaymentJobCode', 'amount' => 'string', 'tax' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'orderDescription' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PayType', 'jobCode' => '\Fincode\OpenAPI\Model\PayPayPaymentJobCode', 'amount' => 'string', 'tax' => 'string', 'clientField1' => 'string', 'clientField2' => 'string', 'clientField3' => 'string', 'orderDescription' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PlatformRateConfig implements ModelInterface, \ArrayAccess, \JsonSerializa
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => '\OpenAPI\Fincode\Model\ExaminationMasterId', 'platformRate' => 'float', 'fixedFee' => 'int', 'webRegistrationFee' => 'float', 'paypayContentCategoryType' => 'int'];
+    protected static array $openAPITypes = ['id' => '\Fincode\OpenAPI\Model\ExaminationMasterId', 'platformRate' => 'float', 'fixedFee' => 'int', 'webRegistrationFee' => 'float', 'paypayContentCategoryType' => 'int'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

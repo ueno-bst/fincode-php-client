@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * 3Dセキュア2.0認証処理 ステータス  - &#x60;AUTHENTICATING&#x60;: 3Dセキュア認証処理中 - &#x60;CHALLENGE&#x60;: チャレンジ認証の実施が必要 - &#x60;AUTHENTICATED&#x60;: 3Dセキュア認証処理が完了.

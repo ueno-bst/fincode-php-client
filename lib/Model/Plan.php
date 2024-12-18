@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class Plan implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['id' => 'string', 'planName' => 'string', 'description' => 'string', 'shopId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'intervalPattern' => 'string', 'intervalCount' => 'float', 'usedFlag' => 'string', 'deleteFlag' => '\OpenAPI\Fincode\Model\DeleteFlag', 'created' => 'string', 'updated' => 'string'];
+    protected static array $openAPITypes = ['id' => 'string', 'planName' => 'string', 'description' => 'string', 'shopId' => 'string', 'amount' => 'int', 'tax' => 'int', 'totalAmount' => 'int', 'intervalPattern' => 'string', 'intervalCount' => 'float', 'usedFlag' => 'string', 'deleteFlag' => '\Fincode\OpenAPI\Model\DeleteFlag', 'created' => 'string', 'updated' => 'string'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

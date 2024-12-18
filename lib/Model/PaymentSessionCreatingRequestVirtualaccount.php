@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * 銀行振込パラメータ\\ &#x60;pay_type&#x60;に&#x60;Virtualaccount&#x60;を含めた場合に用いられる、銀行振込に関するパラメータです。
@@ -37,7 +37,7 @@ class PaymentSessionCreatingRequestVirtualaccount implements ModelInterface, \Ar
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['paymentTermDay' => 'string', 'virtualaccountReceptionMailSendFlag' => '\OpenAPI\Fincode\Model\VirtualaccountReceptionMailSendFlag', 'referenceOrderId' => 'mixed'];
+    protected static array $openAPITypes = ['paymentTermDay' => 'string', 'virtualaccountReceptionMailSendFlag' => '\Fincode\OpenAPI\Model\VirtualaccountReceptionMailSendFlag', 'referenceOrderId' => 'mixed'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

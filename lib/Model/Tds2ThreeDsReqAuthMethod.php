@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * &lt;span class&#x3D;\&quot;smallText color--blue-400\&quot;&gt;[3Dセキュア認証パラメータ]&lt;/span&gt;\\ 顧客ユーザーアカウント ログイン方法\\ ログイン方法を設定する場合、ログイン証跡とログイン日時の設定が必要です。  - &#x60;01&#x60;: 認証なし（ゲストとしてログイン） - &#x60;02&#x60;: 加盟店様自身の認証情報 - &#x60;03&#x60;: SSO(シングルサインオン) - &#x60;04&#x60;: イシュアーの認証情報 - &#x60;05&#x60;: サードパーティ認証 - &#x60;06&#x60;: FIDO認証

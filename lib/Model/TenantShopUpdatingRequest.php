@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class TenantShopUpdatingRequest implements ModelInterface, \ArrayAccess, \JsonSe
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['examinationMasterId' => '\OpenAPI\Fincode\Model\ExaminationMasterId', 'platformRate' => 'string', 'fixedFee' => 'string', 'webRegistrationFee' => 'string', 'paypayContentCategoryType' => '\OpenAPI\Fincode\Model\PaypayContentCategoryType', 'apiKeyDisplayFlag' => '\OpenAPI\Fincode\Model\ApiKeyDisplayFlag'];
+    protected static array $openAPITypes = ['examinationMasterId' => '\Fincode\OpenAPI\Model\ExaminationMasterId', 'platformRate' => 'string', 'fixedFee' => 'string', 'webRegistrationFee' => 'string', 'paypayContentCategoryType' => '\Fincode\OpenAPI\Model\PaypayContentCategoryType', 'apiKeyDisplayFlag' => '\Fincode\OpenAPI\Model\ApiKeyDisplayFlag'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

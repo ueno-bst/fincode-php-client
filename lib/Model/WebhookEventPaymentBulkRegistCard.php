@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class WebhookEventPaymentBulkRegistCard implements ModelInterface, \ArrayAccess,
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['shopId' => 'string', 'bulkPaymentId' => 'string', 'fileName' => 'string', 'status' => '\OpenAPI\Fincode\Model\PaymentBulkStatus', 'registTotalCount' => 'string', 'errorTotalCount' => 'string', 'payType' => '\OpenAPI\Fincode\Model\PaymentBulkPayType', 'bulkSearchUrl' => 'string', 'errorCode' => 'string', 'event' => '\OpenAPI\Fincode\Model\FincodeEvent'];
+    protected static array $openAPITypes = ['shopId' => 'string', 'bulkPaymentId' => 'string', 'fileName' => 'string', 'status' => '\Fincode\OpenAPI\Model\PaymentBulkStatus', 'registTotalCount' => 'string', 'errorTotalCount' => 'string', 'payType' => '\Fincode\OpenAPI\Model\PaymentBulkPayType', 'bulkSearchUrl' => 'string', 'errorCode' => 'string', 'event' => '\Fincode\OpenAPI\Model\FincodeEvent'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

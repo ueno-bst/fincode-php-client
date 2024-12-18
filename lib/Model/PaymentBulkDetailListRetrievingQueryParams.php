@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class PaymentBulkDetailListRetrievingQueryParams implements ModelInterface, \Arr
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['payType' => '\OpenAPI\Fincode\Model\PaymentBulkPayType', 'orderId' => 'string', 'status' => '\OpenAPI\Fincode\Model\PaymentBulkDetailStatus'];
+    protected static array $openAPITypes = ['payType' => '\Fincode\OpenAPI\Model\PaymentBulkPayType', 'orderId' => 'string', 'status' => '\Fincode\OpenAPI\Model\PaymentBulkDetailStatus'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *

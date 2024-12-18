@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * コンビニ事業者コード\\ 購入者が払い込みを行ったコンビニ事業者をあらわすコード。  - &#x60;00010&#x60;: セブン-イレブン - &#x60;00020&#x60;: ローソン - &#x60;00030&#x60;: ファミリーマート - &#x60;00080&#x60;: ミニストップ - &#x60;00760&#x60;: セイコーマート.

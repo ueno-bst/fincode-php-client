@@ -16,9 +16,9 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
-use OpenAPI\Fincode\ObjectSerializer;
+use Fincode\OpenAPI\ObjectSerializer;
 
 /**
  * @implements \ArrayAccess<string, mixed>
@@ -35,7 +35,7 @@ class POSTProviderReserve implements ModelInterface, \ArrayAccess, \JsonSerializ
      *
      * @var array<string, string>
      */
-    protected static array $openAPITypes = ['reservationList' => '\OpenAPI\Fincode\Model\POSTProviderReserveReservationListInner[]'];
+    protected static array $openAPITypes = ['reservationList' => '\Fincode\OpenAPI\Model\POSTProviderReserveReservationListInner[]'];
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
@@ -239,7 +239,7 @@ class POSTProviderReserve implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Gets reservationList.
      *
-     * @return \OpenAPI\Fincode\Model\POSTProviderReserveReservationListInner[]|null
+     * @return \Fincode\OpenAPI\Model\POSTProviderReserveReservationListInner[]|null
      */
     public function getReservationList(): mixed
     {
@@ -249,7 +249,7 @@ class POSTProviderReserve implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets reservationList.
      *
-     * @param \OpenAPI\Fincode\Model\POSTProviderReserveReservationListInner[] $reservationList 決済手段追加 申請リスト\\ \\ 申請中の決済手段のリストです
+     * @param \Fincode\OpenAPI\Model\POSTProviderReserveReservationListInner[] $reservationList 決済手段追加 申請リスト\\ \\ 申請中の決済手段のリストです
      */
     public function setReservationList(mixed $reservationList): static
     {

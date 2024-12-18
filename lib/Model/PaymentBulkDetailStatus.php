@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Fincode\Model;
+namespace Fincode\OpenAPI\Model;
 
 /**
  * ステータス  - &#x60;CHECKED&#x60;: チェック済み&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;データのチェックが完了し、決済処理の実行を待っています。&lt;/span&gt; - &#x60;SUCCEEDED&#x60;: 決済成功&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済の処理においてエラーが発生せず請求が完了しました。&lt;/span&gt; - &#x60;FAILED&#x60;: 決済失敗&lt;br /&gt;&lt;span class&#x3D;\&quot;smallText\&quot;&gt;この決済の処理において1件以上のエラーが発生しました。&lt;/span&gt;.
