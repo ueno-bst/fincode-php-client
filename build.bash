@@ -30,7 +30,7 @@ docker run --rm \
     -g php \
     -o /local/gen \
     -t /local/gen/templates \
-    --invoker-package "OpenAPI\Fincode" \
+    --invoker-package "Fincode\OpenAPI" \
     --additional-properties=variableNamingConvention=camelCase
 
 composer run patch;

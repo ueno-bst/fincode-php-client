@@ -26,11 +26,11 @@
         "nikic/php-parser": "^5.3"
     },
     "autoload": {
-        "psr-4": { "OpenAPI\\Fincode\\" : "lib/" }
+        "psr-4": { "Fincode\\OpenAPI\\" : "lib/" }
     },
     "autoload-dev": {
         "psr-4": {
-            "OpenAPI\\Fincode\\Test\\" : "test/",
+            "Fincode\\OpenAPI\\Test\\" : "test/",
             "OpenAPI\\Fixer\\" : "bin/php/"
         }
     }
