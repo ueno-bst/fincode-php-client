@@ -180,6 +180,7 @@ class ContractInfoV2 implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const REPRESENTATIVE_GENDER_NUMBER_0 = 0;
     public const REPRESENTATIVE_GENDER_NUMBER_1 = 1;
+    public const REPRESENTATIVE_GENDER_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class ContractInfoV2 implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getRepresentativeGenderAllowableValues(): array
     {
-        return [self::REPRESENTATIVE_GENDER_NUMBER_0, self::REPRESENTATIVE_GENDER_NUMBER_1];
+        return [self::REPRESENTATIVE_GENDER_NUMBER_0, self::REPRESENTATIVE_GENDER_NUMBER_1, self::REPRESENTATIVE_GENDER_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

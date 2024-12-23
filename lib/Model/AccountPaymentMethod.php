@@ -33,6 +33,7 @@ enum AccountPaymentMethod: string
     case APPLEPAY_VM = 'ApplepayVM';
     case APPLEPAY_JA = 'ApplepayJA';
     case DIRECTDEBIT = 'Directdebit';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

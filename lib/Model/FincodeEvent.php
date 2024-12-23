@@ -71,6 +71,7 @@ enum FincodeEvent: string
     case PAYMENTS_BULK_CARD_REGIST = 'payments.bulk.card.regist';
     case PAYMENTS_BULK_CARD_BATCH = 'payments.bulk.card.batch';
     case CONTRACTS_STATUS_CODE_UPDATED = 'contracts.status_code.updated';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

@@ -181,6 +181,7 @@ class ContentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const TYPE_NUMBER_0 = 0;
     public const TYPE_NUMBER_1 = 1;
     public const TYPE_NUMBER_2 = 2;
+    public const TYPE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -189,7 +190,7 @@ class ContentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getTypeAllowableValues(): array
     {
-        return [self::TYPE_NUMBER_0, self::TYPE_NUMBER_1, self::TYPE_NUMBER_2];
+        return [self::TYPE_NUMBER_0, self::TYPE_NUMBER_1, self::TYPE_NUMBER_2, self::TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

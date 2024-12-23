@@ -32,6 +32,7 @@ enum ThreeDSecure2TransactionResult: string
     case N = 'N';
     case U = 'U';
     case R = 'R';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

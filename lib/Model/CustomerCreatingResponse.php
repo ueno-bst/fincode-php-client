@@ -180,8 +180,10 @@ class CustomerCreatingResponse implements ModelInterface, \ArrayAccess, \JsonSer
     }
     public const CARD_REGISTRATION__0 = '0';
     public const CARD_REGISTRATION__1 = '1';
+    public const CARD_REGISTRATION_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const DIRECTDEBIT_REGISTRATION__0 = '0';
     public const DIRECTDEBIT_REGISTRATION__1 = '1';
+    public const DIRECTDEBIT_REGISTRATION_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class CustomerCreatingResponse implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getCardRegistrationAllowableValues(): array
     {
-        return [self::CARD_REGISTRATION__0, self::CARD_REGISTRATION__1];
+        return [self::CARD_REGISTRATION__0, self::CARD_REGISTRATION__1, self::CARD_REGISTRATION_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class CustomerCreatingResponse implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getDirectdebitRegistrationAllowableValues(): array
     {
-        return [self::DIRECTDEBIT_REGISTRATION__0, self::DIRECTDEBIT_REGISTRATION__1];
+        return [self::DIRECTDEBIT_REGISTRATION__0, self::DIRECTDEBIT_REGISTRATION__1, self::DIRECTDEBIT_REGISTRATION_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

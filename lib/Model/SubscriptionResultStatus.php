@@ -29,6 +29,7 @@ enum SubscriptionResultStatus: string
     case CHECKED = 'CHECKED';
     case SUCCEEDED = 'SUCCEEDED';
     case FAILED = 'FAILED';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

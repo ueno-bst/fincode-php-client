@@ -180,10 +180,13 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
     }
     public const BILL_MAIL_SEND_FLAG__0 = '0';
     public const BILL_MAIL_SEND_FLAG__1 = '1';
+    public const BILL_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const RECEIPT_MAIL_SEND_FLAG__0 = '0';
     public const RECEIPT_MAIL_SEND_FLAG__1 = '1';
+    public const RECEIPT_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const UNDERPAYMENT_MAIL_SEND_FLAG__0 = '0';
     public const UNDERPAYMENT_MAIL_SEND_FLAG__1 = '1';
+    public const UNDERPAYMENT_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -192,7 +195,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getBillMailSendFlagAllowableValues(): array
     {
-        return [self::BILL_MAIL_SEND_FLAG__0, self::BILL_MAIL_SEND_FLAG__1];
+        return [self::BILL_MAIL_SEND_FLAG__0, self::BILL_MAIL_SEND_FLAG__1, self::BILL_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -202,7 +205,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getReceiptMailSendFlagAllowableValues(): array
     {
-        return [self::RECEIPT_MAIL_SEND_FLAG__0, self::RECEIPT_MAIL_SEND_FLAG__1];
+        return [self::RECEIPT_MAIL_SEND_FLAG__0, self::RECEIPT_MAIL_SEND_FLAG__1, self::RECEIPT_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -212,7 +215,7 @@ class InvoiceDetailRefreshResponse implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getUnderpaymentMailSendFlagAllowableValues(): array
     {
-        return [self::UNDERPAYMENT_MAIL_SEND_FLAG__0, self::UNDERPAYMENT_MAIL_SEND_FLAG__1];
+        return [self::UNDERPAYMENT_MAIL_SEND_FLAG__0, self::UNDERPAYMENT_MAIL_SEND_FLAG__1, self::UNDERPAYMENT_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

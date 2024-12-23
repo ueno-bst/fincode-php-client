@@ -180,18 +180,23 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
     }
     public const PAY_PATTERN_ONETIME = 'onetime';
     public const PAY_PATTERN_SUBSCRIPTION = 'subscription';
+    public const PAY_PATTERN_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const OVERPAYMENT_FLAG__0 = '0';
     public const OVERPAYMENT_FLAG__1 = '1';
+    public const OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const CANCEL_OVERPAYMENT_FLAG__0 = '0';
     public const CANCEL_OVERPAYMENT_FLAG__1 = '1';
+    public const CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const EXPIRE_OVERPAYMENT_FLAG__0 = '0';
     public const EXPIRE_OVERPAYMENT_FLAG__1 = '1';
+    public const EXPIRE_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const AMOUNT_PATTERN__1 = '1';
     public const AMOUNT_PATTERN__2 = '2';
     public const AMOUNT_PATTERN__3 = '3';
     public const AMOUNT_PATTERN__4 = '4';
     public const AMOUNT_PATTERN__5 = '5';
     public const AMOUNT_PATTERN__6 = '6';
+    public const AMOUNT_PATTERN_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -200,7 +205,7 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
      */
     public function getPayPatternAllowableValues(): array
     {
-        return [self::PAY_PATTERN_ONETIME, self::PAY_PATTERN_SUBSCRIPTION];
+        return [self::PAY_PATTERN_ONETIME, self::PAY_PATTERN_SUBSCRIPTION, self::PAY_PATTERN_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -210,7 +215,7 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
      */
     public function getOverpaymentFlagAllowableValues(): array
     {
-        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1];
+        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1, self::OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -220,7 +225,7 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
      */
     public function getCancelOverpaymentFlagAllowableValues(): array
     {
-        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1];
+        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1, self::CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -230,7 +235,7 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
      */
     public function getExpireOverpaymentFlagAllowableValues(): array
     {
-        return [self::EXPIRE_OVERPAYMENT_FLAG__0, self::EXPIRE_OVERPAYMENT_FLAG__1];
+        return [self::EXPIRE_OVERPAYMENT_FLAG__0, self::EXPIRE_OVERPAYMENT_FLAG__1, self::EXPIRE_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -240,7 +245,7 @@ class RetrievePaymentListQueryParameter implements ModelInterface, \ArrayAccess,
      */
     public function getAmountPatternAllowableValues(): array
     {
-        return [self::AMOUNT_PATTERN__1, self::AMOUNT_PATTERN__2, self::AMOUNT_PATTERN__3, self::AMOUNT_PATTERN__4, self::AMOUNT_PATTERN__5, self::AMOUNT_PATTERN__6];
+        return [self::AMOUNT_PATTERN__1, self::AMOUNT_PATTERN__2, self::AMOUNT_PATTERN__3, self::AMOUNT_PATTERN__4, self::AMOUNT_PATTERN__5, self::AMOUNT_PATTERN__6, self::AMOUNT_PATTERN_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

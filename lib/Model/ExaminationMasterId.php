@@ -35,6 +35,10 @@ enum ExaminationMasterId: string
     case DIRECTDEBIT = 'directdebit';
     case VIRTUALACCOUNT = 'virtualaccount';
     case AUPAY = 'aupay';
+    case GOOGLEPAY_UC = 'googlepay_uc';
+    case GOOGLEPAY_JCB = 'googlepay_jcb';
+    case GOOGLEPAY_TFC = 'googlepay_tfc';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

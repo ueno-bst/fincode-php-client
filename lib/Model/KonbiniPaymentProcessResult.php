@@ -41,6 +41,7 @@ enum KonbiniPaymentProcessResult: string
     case _012 = '012';
     case _013 = '013';
     case _900 = '900';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

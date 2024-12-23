@@ -180,8 +180,10 @@ class CardRegistrationSession implements ModelInterface, \ArrayAccess, \JsonSeri
     }
     public const GUIDE_MAIL_SEND_FLAG__0 = '0';
     public const GUIDE_MAIL_SEND_FLAG__1 = '1';
+    public const GUIDE_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const COMPLETION_MAIL_SEND_FLAG__0 = '0';
     public const COMPLETION_MAIL_SEND_FLAG__1 = '1';
+    public const COMPLETION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class CardRegistrationSession implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     public function getGuideMailSendFlagAllowableValues(): array
     {
-        return [self::GUIDE_MAIL_SEND_FLAG__0, self::GUIDE_MAIL_SEND_FLAG__1];
+        return [self::GUIDE_MAIL_SEND_FLAG__0, self::GUIDE_MAIL_SEND_FLAG__1, self::GUIDE_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class CardRegistrationSession implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     public function getCompletionMailSendFlagAllowableValues(): array
     {
-        return [self::COMPLETION_MAIL_SEND_FLAG__0, self::COMPLETION_MAIL_SEND_FLAG__1];
+        return [self::COMPLETION_MAIL_SEND_FLAG__0, self::COMPLETION_MAIL_SEND_FLAG__1, self::COMPLETION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

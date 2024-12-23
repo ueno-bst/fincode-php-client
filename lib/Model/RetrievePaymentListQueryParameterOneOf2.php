@@ -180,6 +180,7 @@ class RetrievePaymentListQueryParameterOneOf2 implements ModelInterface, \ArrayA
     }
     public const PAY_PATTERN_ONETIME = 'onetime';
     public const PAY_PATTERN_SUBSCRIPTION = 'subscription';
+    public const PAY_PATTERN_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class RetrievePaymentListQueryParameterOneOf2 implements ModelInterface, \ArrayA
      */
     public function getPayPatternAllowableValues(): array
     {
-        return [self::PAY_PATTERN_ONETIME, self::PAY_PATTERN_SUBSCRIPTION];
+        return [self::PAY_PATTERN_ONETIME, self::PAY_PATTERN_SUBSCRIPTION, self::PAY_PATTERN_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

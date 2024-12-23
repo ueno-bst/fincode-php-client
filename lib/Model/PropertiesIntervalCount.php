@@ -30,6 +30,7 @@ enum PropertiesIntervalCount: int
     case _2 = 2;
     case _3 = 3;
     case _6 = 6;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

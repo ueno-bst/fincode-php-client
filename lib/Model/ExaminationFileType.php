@@ -44,6 +44,7 @@ enum ExaminationFileType: string
     case SALES_LICENSE_2 = 'SALES_LICENSE_2';
     case SALES_LICENSE_3 = 'SALES_LICENSE_3';
     case COPY_OF_CORPORATE_REGISTRATION = 'COPY_OF_CORPORATE_REGISTRATION';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

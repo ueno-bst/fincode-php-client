@@ -180,8 +180,10 @@ class ContractsRetrievingResponse implements ModelInterface, \ArrayAccess, \Json
     }
     public const AVAILABLE_STATUS_CODE_NUMBER_201 = 201;
     public const AVAILABLE_STATUS_CODE_NUMBER_202 = 202;
+    public const AVAILABLE_STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
     public const SALES_DEPOSIT_STATUS_CODE_NUMBER_501 = 501;
     public const SALES_DEPOSIT_STATUS_CODE_NUMBER_502 = 502;
+    public const SALES_DEPOSIT_STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class ContractsRetrievingResponse implements ModelInterface, \ArrayAccess, \Json
      */
     public function getAvailableStatusCodeAllowableValues(): array
     {
-        return [self::AVAILABLE_STATUS_CODE_NUMBER_201, self::AVAILABLE_STATUS_CODE_NUMBER_202];
+        return [self::AVAILABLE_STATUS_CODE_NUMBER_201, self::AVAILABLE_STATUS_CODE_NUMBER_202, self::AVAILABLE_STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class ContractsRetrievingResponse implements ModelInterface, \ArrayAccess, \Json
      */
     public function getSalesDepositStatusCodeAllowableValues(): array
     {
-        return [self::SALES_DEPOSIT_STATUS_CODE_NUMBER_501, self::SALES_DEPOSIT_STATUS_CODE_NUMBER_502];
+        return [self::SALES_DEPOSIT_STATUS_CODE_NUMBER_501, self::SALES_DEPOSIT_STATUS_CODE_NUMBER_502, self::SALES_DEPOSIT_STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

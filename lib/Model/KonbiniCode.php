@@ -31,6 +31,7 @@ enum KonbiniCode: string
     case _00030 = '00030';
     case _00080 = '00080';
     case _00760 = '00760';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

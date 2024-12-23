@@ -33,6 +33,7 @@ enum CardBrand: string
     case DINERS = 'DINERS';
     case DISCOVER = 'DISCOVER';
     case EMPTY = '';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

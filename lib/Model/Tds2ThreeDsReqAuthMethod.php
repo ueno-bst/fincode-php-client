@@ -32,6 +32,7 @@ enum Tds2ThreeDsReqAuthMethod: string
     case _04 = '04';
     case _05 = '05';
     case _06 = '06';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

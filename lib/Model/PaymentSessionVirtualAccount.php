@@ -180,6 +180,7 @@ class PaymentSessionVirtualAccount implements ModelInterface, \ArrayAccess, \Jso
     }
     public const VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__0 = '0';
     public const VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__1 = '1';
+    public const VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class PaymentSessionVirtualAccount implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getVirtualaccountReceptionMailSendFlagAllowableValues(): array
     {
-        return [self::VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__0, self::VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__1];
+        return [self::VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__0, self::VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG__1, self::VIRTUALACCOUNT_RECEPTION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

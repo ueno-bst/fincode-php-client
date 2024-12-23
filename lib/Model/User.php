@@ -179,16 +179,22 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
     public const TYPE__01 = '01';
+    public const TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const TWO_FACTOR_AUTH_STATUS__00 = '00';
     public const TWO_FACTOR_AUTH_STATUS__01 = '01';
+    public const TWO_FACTOR_AUTH_STATUS_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const MAIL_AUTH_STATUS__00 = '00';
     public const MAIL_AUTH_STATUS__01 = '01';
+    public const MAIL_AUTH_STATUS_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const PASSWORD_LOCK_STATUS__00 = '00';
     public const PASSWORD_LOCK_STATUS__01 = '01';
+    public const PASSWORD_LOCK_STATUS_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const ACCOUNT_STATUS__00 = '00';
     public const ACCOUNT_STATUS__01 = '01';
+    public const ACCOUNT_STATUS_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const INVITE_STATUS__01 = '01';
     public const INVITE_STATUS__02 = '02';
+    public const INVITE_STATUS_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -197,7 +203,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getTypeAllowableValues(): array
     {
-        return [self::TYPE__01];
+        return [self::TYPE__01, self::TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -207,7 +213,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getTwoFactorAuthStatusAllowableValues(): array
     {
-        return [self::TWO_FACTOR_AUTH_STATUS__00, self::TWO_FACTOR_AUTH_STATUS__01];
+        return [self::TWO_FACTOR_AUTH_STATUS__00, self::TWO_FACTOR_AUTH_STATUS__01, self::TWO_FACTOR_AUTH_STATUS_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -217,7 +223,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getMailAuthStatusAllowableValues(): array
     {
-        return [self::MAIL_AUTH_STATUS__00, self::MAIL_AUTH_STATUS__01];
+        return [self::MAIL_AUTH_STATUS__00, self::MAIL_AUTH_STATUS__01, self::MAIL_AUTH_STATUS_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -227,7 +233,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getPasswordLockStatusAllowableValues(): array
     {
-        return [self::PASSWORD_LOCK_STATUS__00, self::PASSWORD_LOCK_STATUS__01];
+        return [self::PASSWORD_LOCK_STATUS__00, self::PASSWORD_LOCK_STATUS__01, self::PASSWORD_LOCK_STATUS_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -237,7 +243,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getAccountStatusAllowableValues(): array
     {
-        return [self::ACCOUNT_STATUS__00, self::ACCOUNT_STATUS__01];
+        return [self::ACCOUNT_STATUS__00, self::ACCOUNT_STATUS__01, self::ACCOUNT_STATUS_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -247,7 +253,7 @@ class User implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getInviteStatusAllowableValues(): array
     {
-        return [self::INVITE_STATUS__01, self::INVITE_STATUS__02];
+        return [self::INVITE_STATUS__01, self::INVITE_STATUS__02, self::INVITE_STATUS_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

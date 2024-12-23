@@ -28,6 +28,7 @@ enum Tds2AddrMatch: string
      */
     case Y = 'Y';
     case N = 'N';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

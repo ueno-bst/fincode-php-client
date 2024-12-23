@@ -180,8 +180,10 @@ class Shop implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const SHARED_CUSTOMER_FLAG__0 = '0';
     public const SHARED_CUSTOMER_FLAG__1 = '1';
+    public const SHARED_CUSTOMER_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const API_KEY_DISPLAY_FLAG__0 = '0';
     public const API_KEY_DISPLAY_FLAG__1 = '1';
+    public const API_KEY_DISPLAY_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class Shop implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getSharedCustomerFlagAllowableValues(): array
     {
-        return [self::SHARED_CUSTOMER_FLAG__0, self::SHARED_CUSTOMER_FLAG__1];
+        return [self::SHARED_CUSTOMER_FLAG__0, self::SHARED_CUSTOMER_FLAG__1, self::SHARED_CUSTOMER_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class Shop implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getApiKeyDisplayFlagAllowableValues(): array
     {
-        return [self::API_KEY_DISPLAY_FLAG__0, self::API_KEY_DISPLAY_FLAG__1];
+        return [self::API_KEY_DISPLAY_FLAG__0, self::API_KEY_DISPLAY_FLAG__1, self::API_KEY_DISPLAY_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

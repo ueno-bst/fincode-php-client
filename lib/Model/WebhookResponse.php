@@ -180,6 +180,7 @@ class WebhookResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const RECEIVE__0 = '0';
     public const RECEIVE__1 = '1';
+    public const RECEIVE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class WebhookResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getReceiveAllowableValues(): array
     {
-        return [self::RECEIVE__0, self::RECEIVE__1];
+        return [self::RECEIVE__0, self::RECEIVE__1, self::RECEIVE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

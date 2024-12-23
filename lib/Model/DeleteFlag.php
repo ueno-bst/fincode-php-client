@@ -28,6 +28,7 @@ enum DeleteFlag: string
      */
     case _1 = '1';
     case _0 = '0';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

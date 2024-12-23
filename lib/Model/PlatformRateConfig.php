@@ -180,6 +180,7 @@ class PlatformRateConfig implements ModelInterface, \ArrayAccess, \JsonSerializa
     }
     public const PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_1 = 1;
     public const PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_2 = 2;
+    public const PAYPAY_CONTENT_CATEGORY_TYPE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class PlatformRateConfig implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     public function getPaypayContentCategoryTypeAllowableValues(): array
     {
-        return [self::PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_1, self::PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_2];
+        return [self::PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_1, self::PAYPAY_CONTENT_CATEGORY_TYPE_NUMBER_2, self::PAYPAY_CONTENT_CATEGORY_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

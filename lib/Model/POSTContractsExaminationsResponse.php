@@ -181,6 +181,7 @@ class POSTContractsExaminationsResponse implements ModelInterface, \ArrayAccess,
     public const STATUS_CODE_NUMBER_1 = 1;
     public const STATUS_CODE_NUMBER_2 = 2;
     public const STATUS_CODE_NUMBER_3 = 3;
+    public const STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -189,7 +190,7 @@ class POSTContractsExaminationsResponse implements ModelInterface, \ArrayAccess,
      */
     public function getStatusCodeAllowableValues(): array
     {
-        return [self::STATUS_CODE_NUMBER_1, self::STATUS_CODE_NUMBER_2, self::STATUS_CODE_NUMBER_3];
+        return [self::STATUS_CODE_NUMBER_1, self::STATUS_CODE_NUMBER_2, self::STATUS_CODE_NUMBER_3, self::STATUS_CODE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

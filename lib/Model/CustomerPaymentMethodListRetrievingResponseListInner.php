@@ -179,6 +179,7 @@ class CustomerPaymentMethodListRetrievingResponseListInner implements ModelInter
         return self::$openAPIModelName;
     }
     public const PAY_TYPE_DIRECTDEBIT = 'Directdebit';
+    public const PAY_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -187,7 +188,7 @@ class CustomerPaymentMethodListRetrievingResponseListInner implements ModelInter
      */
     public function getPayTypeAllowableValues(): array
     {
-        return [self::PAY_TYPE_DIRECTDEBIT];
+        return [self::PAY_TYPE_DIRECTDEBIT, self::PAY_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

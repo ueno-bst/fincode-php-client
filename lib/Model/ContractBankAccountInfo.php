@@ -180,6 +180,7 @@ class ContractBankAccountInfo implements ModelInterface, \ArrayAccess, \JsonSeri
     }
     public const ACCOUNT_KIND_NUMBER_0 = 0;
     public const ACCOUNT_KIND_NUMBER_1 = 1;
+    public const ACCOUNT_KIND_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class ContractBankAccountInfo implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     public function getAccountKindAllowableValues(): array
     {
-        return [self::ACCOUNT_KIND_NUMBER_0, self::ACCOUNT_KIND_NUMBER_1];
+        return [self::ACCOUNT_KIND_NUMBER_0, self::ACCOUNT_KIND_NUMBER_1, self::ACCOUNT_KIND_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

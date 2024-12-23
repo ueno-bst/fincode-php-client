@@ -35,6 +35,7 @@ enum CardPayTimes: string
     case _18 = '18';
     case _20 = '20';
     case _24 = '24';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

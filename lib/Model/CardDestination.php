@@ -181,6 +181,7 @@ class CardDestination implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const EXAMINATION_MASTER_ID_NUMBER_1 = 1;
     public const EXAMINATION_MASTER_ID_NUMBER_2 = 2;
     public const EXAMINATION_MASTER_ID_NUMBER_3 = 3;
+    public const EXAMINATION_MASTER_ID_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -189,7 +190,7 @@ class CardDestination implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getExaminationMasterIdAllowableValues(): array
     {
-        return [self::EXAMINATION_MASTER_ID_NUMBER_1, self::EXAMINATION_MASTER_ID_NUMBER_2, self::EXAMINATION_MASTER_ID_NUMBER_3];
+        return [self::EXAMINATION_MASTER_ID_NUMBER_1, self::EXAMINATION_MASTER_ID_NUMBER_2, self::EXAMINATION_MASTER_ID_NUMBER_3, self::EXAMINATION_MASTER_ID_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

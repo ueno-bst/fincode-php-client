@@ -180,7 +180,9 @@ class WebhookEventCard implements ModelInterface, \ArrayAccess, \JsonSerializabl
     }
     public const PROCESS_TYPE_I = 'I';
     public const PROCESS_TYPE_U = 'U';
+    public const PROCESS_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const PAY_TYPE_CARD = 'Card';
+    public const PAY_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -189,7 +191,7 @@ class WebhookEventCard implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     public function getProcessTypeAllowableValues(): array
     {
-        return [self::PROCESS_TYPE_I, self::PROCESS_TYPE_U];
+        return [self::PROCESS_TYPE_I, self::PROCESS_TYPE_U, self::PROCESS_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -199,7 +201,7 @@ class WebhookEventCard implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     public function getPayTypeAllowableValues(): array
     {
-        return [self::PAY_TYPE_CARD];
+        return [self::PAY_TYPE_CARD, self::PAY_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

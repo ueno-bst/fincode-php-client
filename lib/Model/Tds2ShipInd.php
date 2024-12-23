@@ -33,6 +33,7 @@ enum Tds2ShipInd: string
     case _05 = '05';
     case _06 = '06';
     case _07 = '07';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

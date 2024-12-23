@@ -28,6 +28,7 @@ enum DepositCycleMasterId: int
      */
     case _1 = 1;
     case _2 = 2;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

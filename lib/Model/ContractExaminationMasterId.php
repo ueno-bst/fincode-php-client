@@ -35,6 +35,7 @@ enum ContractExaminationMasterId: int
     case _201 = 201;
     case _301 = 301;
     case _401 = 401;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

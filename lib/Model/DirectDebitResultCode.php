@@ -35,6 +35,7 @@ enum DirectDebitResultCode: string
     case _9 = '9';
     case E = 'E';
     case N = 'N';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

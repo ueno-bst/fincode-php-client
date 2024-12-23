@@ -31,6 +31,7 @@ enum AccountDetailTradeType: int
     case _3 = 3;
     case _4 = 4;
     case _5 = 5;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

@@ -180,8 +180,10 @@ class AccountDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const APPLY_TYPE_NUMBER_0 = 0;
     public const APPLY_TYPE_NUMBER_1 = 1;
+    public const APPLY_TYPE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
     public const APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_0 = 0;
     public const APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_1 = 1;
+    public const APPLY_TYPE_FOR_PLATFORM_FEE_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class AccountDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getApplyTypeAllowableValues(): array
     {
-        return [self::APPLY_TYPE_NUMBER_0, self::APPLY_TYPE_NUMBER_1];
+        return [self::APPLY_TYPE_NUMBER_0, self::APPLY_TYPE_NUMBER_1, self::APPLY_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class AccountDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getApplyTypeForPlatformFeeAllowableValues(): array
     {
-        return [self::APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_0, self::APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_1];
+        return [self::APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_0, self::APPLY_TYPE_FOR_PLATFORM_FEE_NUMBER_1, self::APPLY_TYPE_FOR_PLATFORM_FEE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

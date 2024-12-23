@@ -32,6 +32,7 @@ enum PaymentProvider: string
     case APPLE_PAY_JCB_AMEX = 'APPLE_PAY_JCB_AMEX';
     case DIRECT_DEBIT = 'DIRECT_DEBIT';
     case VIRTUAL_ACCOUNT = 'VIRTUAL_ACCOUNT';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

@@ -39,6 +39,7 @@ enum DepositStatusCode: int
     case _3011 = 3011;
     case _3012 = 3012;
     case _3013 = 3013;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

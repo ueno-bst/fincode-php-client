@@ -180,6 +180,7 @@ class CapturePayment200Response implements ModelInterface, \ArrayAccess, \JsonSe
     }
     public const REDIRECT_TYPE__1 = '1';
     public const REDIRECT_TYPE__2 = '2';
+    public const REDIRECT_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class CapturePayment200Response implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function getRedirectTypeAllowableValues(): array
     {
-        return [self::REDIRECT_TYPE__1, self::REDIRECT_TYPE__2];
+        return [self::REDIRECT_TYPE__1, self::REDIRECT_TYPE__2, self::REDIRECT_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

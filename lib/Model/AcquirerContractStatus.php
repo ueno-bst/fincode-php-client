@@ -35,6 +35,7 @@ enum AcquirerContractStatus: string
     case _707 = '707';
     case _708 = '708';
     case _709 = '709';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

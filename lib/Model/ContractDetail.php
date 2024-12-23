@@ -181,6 +181,7 @@ class ContractDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const SITE_EXISTING_NUMBER_0 = 0;
     public const SITE_EXISTING_NUMBER_1 = 1;
     public const SITE_EXISTING_NUMBER_2 = 2;
+    public const SITE_EXISTING_UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.
@@ -189,7 +190,7 @@ class ContractDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getSiteExistingAllowableValues(): array
     {
-        return [self::SITE_EXISTING_NUMBER_0, self::SITE_EXISTING_NUMBER_1, self::SITE_EXISTING_NUMBER_2];
+        return [self::SITE_EXISTING_NUMBER_0, self::SITE_EXISTING_NUMBER_1, self::SITE_EXISTING_NUMBER_2, self::SITE_EXISTING_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

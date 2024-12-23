@@ -28,6 +28,7 @@ enum PaymentMethodPayType: string
      */
     case CARD = 'Card';
     case DIRECTDEBIT = 'Directdebit';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

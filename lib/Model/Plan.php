@@ -180,12 +180,15 @@ class Plan implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const INTERVAL_PATTERN_MONTH = 'month';
     public const INTERVAL_PATTERN_YEAR = 'year';
+    public const INTERVAL_PATTERN_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const INTERVAL_COUNT_NUMBER_1 = 1;
     public const INTERVAL_COUNT_NUMBER_2 = 2;
     public const INTERVAL_COUNT_NUMBER_3 = 3;
     public const INTERVAL_COUNT_NUMBER_6 = 6;
+    public const INTERVAL_COUNT_UNKNOWN_DEFAULT_OPEN_API = 11184809;
     public const USED_FLAG__0 = '0';
     public const USED_FLAG__1 = '1';
+    public const USED_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -194,7 +197,7 @@ class Plan implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getIntervalPatternAllowableValues(): array
     {
-        return [self::INTERVAL_PATTERN_MONTH, self::INTERVAL_PATTERN_YEAR];
+        return [self::INTERVAL_PATTERN_MONTH, self::INTERVAL_PATTERN_YEAR, self::INTERVAL_PATTERN_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -204,7 +207,7 @@ class Plan implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getIntervalCountAllowableValues(): array
     {
-        return [self::INTERVAL_COUNT_NUMBER_1, self::INTERVAL_COUNT_NUMBER_2, self::INTERVAL_COUNT_NUMBER_3, self::INTERVAL_COUNT_NUMBER_6];
+        return [self::INTERVAL_COUNT_NUMBER_1, self::INTERVAL_COUNT_NUMBER_2, self::INTERVAL_COUNT_NUMBER_3, self::INTERVAL_COUNT_NUMBER_6, self::INTERVAL_COUNT_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -214,7 +217,7 @@ class Plan implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getUsedFlagAllowableValues(): array
     {
-        return [self::USED_FLAG__0, self::USED_FLAG__1];
+        return [self::USED_FLAG__0, self::USED_FLAG__1, self::USED_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

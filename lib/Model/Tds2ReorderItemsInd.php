@@ -28,6 +28,7 @@ enum Tds2ReorderItemsInd: string
      */
     case _01 = '01';
     case _02 = '02';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

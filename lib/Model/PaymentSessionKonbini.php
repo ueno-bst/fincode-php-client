@@ -180,6 +180,7 @@ class PaymentSessionKonbini implements ModelInterface, \ArrayAccess, \JsonSerial
     }
     public const KONBINI_RECEPTION_MAIL_SEND_FLAG__0 = '0';
     public const KONBINI_RECEPTION_MAIL_SEND_FLAG__1 = '1';
+    public const KONBINI_RECEPTION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class PaymentSessionKonbini implements ModelInterface, \ArrayAccess, \JsonSerial
      */
     public function getKonbiniReceptionMailSendFlagAllowableValues(): array
     {
-        return [self::KONBINI_RECEPTION_MAIL_SEND_FLAG__0, self::KONBINI_RECEPTION_MAIL_SEND_FLAG__1];
+        return [self::KONBINI_RECEPTION_MAIL_SEND_FLAG__0, self::KONBINI_RECEPTION_MAIL_SEND_FLAG__1, self::KONBINI_RECEPTION_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

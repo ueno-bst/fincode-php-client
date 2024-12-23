@@ -27,6 +27,7 @@ enum PaymentBulkPayType: string
      * Possible values of this enum.
      */
     case CARD = 'Card';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

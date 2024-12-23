@@ -32,6 +32,7 @@ enum ContractStatus: string
     case _105 = '105';
     case _106 = '106';
     case _107 = '107';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

@@ -28,6 +28,7 @@ enum TdsType: string
      */
     case _0 = '0';
     case _2 = '2';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

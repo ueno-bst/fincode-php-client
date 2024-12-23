@@ -30,6 +30,7 @@ enum ApplePayPaymentJobCode: string
     case CAPTURE = 'CAPTURE';
     case CANCEL = 'CANCEL';
     case SALES = 'SALES';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

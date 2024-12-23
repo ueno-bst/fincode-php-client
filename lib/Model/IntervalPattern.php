@@ -28,6 +28,7 @@ enum IntervalPattern: string
      */
     case MONTH = 'month';
     case YEAR = 'year';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

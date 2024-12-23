@@ -181,14 +181,19 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
     public const BARCODE_FORMAT_JPG = 'jpg';
     public const BARCODE_FORMAT_PNG = 'png';
     public const BARCODE_FORMAT_BMP = 'bmp';
+    public const BARCODE_FORMAT_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const OVERPAYMENT_FLAG__0 = '0';
     public const OVERPAYMENT_FLAG__1 = '1';
+    public const OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const CANCEL_OVERPAYMENT_FLAG__0 = '0';
     public const CANCEL_OVERPAYMENT_FLAG__1 = '1';
+    public const CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const REDIRECT_TYPE__1 = '1';
     public const REDIRECT_TYPE__2 = '2';
+    public const REDIRECT_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const EXPIRE_OVERPAYMENT_FLAG__0 = '0';
     public const EXPIRE_OVERPAYMENT_FLAG__1 = '1';
+    public const EXPIRE_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -197,7 +202,7 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getBarcodeFormatAllowableValues(): array
     {
-        return [self::BARCODE_FORMAT_JPG, self::BARCODE_FORMAT_PNG, self::BARCODE_FORMAT_BMP];
+        return [self::BARCODE_FORMAT_JPG, self::BARCODE_FORMAT_PNG, self::BARCODE_FORMAT_BMP, self::BARCODE_FORMAT_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -207,7 +212,7 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getOverpaymentFlagAllowableValues(): array
     {
-        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1];
+        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1, self::OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -217,7 +222,7 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getCancelOverpaymentFlagAllowableValues(): array
     {
-        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1];
+        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1, self::CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -227,7 +232,7 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getRedirectTypeAllowableValues(): array
     {
-        return [self::REDIRECT_TYPE__1, self::REDIRECT_TYPE__2];
+        return [self::REDIRECT_TYPE__1, self::REDIRECT_TYPE__2, self::REDIRECT_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -237,7 +242,7 @@ class CancelPayment200Response implements ModelInterface, \ArrayAccess, \JsonSer
      */
     public function getExpireOverpaymentFlagAllowableValues(): array
     {
-        return [self::EXPIRE_OVERPAYMENT_FLAG__0, self::EXPIRE_OVERPAYMENT_FLAG__1];
+        return [self::EXPIRE_OVERPAYMENT_FLAG__0, self::EXPIRE_OVERPAYMENT_FLAG__1, self::EXPIRE_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

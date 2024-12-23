@@ -29,6 +29,7 @@ enum ThreeDSecure2Status: string
     case AUTHENTICATING = 'AUTHENTICATING';
     case CHALLENGE = 'CHALLENGE';
     case AUTHENTICATED = 'AUTHENTICATED';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

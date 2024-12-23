@@ -27,6 +27,7 @@ enum CardRegistrationSessionStatus: string
      * Possible values of this enum.
      */
     case CREATE = 'CREATE';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

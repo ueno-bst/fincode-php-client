@@ -30,6 +30,7 @@ enum PaymentMethodStatus: string
     case AWAITING_CUSTOMER_ACTION = 'AWAITING_CUSTOMER_ACTION';
     case ACTIVATED = 'ACTIVATED';
     case FAILED = 'FAILED';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

@@ -180,8 +180,10 @@ class PaymentSession implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const GUIDE_MAIL_SEND_FLAG__0 = '0';
     public const GUIDE_MAIL_SEND_FLAG__1 = '1';
+    public const GUIDE_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const THANKS_MAIL_SEND_FLAG__0 = '0';
     public const THANKS_MAIL_SEND_FLAG__1 = '1';
+    public const THANKS_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class PaymentSession implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getGuideMailSendFlagAllowableValues(): array
     {
-        return [self::GUIDE_MAIL_SEND_FLAG__0, self::GUIDE_MAIL_SEND_FLAG__1];
+        return [self::GUIDE_MAIL_SEND_FLAG__0, self::GUIDE_MAIL_SEND_FLAG__1, self::GUIDE_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class PaymentSession implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getThanksMailSendFlagAllowableValues(): array
     {
-        return [self::THANKS_MAIL_SEND_FLAG__0, self::THANKS_MAIL_SEND_FLAG__1];
+        return [self::THANKS_MAIL_SEND_FLAG__0, self::THANKS_MAIL_SEND_FLAG__1, self::THANKS_MAIL_SEND_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

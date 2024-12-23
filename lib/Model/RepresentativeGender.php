@@ -28,6 +28,7 @@ enum RepresentativeGender: int
      */
     case _0 = 0;
     case _1 = 1;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

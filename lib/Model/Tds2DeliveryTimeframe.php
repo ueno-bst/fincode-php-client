@@ -30,6 +30,7 @@ enum Tds2DeliveryTimeframe: string
     case _02 = '02';
     case _03 = '03';
     case _04 = '04';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

@@ -28,6 +28,7 @@ enum ShopType: string
      */
     case PLATFORM = 'platform';
     case TENANT = 'tenant';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.

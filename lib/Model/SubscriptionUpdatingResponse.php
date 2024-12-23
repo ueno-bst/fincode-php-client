@@ -180,6 +180,7 @@ class SubscriptionUpdatingResponse implements ModelInterface, \ArrayAccess, \Jso
     }
     public const END_MONTH_FLAG__0 = '0';
     public const END_MONTH_FLAG__1 = '1';
+    public const END_MONTH_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class SubscriptionUpdatingResponse implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getEndMonthFlagAllowableValues(): array
     {
-        return [self::END_MONTH_FLAG__0, self::END_MONTH_FLAG__1];
+        return [self::END_MONTH_FLAG__0, self::END_MONTH_FLAG__1, self::END_MONTH_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

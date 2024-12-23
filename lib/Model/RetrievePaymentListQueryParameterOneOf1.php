@@ -180,8 +180,10 @@ class RetrievePaymentListQueryParameterOneOf1 implements ModelInterface, \ArrayA
     }
     public const OVERPAYMENT_FLAG__0 = '0';
     public const OVERPAYMENT_FLAG__1 = '1';
+    public const OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const CANCEL_OVERPAYMENT_FLAG__0 = '0';
     public const CANCEL_OVERPAYMENT_FLAG__1 = '1';
+    public const CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class RetrievePaymentListQueryParameterOneOf1 implements ModelInterface, \ArrayA
      */
     public function getOverpaymentFlagAllowableValues(): array
     {
-        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1];
+        return [self::OVERPAYMENT_FLAG__0, self::OVERPAYMENT_FLAG__1, self::OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class RetrievePaymentListQueryParameterOneOf1 implements ModelInterface, \ArrayA
      */
     public function getCancelOverpaymentFlagAllowableValues(): array
     {
-        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1];
+        return [self::CANCEL_OVERPAYMENT_FLAG__0, self::CANCEL_OVERPAYMENT_FLAG__1, self::CANCEL_OVERPAYMENT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

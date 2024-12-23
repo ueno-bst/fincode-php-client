@@ -180,8 +180,10 @@ class RetrievePlanListQueryParameter implements ModelInterface, \ArrayAccess, \J
     }
     public const INTERVAL_PATTERN_MONTH = 'month';
     public const INTERVAL_PATTERN_YEAR = 'year';
+    public const INTERVAL_PATTERN_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const DELETE_FLAG__0 = '0';
     public const DELETE_FLAG__1 = '1';
+    public const DELETE_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class RetrievePlanListQueryParameter implements ModelInterface, \ArrayAccess, \J
      */
     public function getIntervalPatternAllowableValues(): array
     {
-        return [self::INTERVAL_PATTERN_MONTH, self::INTERVAL_PATTERN_YEAR];
+        return [self::INTERVAL_PATTERN_MONTH, self::INTERVAL_PATTERN_YEAR, self::INTERVAL_PATTERN_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class RetrievePlanListQueryParameter implements ModelInterface, \ArrayAccess, \J
      */
     public function getDeleteFlagAllowableValues(): array
     {
-        return [self::DELETE_FLAG__0, self::DELETE_FLAG__1];
+        return [self::DELETE_FLAG__0, self::DELETE_FLAG__1, self::DELETE_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

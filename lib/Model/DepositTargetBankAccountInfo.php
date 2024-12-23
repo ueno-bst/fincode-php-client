@@ -180,6 +180,7 @@ class DepositTargetBankAccountInfo implements ModelInterface, \ArrayAccess, \Jso
     }
     public const ACCOUNT_KIND__0 = '0';
     public const ACCOUNT_KIND__1 = '1';
+    public const ACCOUNT_KIND_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -188,7 +189,7 @@ class DepositTargetBankAccountInfo implements ModelInterface, \ArrayAccess, \Jso
      */
     public function getAccountKindAllowableValues(): array
     {
-        return [self::ACCOUNT_KIND__0, self::ACCOUNT_KIND__1];
+        return [self::ACCOUNT_KIND__0, self::ACCOUNT_KIND__1, self::ACCOUNT_KIND_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

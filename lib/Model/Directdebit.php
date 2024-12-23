@@ -182,8 +182,10 @@ class Directdebit implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const BANK_TYPE__0 = '0';
     public const BANK_TYPE__1 = '1';
+    public const BANK_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const ACCOUNT_TYPE__0 = '0';
     public const ACCOUNT_TYPE__1 = '1';
+    public const ACCOUNT_TYPE_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -192,7 +194,7 @@ class Directdebit implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getBankTypeAllowableValues(): array
     {
-        return [self::BANK_TYPE__0, self::BANK_TYPE__1];
+        return [self::BANK_TYPE__0, self::BANK_TYPE__1, self::BANK_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -202,7 +204,7 @@ class Directdebit implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getAccountTypeAllowableValues(): array
     {
-        return [self::ACCOUNT_TYPE__0, self::ACCOUNT_TYPE__1];
+        return [self::ACCOUNT_TYPE__0, self::ACCOUNT_TYPE__1, self::ACCOUNT_TYPE_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

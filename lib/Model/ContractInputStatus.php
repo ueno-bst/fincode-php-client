@@ -30,6 +30,7 @@ enum ContractInputStatus: int
     case _302 = 302;
     case _303 = 303;
     case _304 = 304;
+    case UNKNOWN_DEFAULT_OPEN_API = 11184809;
 
     /**
      * Gets allowable values of the enum.

@@ -180,8 +180,10 @@ class PaymentMethod implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
     public const REDIRECT_URL_ACCESSED_FLAG__0 = '0';
     public const REDIRECT_URL_ACCESSED_FLAG__1 = '1';
+    public const REDIRECT_URL_ACCESSED_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
     public const DEFAULT_FLAG__0 = '0';
     public const DEFAULT_FLAG__1 = '1';
+    public const DEFAULT_FLAG_UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
@@ -190,7 +192,7 @@ class PaymentMethod implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getRedirectUrlAccessedFlagAllowableValues(): array
     {
-        return [self::REDIRECT_URL_ACCESSED_FLAG__0, self::REDIRECT_URL_ACCESSED_FLAG__1];
+        return [self::REDIRECT_URL_ACCESSED_FLAG__0, self::REDIRECT_URL_ACCESSED_FLAG__1, self::REDIRECT_URL_ACCESSED_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
 
     /**
@@ -200,7 +202,7 @@ class PaymentMethod implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function getDefaultFlagAllowableValues(): array
     {
-        return [self::DEFAULT_FLAG__0, self::DEFAULT_FLAG__1];
+        return [self::DEFAULT_FLAG__0, self::DEFAULT_FLAG__1, self::DEFAULT_FLAG_UNKNOWN_DEFAULT_OPEN_API];
     }
     /**
      * Associative array for storing property values.

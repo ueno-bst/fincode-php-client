@@ -30,6 +30,7 @@ enum PaymentSessionPayType: string
     case KONBINI = 'Konbini';
     case PAYPAY = 'Paypay';
     case VIRTUALACCOUNT = 'Virtualaccount';
+    case UNKNOWN_DEFAULT_OPEN_API = 'unknown_default_open_api';
 
     /**
      * Gets allowable values of the enum.
