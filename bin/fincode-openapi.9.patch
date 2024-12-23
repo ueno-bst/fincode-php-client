@@ -1,0 +1,18 @@
+--- fincode-openapi.yml.src	2024-12-23 15:56:09.159883897 +0900
++++ fincode-openapi.yml.dist	2024-12-23 15:56:09.129882261 +0900
+@@ -1,4 +1,4 @@
+-fincode-openapi.ymlopenapi: 3.0.2
++openapi: 3.0.2
+ info:
+   title: fincode API
+   description: |
+@@ -31867,6 +31867,9 @@
+         - directdebit
+         - virtualaccount
+         - aupay
++        - googlepay_uc
++        - googlepay_jcb
++        - googlepay_tfc
+       example: vm
+       description: |
+         審査種別マスタID。\
