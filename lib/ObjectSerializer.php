@@ -198,6 +198,10 @@ class ObjectSerializer
                 return [];
             }
         }
+        if (is_a($openApiType, ModelInterface::class, true)) {
+            $value = self::sanitizeForSerialization($value);
+            $openApiType = 'object';
+        }
         // Handle DateTime objects in query
         if ('\DateTime' === $openApiType && $value instanceof \DateTime) {
             return ["{$paramName}" => $value->format(self::$dateTimeFormat)];

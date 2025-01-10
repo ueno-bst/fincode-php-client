@@ -2579,7 +2579,7 @@ class DefaultApi
             $payType,
             'pay_type',
             // param base name
-            'PaymentBulkPayType',
+            '\Fincode\OpenAPI\Model\PaymentBulkPayType',
             // openApiType
             'form',
             // style
@@ -6231,7 +6231,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -8091,7 +8091,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -8324,7 +8324,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -9250,7 +9250,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -9501,7 +9501,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'CustomerPaymentMethodRetrievingQueryParams',
+            '\Fincode\OpenAPI\Model\CustomerPaymentMethodRetrievingQueryParams',
             // openApiType
             'form',
             // style
@@ -9755,7 +9755,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'CustomerPaymentMethodListRetrievingQueryParams',
+            '\Fincode\OpenAPI\Model\CustomerPaymentMethodListRetrievingQueryParams',
             // openApiType
             'form',
             // style
@@ -10005,7 +10005,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaymentRetrievingQueryParams',
+            '\Fincode\OpenAPI\Model\PaymentRetrievingQueryParams',
             // openApiType
             'form',
             // style
@@ -10251,7 +10251,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -10484,7 +10484,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -11156,7 +11156,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -11591,7 +11591,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -11820,7 +11820,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -12259,7 +12259,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -12698,7 +12698,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -12931,7 +12931,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
@@ -14064,7 +14064,7 @@ class DefaultApi
             $query,
             'query',
             // param base name
-            'PaginationQueryParams',
+            '\Fincode\OpenAPI\Model\PaginationQueryParams',
             // openApiType
             'form',
             // style
