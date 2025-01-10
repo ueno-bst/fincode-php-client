@@ -1,0 +1,15 @@
+diff -urN src/ObjectSerializer.mustache dist/ObjectSerializer.mustache
+--- src/ObjectSerializer.mustache	2025-01-10 13:32:05.044042400 +0900
++++ dist/ObjectSerializer.mustache	2025-01-10 13:36:00.391866600 +0900
+@@ -211,6 +211,11 @@
+             }
+         }
+ 
++        if (is_a($openApiType, ModelInterface::class, true)) {
++            $value = self::sanitizeForSerialization($value);
++            $openApiType = 'object';
++        }
++
+         # Handle DateTime objects in query
+         if($openApiType === '\DateTime' && $value instanceof \DateTime) {
+             return ["{$paramName}" => $value->format(self::$dateTimeFormat)];

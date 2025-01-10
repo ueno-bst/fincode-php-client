@@ -20,7 +20,8 @@ npm install
 rm -rf ./gen && mkdir -p ./gen
 
 cp -r node_modules/@quartetcom/openapi-generator-php-templates/templates ./gen/templates \
-  && patch -p1 -d ./gen/templates < ./bin/openapi-php-template.0.patch
+  && patch -p1 -d ./gen/templates < ./bin/openapi-php-template.0.patch \
+  && patch -p1 -d ./gen/templates < ./bin/openapi-php-template.1.patch
 
 docker run --rm \
   -u 1000:1000 \

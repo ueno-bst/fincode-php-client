@@ -34,6 +34,16 @@ class ApiClassConverter extends \PhpParser\NodeVisitorAbstract
                 }
 
                 if (
+                    preg_match('/^\w+Request$/', $method->name) &&
+                    $method->isPublic() &&
+                    !$method->isStatic()
+                ) {
+                    foreach ($method->getStmts() as $stmt) {
+                        $this->enterMethod($stmt);
+                    }
+                }
+
+                if (
                     preg_match('/^\w+WithHttpInfo$/', $method->name) &&
                     $method->isPublic() &&
                     !$method->isStatic()
@@ -75,6 +85,7 @@ class ApiClassConverter extends \PhpParser\NodeVisitorAbstract
      */
     public function enterString(Node\Scalar\String_ $string): void
     {
+        // 文字列中に含まれるクラス名を完全修飾クラス名に変換する
         foreach ($this->classes as $class) {
             if ($class->name === $string->value) {
                 echo "String to : " . $string->value . " -> " . $class->fullName . "\n";
